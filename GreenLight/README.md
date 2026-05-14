@@ -29,4 +29,3 @@ In the design spec [GreenLight.md](GreenLight.md) I emphasize how the client exp
 | [GreenLight.md](GreenLight.md) | Full design specification — architecture, interview-state machine, scoring framework, completeness gate, failure modes, governance, and cost/latency estimates.                       |
 | [assets](assets)               | Configuration and data the agent operates on: `framework_config.yaml` (six-dimension scoring framework), `intake_schema.json` (question structure), and synthetic interview fixtures. |
 | [mockups](mockups)             | Static image mockups of the client-facing assessment surfaces (activation, dimension intake, final check).                                                                            |
-| [html_mockups](html_mockups)   | Interactive HTML mockups corresponding to the static mockups, used to validate flow and copy with reviewers.                                                                          |

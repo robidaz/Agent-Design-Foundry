@@ -72,7 +72,7 @@ The evaluation strategy's central theme is grounded in the ADLC (Agent Developme
 
 ## Additional Contributions
 
-Prior to receiving these designs tasks, I self-identified a potential challenge Dynamix might face and created VendorVault. It is a fully functional proof of concept I designed around a fictional company called Kinematix Group to give it the right operational context. It's built around the kind of vendor intelligence challenges I'd expect a company like Dynamix to face, or to help its mid-market and enterprise clients navigate.
+Prior to receiving these designs tasks, I self-identified a potential challenge Dynamix might face and created VendorVault. It is a fully functional proof of concept I designed around a fictional company called Kinematix Group to give it the right operational context. It's built around the kind of vendor intelligence challenges I'd expect a company like Dynamix to face, or to help its mid-market and enterprise clients navigate. Conveniently, I believe my QuotePilot agent framework could easily be integrated in this user interface.
 
 **Working Demo:** [VendorVault](https://kinematixgroup.site/)
 
