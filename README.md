@@ -1,5 +1,12 @@
 # AI Solutions Architect Exercise Guiding Principles
 
+## Author
+**Name:** Zachary Robida
+
+**Website:** [https://zachrobida.online/](https://zachrobida.online/)
+
+**Email:** Robidaz@gmail.com
+
 ## Overview
 
 This repository represents my official submission for the AI Engineer Candidate Design Exercise. All materials in this repository were created by myself with AI-assisted support during the development process.
