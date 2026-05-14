@@ -1,0 +1,403 @@
+{
+  "metadata": {
+    "source": "greenlight_intake_schema",
+    "version": "1.0.0",
+    "last_updated": "2026-05-12",
+    "framework_version_target": "1.0.0",
+    "description": "Structured intake question schema served to the client via the Angular + Syncfusion UI. Drives section-by-section streaming of responses into the GreenLight agent. Question count: 32 (4 engagement metadata + 28 dimension questions, ~4-5 per dimension). A subset is tagged 'deterministic: true' with demo_signal hooks — these drive the agent's working-demo recommendation alongside the readiness report.",
+    "ui_notes": "Sections render top-to-bottom. Branching is supported per the 'branching' attribute on each question. Each section ends with a single submit that streams responses to the orchestrator."
+  },
+
+  "sections": [
+
+    {
+      "section_id": "engagement_metadata",
+      "title": "About Your Organization",
+      "order": 0,
+      "intro": "We use these details to tailor the rest of the interview to your size and industry. Nothing here is shared outside the assessment.",
+      "questions": [
+        {
+          "id": "EM-001",
+          "text": "What is your organization's legal name?",
+          "type": "text",
+          "required": true,
+          "purpose": "engagement_metadata.company_name"
+        },
+        {
+          "id": "EM-002",
+          "text": "Approximate employee count?",
+          "type": "select",
+          "required": true,
+          "options": ["< 200", "200–500", "500–1,000", "1,000–2,000", "> 2,000"],
+          "purpose": "engagement_metadata.employee_count_band"
+        },
+        {
+          "id": "EM-003",
+          "text": "Approximate annual revenue (USD)?",
+          "type": "select",
+          "required": true,
+          "options": ["< $50M", "$50M–$200M", "$200M–$500M", "$500M–$1B", "> $1B"],
+          "purpose": "engagement_metadata.revenue_band"
+        },
+        {
+          "id": "EM-004",
+          "text": "Primary industry?",
+          "type": "select",
+          "required": true,
+          "options": [
+            "Industrial Distribution / Wholesale",
+            "Manufacturing",
+            "Financial Services",
+            "Healthcare / Life Sciences",
+            "Retail / E-commerce",
+            "Professional Services",
+            "Technology",
+            "Other"
+          ],
+          "purpose": "engagement_metadata.industry"
+        },
+        {
+          "id": "EM-005",
+          "text": "Your role at the organization?",
+          "type": "text",
+          "required": true,
+          "purpose": "engagement_metadata.respondent_role"
+        }
+      ]
+    },
+
+    {
+      "section_id": "strategy_use_case_portfolio",
+      "title": "Strategy & Use Case Portfolio",
+      "order": 1,
+      "dimension_id": "strategy_use_case_portfolio",
+      "questions": [
+        {
+          "id": "S1-001",
+          "text": "Does your executive team have a documented AI strategy?",
+          "type": "select",
+          "required": true,
+          "options": [
+            "No formal discussion yet",
+            "Informal conversations only",
+            "Documented strategy drafted",
+            "Documented strategy reviewed at leadership cadence",
+            "AI strategy is integrated into corporate strategy"
+          ],
+          "sub_criteria_id": "executive_sponsorship",
+          "anchor_mapping": [1, 2, 3, 4, 5]
+        },
+        {
+          "id": "S1-002",
+          "text": "Who is the highest-level executive actively sponsoring AI initiatives?",
+          "type": "select",
+          "required": true,
+          "options": ["No active sponsor", "Director / VP level", "C-suite", "CEO / Owner"],
+          "sub_criteria_id": "executive_sponsorship"
+        },
+        {
+          "id": "S1-003",
+          "text": "Have you identified specific AI use cases tied to business outcomes?",
+          "type": "multi_select",
+          "required": false,
+          "options": [
+            "Customer service automation",
+            "Sales / quoting assistance",
+            "Inventory / demand forecasting",
+            "Pricing optimization",
+            "Field service support",
+            "Document / email triage",
+            "Marketing / content generation",
+            "Other",
+            "None identified"
+          ],
+          "sub_criteria_id": "use_case_portfolio",
+          "deterministic": true,
+          "demo_signal": "use_case_intent"
+        },
+        {
+          "id": "S1-004",
+          "text": "How do you prioritize where to invest first?",
+          "type": "text",
+          "required": false,
+          "sub_criteria_id": "prioritization_framework"
+        },
+        {
+          "id": "S1-005",
+          "text": "Are AI initiatives tied to a quantified business case (revenue, cost, risk)?",
+          "type": "select",
+          "required": true,
+          "options": ["No", "Informally", "Documented business cases for some", "All initiatives have business cases", "Outcomes tracked closed-loop against business cases"],
+          "sub_criteria_id": "value_articulation",
+          "anchor_mapping": [1, 2, 3, 4, 5]
+        }
+      ]
+    },
+
+    {
+      "section_id": "data_foundation",
+      "title": "Data Foundation",
+      "order": 2,
+      "dimension_id": "data_foundation",
+      "questions": [
+        {
+          "id": "D1-001",
+          "text": "Do you maintain a catalog of your data assets (where data lives, who owns it)?",
+          "type": "select",
+          "required": true,
+          "options": ["No catalog", "Partial catalogs per system", "Catalog for top systems", "Enterprise catalog with owners + SLAs", "Continuously catalogued with lineage"],
+          "sub_criteria_id": "data_inventory",
+          "anchor_mapping": [1, 2, 3, 4, 5]
+        },
+        {
+          "id": "D1-002",
+          "text": "How confident are you in the quality (completeness, accuracy, freshness) of your core operational data?",
+          "type": "select",
+          "required": true,
+          "options": ["Quality is unknown", "Anecdotally known issues", "Monitored for critical domains", "Quality dashboards per domain", "Enforced SLOs per domain"],
+          "sub_criteria_id": "data_quality",
+          "anchor_mapping": [1, 2, 3, 4, 5]
+        },
+        {
+          "id": "D1-003",
+          "text": "How does an engineering or analytics team typically access data they need?",
+          "type": "text",
+          "required": true,
+          "sub_criteria_id": "data_accessibility"
+        },
+        {
+          "id": "D1-004",
+          "text": "How well-integrated are your core systems (ERP, CRM, operational tools)?",
+          "type": "select",
+          "required": true,
+          "options": ["Siloed; mostly manual", "Point-to-point integrations exist but are brittle", "Documented integrations between core systems", "Centrally governed integration platform", "Integration is a platform capability"],
+          "sub_criteria_id": "data_integration",
+          "anchor_mapping": [1, 2, 3, 4, 5]
+        },
+        {
+          "id": "D1-005",
+          "text": "Roughly how many active SKUs / customer records / transactions per month flow through your core systems?",
+          "type": "text",
+          "required": false,
+          "sub_criteria_id": "data_inventory",
+          "deterministic": true,
+          "demo_signal": "sku_volume_high"
+        }
+      ]
+    },
+
+    {
+      "section_id": "technology_infrastructure",
+      "title": "Technology & Infrastructure",
+      "order": 3,
+      "dimension_id": "technology_infrastructure",
+      "questions": [
+        {
+          "id": "T1-001",
+          "text": "Which best describes your cloud posture?",
+          "type": "select",
+          "required": true,
+          "options": ["Primarily on-prem", "Hybrid with ad-hoc cloud usage", "Defined cloud strategy in motion", "Cloud-native or well-governed hybrid", "Platform-as-product across the business"],
+          "sub_criteria_id": "cloud_posture",
+          "anchor_mapping": [1, 2, 3, 4, 5]
+        },
+        {
+          "id": "T1-002",
+          "text": "Do your core systems (ERP, CRM, etc.) expose APIs that downstream systems can consume?",
+          "type": "select",
+          "required": true,
+          "options": ["No APIs", "A few one-off integrations exist", "Documented APIs on key systems", "Event-driven integration available", "Integration is composable across the business"],
+          "sub_criteria_id": "integration_architecture",
+          "anchor_mapping": [1, 2, 3, 4, 5]
+        },
+        {
+          "id": "T1-003",
+          "text": "How confident are you that your security baseline (identity, encryption, audit) meets enterprise norms?",
+          "type": "select",
+          "required": true,
+          "options": ["Weak / unknown", "Standard but uninspected for AI", "Meets enterprise norms; AI not specifically reviewed", "Reviewed for AI workloads", "Continuously validated for AI"],
+          "sub_criteria_id": "security_baseline",
+          "anchor_mapping": [1, 2, 3, 4, 5]
+        },
+        {
+          "id": "T1-004",
+          "text": "Do you have MLOps or AI platform tooling in use (model registry, versioning, monitoring)?",
+          "type": "select",
+          "required": true,
+          "options": ["No", "Experimental usage", "Limited but in production", "MLOps platform operating", "Full-lifecycle MLOps with rollback"],
+          "sub_criteria_id": "mlops_tooling",
+          "anchor_mapping": [1, 2, 3, 4, 5]
+        }
+      ]
+    },
+
+    {
+      "section_id": "people_skills",
+      "title": "People & Skills",
+      "order": 4,
+      "dimension_id": "people_skills",
+      "questions": [
+        {
+          "id": "P1-001",
+          "text": "How would you characterize your leadership team's working understanding of AI?",
+          "type": "select",
+          "required": true,
+          "options": ["Unfamiliar", "Curious but uneven", "Baseline-literate", "Conversant in AI strategy", "Shapes AI strategy directly"],
+          "sub_criteria_id": "ai_literacy_leadership",
+          "anchor_mapping": [1, 2, 3, 4, 5]
+        },
+        {
+          "id": "P1-002",
+          "text": "Do you have technical staff in-house who can deliver AI / ML / data engineering work?",
+          "type": "select",
+          "required": true,
+          "options": ["None", "1–2 technically literate staff", "Small but capable internal team", "Multi-role internal team", "Deep cross-functional capability"],
+          "sub_criteria_id": "technical_talent",
+          "anchor_mapping": [1, 2, 3, 4, 5]
+        },
+        {
+          "id": "P1-003",
+          "text": "How has the organization historically absorbed major process or tooling change?",
+          "type": "text",
+          "required": true,
+          "sub_criteria_id": "change_management_capacity"
+        },
+        {
+          "id": "P1-004",
+          "text": "Do you offer formal training programs for business or technical staff on AI tooling?",
+          "type": "select",
+          "required": true,
+          "options": ["No", "Ad-hoc", "Structured for key roles", "Managed program", "Continuous and outcome-linked"],
+          "sub_criteria_id": "training_programs",
+          "anchor_mapping": [1, 2, 3, 4, 5]
+        },
+        {
+          "id": "P1-005",
+          "text": "Do you currently work with external partners (services, vendors) on AI initiatives?",
+          "type": "select",
+          "required": true,
+          "options": ["No", "Opportunistically", "Defined partner roster", "Strategically selected partners", "Curated and managed partner ecosystem"],
+          "sub_criteria_id": "partnership_strategy",
+          "anchor_mapping": [1, 2, 3, 4, 5]
+        }
+      ]
+    },
+
+    {
+      "section_id": "process_operations",
+      "title": "Process & Operations",
+      "order": 5,
+      "dimension_id": "process_operations",
+      "questions": [
+        {
+          "id": "O1-001",
+          "text": "Are your core business processes documented?",
+          "type": "select",
+          "required": true,
+          "options": ["No", "Partially", "Documented for core flows", "Governed and reviewed", "Continuously optimized"],
+          "sub_criteria_id": "process_documentation",
+          "anchor_mapping": [1, 2, 3, 4, 5]
+        },
+        {
+          "id": "O1-002",
+          "text": "What automation do you have in place today (RPA, workflow tools, custom scripts)?",
+          "type": "text",
+          "required": false,
+          "sub_criteria_id": "automation_baseline",
+          "deterministic": true,
+          "demo_signal": "manual_doc_processing"
+        },
+        {
+          "id": "O1-003",
+          "text": "Are operational KPIs measured and visible to the people running the work?",
+          "type": "select",
+          "required": true,
+          "options": ["Unclear KPIs", "Lagging KPIs in spreadsheets", "KPIs visible to operators", "KPIs in real-time dashboards", "Real-time KPIs drive operations"],
+          "sub_criteria_id": "kpi_instrumentation",
+          "anchor_mapping": [1, 2, 3, 4, 5]
+        },
+        {
+          "id": "O1-004",
+          "text": "How are operator feedback or process issues captured today?",
+          "type": "text",
+          "required": false,
+          "sub_criteria_id": "feedback_loops"
+        },
+        {
+          "id": "O1-005",
+          "text": "Where do you feel your team spends the most repetitive, manual time?",
+          "type": "multi_select",
+          "required": false,
+          "options": [
+            "Quoting / pricing",
+            "Inbound email triage",
+            "Document handling",
+            "Inventory adjustments",
+            "Field service dispatch",
+            "Reporting / spreadsheets",
+            "Other"
+          ],
+          "sub_criteria_id": "automation_baseline",
+          "deterministic": true,
+          "demo_signal": "operational_pain_areas"
+        }
+      ]
+    },
+
+    {
+      "section_id": "governance_risk",
+      "title": "Governance & Risk Readiness",
+      "order": 6,
+      "dimension_id": "governance_risk",
+      "questions": [
+        {
+          "id": "G1-001",
+          "text": "Do you have a documented internal policy governing AI use, data, and outputs?",
+          "type": "select",
+          "required": true,
+          "options": ["No policy", "Informal guidance only", "Documented AI policy", "Policy actively governed", "Policy integrated with enterprise risk"],
+          "sub_criteria_id": "ai_policy_framework",
+          "anchor_mapping": [1, 2, 3, 4, 5]
+        },
+        {
+          "id": "G1-002",
+          "text": "How are AI-specific risks (bias, hallucination, IP, regulatory) assessed for a new use case?",
+          "type": "text",
+          "required": false,
+          "sub_criteria_id": "risk_assessment_capability"
+        },
+        {
+          "id": "G1-003",
+          "text": "How aware is your organization of regulatory regimes that might apply to AI use in your sector?",
+          "type": "select",
+          "required": true,
+          "options": ["Unaware", "Partial awareness", "Reviewed before launch", "Continuously monitored", "Proactively engaged"],
+          "sub_criteria_id": "compliance_posture",
+          "anchor_mapping": [1, 2, 3, 4, 5]
+        },
+        {
+          "id": "G1-004",
+          "text": "Are there controls in place to monitor, audit, or override outputs from any AI tools currently in use?",
+          "type": "text",
+          "required": false,
+          "sub_criteria_id": "model_oversight"
+        },
+        {
+          "id": "G1-005",
+          "text": "Do you have AI-aware controls over third-party vendors (data handling, IP, model usage)?",
+          "type": "select",
+          "required": true,
+          "options": ["No", "Inherited from generic procurement", "AI-aware controls in place", "Reviewed at cadence", "Continuously governed and audited"],
+          "sub_criteria_id": "vendor_governance",
+          "anchor_mapping": [1, 2, 3, 4, 5]
+        }
+      ]
+    }
+
+  ],
+
+  "completeness_rules": {
+    "required_sections_complete": ["engagement_metadata", "strategy_use_case_portfolio", "data_foundation", "technology_infrastructure", "people_skills", "process_operations", "governance_risk"],
+    "dimension_marked_complete_when": "all required questions answered AND dimension confidence >= settings.confidence_threshold OR follow_up_cap_per_dimension reached"
+  }
+}

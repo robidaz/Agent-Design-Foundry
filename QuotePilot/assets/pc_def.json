@@ -1,0 +1,214 @@
+{
+  "version": "1.0",
+  "description": "Keyword translation mappings for product category inference and normalization.",
+  "categories": {
+    "networking-switch": {
+      "displayName": "Networking Switch",
+      "description": "Devices responsible for directing and managing traffic between devices on a network.",
+      "keywords": [
+        "direct data packets",
+        "route internal traffic",
+        "switch traffic",
+        "manage ethernet connections",
+        "connect devices to the network",
+        "network segmentation",
+        "layer 2 switching",
+        "layer 3 switching",
+        "vlan",
+        "port density",
+        "uplink ports",
+        "aggregate connections",
+        "packet forwarding",
+        "traffic management",
+        "throughput",
+        "low latency switching",
+        "core switch",
+        "access switch",
+        "distribution switch",
+        "network backbone",
+        "stackable switch",
+        "managed switch",
+        "poe switch",
+        "power over ethernet",
+        "mac address table",
+        "east-west traffic",
+        "switching fabric",
+        "interconnect devices",
+        "high speed lan",
+        "campus networking"
+      ],
+      "negativeKeywords": [
+        "wifi coverage",
+        "wireless signal",
+        "firewall protection",
+        "threat prevention",
+        "structured wiring",
+        "fiber termination"
+      ],
+      "aliases": [
+        "switch",
+        "ethernet switch",
+        "lan switch",
+        "network switch"
+      ]
+    },
+    "network-security": {
+      "displayName": "Network Security",
+      "description": "Technologies focused on protecting networks, traffic, users, and infrastructure.",
+      "keywords": [
+        "secure the network",
+        "protect against cyber threats",
+        "block malicious traffic",
+        "firewall",
+        "intrusion prevention",
+        "intrusion detection",
+        "vpn access",
+        "zero trust",
+        "threat detection",
+        "content filtering",
+        "network monitoring",
+        "traffic inspection",
+        "deep packet inspection",
+        "secure remote access",
+        "cybersecurity",
+        "network access control",
+        "endpoint protection",
+        "deny unauthorized access",
+        "segmentation security",
+        "secure branch connectivity",
+        "siem integration",
+        "ddos protection",
+        "malware prevention",
+        "ransomware protection",
+        "identity management",
+        "authentication",
+        "multi factor authentication",
+        "secure internet breakout",
+        "encrypted traffic analysis",
+        "security policy enforcement"
+      ],
+      "negativeKeywords": [
+        "wifi dead zone",
+        "cable management",
+        "patch panel",
+        "ethernet port expansion"
+      ],
+      "aliases": [
+        "firewall",
+        "security appliance",
+        "cybersecurity",
+        "network protection"
+      ]
+    },
+    "wireless-access-point": {
+      "displayName": "Wireless Access Point",
+      "description": "Devices that provide wireless connectivity and extend Wi-Fi coverage.",
+      "keywords": [
+        "provide wifi",
+        "wireless connectivity",
+        "extend wireless coverage",
+        "improve wifi signal",
+        "wireless network access",
+        "wifi dead zones",
+        "roaming connectivity",
+        "guest wifi",
+        "high density wireless",
+        "wireless clients",
+        "ssid broadcasting",
+        "wifi 6",
+        "wifi 7",
+        "wireless throughput",
+        "access point deployment",
+        "ceiling mounted wifi",
+        "mesh wireless",
+        "enterprise wifi",
+        "wireless coverage",
+        "seamless roaming",
+        "dual band wireless",
+        "tri band wireless",
+        "802.11ax",
+        "802.11ac",
+        "mobile device connectivity",
+        "bring your own device",
+        "wireless authentication",
+        "campus wifi",
+        "wireless heatmap",
+        "signal strength optimization"
+      ],
+      "negativeKeywords": [
+        "fiber runs",
+        "traffic filtering",
+        "packet inspection",
+        "ethernet switching fabric"
+      ],
+      "aliases": [
+        "wap",
+        "access point",
+        "wifi access point",
+        "wireless ap"
+      ]
+    },
+    "structured-cabling": {
+      "displayName": "Structured Cabling",
+      "description": "Physical cabling infrastructure for networking, communications, and connectivity.",
+      "keywords": [
+        "run ethernet cables",
+        "structured wiring",
+        "cable infrastructure",
+        "cat6 cabling",
+        "cat6a cabling",
+        "fiber optic cabling",
+        "patch panels",
+        "network drops",
+        "low voltage cabling",
+        "cable termination",
+        "server room cabling",
+        "data center cabling",
+        "backbone cabling",
+        "horizontal cabling",
+        "cable management",
+        "rack connectivity",
+        "fiber backbone",
+        "copper cabling",
+        "telecommunications room",
+        "cross connect",
+        "cable trays",
+        "conduit installation",
+        "premise wiring",
+        "mdf idf connectivity",
+        "physical layer infrastructure",
+        "cable certification",
+        "network jack installation",
+        "structured infrastructure",
+        "building connectivity",
+        "cable plant"
+      ],
+      "negativeKeywords": [
+        "wifi optimization",
+        "firewall policy",
+        "packet routing",
+        "wireless roaming"
+      ],
+      "aliases": [
+        "low voltage",
+        "structured wiring",
+        "network cabling",
+        "data cabling"
+      ]
+    }
+  },
+  "translationRules": {
+    "matchStrategy": {
+      "caseSensitive": false,
+      "partialMatch": true,
+      "useStemming": true,
+      "minimumKeywordMatches": 1
+    },
+    "priority": [
+      "network-security",
+      "wireless-access-point",
+      "networking-switch",
+      "structured-cabling"
+    ]
+  }
+}

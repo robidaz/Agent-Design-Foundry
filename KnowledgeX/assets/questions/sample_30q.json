@@ -1,0 +1,186 @@
+{
+  "engagement_id": "ENG-001",
+  "customer": "Synthetic \u2014 used for KnowledgeX PoC verification",
+  "questions": [
+    {
+      "id": "Q-001",
+      "section": "Security",
+      "text": "What encryption algorithm protects data at rest in Dynamix Core Platform?",
+      "expected_band": "HIGH"
+    },
+    {
+      "id": "Q-002",
+      "section": "Identity",
+      "text": "Which identity-federation protocols does Core Platform support?",
+      "expected_band": "HIGH"
+    },
+    {
+      "id": "Q-003",
+      "section": "Auditing",
+      "text": "What is the default audit log retention period for Core Platform?",
+      "expected_band": "HIGH"
+    },
+    {
+      "id": "Q-004",
+      "section": "Hardware",
+      "text": "What is the typical power draw of the Edge Gateway 4400 appliance?",
+      "expected_band": "HIGH"
+    },
+    {
+      "id": "Q-005",
+      "section": "Hardware",
+      "text": "How many 10 GbE uplinks does the Edge Gateway 4400 ship with?",
+      "expected_band": "HIGH"
+    },
+    {
+      "id": "Q-006",
+      "section": "Security",
+      "text": "What minimum TLS version does Core Platform require on its interfaces?",
+      "expected_band": "HIGH"
+    },
+    {
+      "id": "Q-007",
+      "section": "Integration",
+      "text": "What sustained request-rate ceiling applies to Standard-tier API tokens?",
+      "expected_band": "HIGH"
+    },
+    {
+      "id": "Q-008",
+      "section": "Commercial",
+      "text": "What is the standard lead time for Edge Gateway appliance shipment?",
+      "expected_band": "HIGH"
+    },
+    {
+      "id": "Q-009",
+      "section": "Hardware",
+      "text": "What operating temperature range is the Edge Gateway 4400 certified for?",
+      "expected_band": "HIGH"
+    },
+    {
+      "id": "Q-010",
+      "section": "Support",
+      "text": "What support tiers does Dynamix offer for the platform?",
+      "expected_band": "HIGH"
+    },
+    {
+      "id": "Q-011",
+      "section": "Commercial",
+      "text": "What is the published pricing model for the Core Platform?",
+      "expected_band": "HIGH"
+    },
+    {
+      "id": "Q-012",
+      "section": "Deployment",
+      "text": "How long does a typical single-site Core Platform deployment take?",
+      "expected_band": "HIGH"
+    },
+    {
+      "id": "Q-013",
+      "section": "Deployment",
+      "text": "For a tenant with approximately 4,500 active users, what HA deployment footprint should we expect?",
+      "expected_band": "MEDIUM"
+    },
+    {
+      "id": "Q-014",
+      "section": "Security",
+      "text": "Does the platform support hardware security modules for customer-managed key storage?",
+      "expected_band": "MEDIUM"
+    },
+    {
+      "id": "Q-015",
+      "section": "Integration",
+      "text": "What runtime languages are supported by the official SDKs?",
+      "expected_band": "MEDIUM"
+    },
+    {
+      "id": "Q-016",
+      "section": "Operating Limits",
+      "text": "What is the upper bound on platform-supported dataset size at the Enterprise tier?",
+      "expected_band": "MEDIUM"
+    },
+    {
+      "id": "Q-017",
+      "section": "Platform Support",
+      "text": "Can the Core Platform be deployed on Windows Server?",
+      "expected_band": "MEDIUM"
+    },
+    {
+      "id": "Q-018",
+      "section": "Auditing",
+      "text": "What is the longest retention period available for audit log entries?",
+      "expected_band": "MEDIUM"
+    },
+    {
+      "id": "Q-019",
+      "section": "Integration",
+      "text": "How long after a REST endpoint is deprecated does it remain available?",
+      "expected_band": "MEDIUM"
+    },
+    {
+      "id": "Q-020",
+      "section": "Deployment",
+      "text": "How many Core nodes are required for a 12,000-active-user Enterprise deployment?",
+      "expected_band": "MEDIUM"
+    },
+    {
+      "id": "Q-021",
+      "section": "Resilience",
+      "text": "What is the Recovery Time Objective for a regional outage event?",
+      "expected_band": "CONFLICT"
+    },
+    {
+      "id": "Q-022",
+      "section": "Integration",
+      "text": "What real-time streaming ingest mechanism does Core Platform expose?",
+      "expected_band": "LOW"
+    },
+    {
+      "id": "Q-023",
+      "section": "Security",
+      "text": "What is the step-by-step procedure to provision customer-managed keys in production?",
+      "expected_band": "LOW"
+    },
+    {
+      "id": "Q-024",
+      "section": "Hardware",
+      "text": "What is the mean-time-to-repair for an Edge Gateway hardware failure?",
+      "expected_band": "LOW"
+    },
+    {
+      "id": "Q-025",
+      "section": "Compliance",
+      "text": "Is Dynamix Core Platform FedRAMP Moderate authorized?",
+      "expected_band": "NO_SOURCE"
+    },
+    {
+      "id": "Q-026",
+      "section": "Compliance",
+      "text": "Does the platform comply with the HIPAA Privacy Rule for protected health information?",
+      "expected_band": "NO_SOURCE"
+    },
+    {
+      "id": "Q-027",
+      "section": "UX",
+      "text": "What languages does the admin console UI support?",
+      "expected_band": "NO_SOURCE"
+    },
+    {
+      "id": "Q-028",
+      "section": "Compliance",
+      "text": "Is the platform SOC 2 Type II certified?",
+      "expected_band": "NO_SOURCE"
+    },
+    {
+      "id": "Q-029",
+      "section": "Resilience",
+      "text": "What is the documented Recovery Point Objective for the Core Platform?",
+      "expected_band": "CONFLICT"
+    },
+    {
+      "id": "Q-030",
+      "section": "Hardware",
+      "text": "What is the certified sustained ingest rate of the Edge Gateway 4400 series?",
+      "expected_band": "CONFLICT"
+    }
+  ]
+}

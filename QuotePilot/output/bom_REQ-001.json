@@ -1,0 +1,106 @@
+{
+  "request_id": "REQ-2026-0511-001",
+  "user_request": "We need a 24-port access switch for a small retail branch — price sensitivity is high, so budget tier is the priority. I've heard D-Link Enterprise has a competitive SKU in this range. If D-Link doesn't work out for any reason, I'd still like to see the next best budget-tier alternative so the client has something to move forward with.",
+  "tiers": [
+    {
+      "tier": "budget",
+      "sku": "V004-SW-0003",
+      "vendor_id": "VEN-004",
+      "vendor_name": "Arista Networks",
+      "category": "networking-switch",
+      "availability": true,
+      "lead_time_days": 14,
+      "unit_cost": 1039.90,
+      "margin_pct": 23.3,
+      "catalog_effective_date": "2026-02-24",
+      "evidence": [
+        "catalog: VEN-004/V004-SW-0003, effective_date 2026-02-24",
+        "ruleset: rule-002 (vendor data 76 days old, threshold 60 days — stale-data warning)",
+        "ruleset: rule-004 (margin 23.3% — passes 15.0% floor)",
+        "ruleset: rule-003 (availability: true — no gate triggered)",
+        "ruleset: rule-001 (lead_time_days 14 — within 21-day threshold)",
+        "D-Link Enterprise note: V023-SW-0001 excluded via rule-005 (bad data: lead_time_days field has wrong type string '21 days'); V023-SW-0002 and V023-SW-0003 are 48-port 10GbE aggregation switches — do not match 24-port access requirement. No qualifying D-Link 24-port SKU available in catalog. This SKU is the next-best budget-tier alternative per SE instruction."
+      ],
+      "gap_markers": []
+    },
+    {
+      "tier": "balanced",
+      "sku": "V041-SW-0001",
+      "vendor_id": "VEN-041",
+      "vendor_name": "Black Box Corporation",
+      "category": "networking-switch",
+      "availability": true,
+      "lead_time_days": 2,
+      "unit_cost": 1606.72,
+      "margin_pct": 21.0,
+      "catalog_effective_date": "2026-03-31",
+      "evidence": [
+        "catalog: VEN-041/V041-SW-0001, effective_date 2026-03-31",
+        "ruleset: rule-001 (lead_time_days 2 — within 21-day threshold)",
+        "ruleset: rule-002 (effective_date 2026-03-31, 41 days old — within 60-day freshness threshold, no warning)",
+        "ruleset: rule-003 (availability: true — no gate triggered)",
+        "ruleset: rule-004 (margin 21.0% — passes 15.0% floor)"
+      ],
+      "gap_markers": []
+    },
+    {
+      "tier": "premium",
+      "sku": "V027-SW-0001",
+      "vendor_id": "VEN-027",
+      "vendor_name": "TD Synnex",
+      "category": "networking-switch",
+      "availability": true,
+      "lead_time_days": 2,
+      "unit_cost": 2285.32,
+      "margin_pct": 22.6,
+      "catalog_effective_date": "2026-03-01",
+      "evidence": [
+        "catalog: VEN-027/V027-SW-0001, effective_date 2026-03-01",
+        "ruleset: rule-002 (vendor data 71 days old, threshold 60 days — stale-data warning)",
+        "ruleset: rule-001 (lead_time_days 2 — within 21-day threshold)",
+        "ruleset: rule-003 (availability: true — no gate triggered)",
+        "ruleset: rule-004 (margin 22.6% — passes 15.0% floor)"
+      ],
+      "gap_markers": []
+    }
+  ],
+  "justification": {
+    "budget": {
+      "summary": "D-Link Enterprise's only 24-port SKU (V023-SW-0001) was hard-excluded by rule-005 due to a bad-data condition on the lead_time_days field (string '21 days' instead of an integer); D-Link's two remaining catalog SKUs are 48-port 10GbE aggregation units that do not match the 24-port access requirement. Arista Networks V004-SW-0003 is selected as the next-best budget-tier alternative at $1,039.90 — the lowest qualifying cost across all 24-port candidates meeting the margin floor.",
+      "bullets": [
+        "SKU V004-SW-0003 (Arista Networks), unit cost $1,039.90 — lowest qualifying 24-port candidate in the catalog.",
+        "Lead time 14 days — compliant with rule-001 (threshold: 21 days).",
+        "Margin 23.3% — passes rule-004 floor (15.0%); strong margin even at budget price point.",
+        "Rule-002 stale-data warning: Arista Networks effective_date is 2026-02-24, 76 days prior to today (threshold: 60 days) — pricing and availability should be re-confirmed with the vendor before finalizing.",
+        "Vs. balanced tier: $566.82 cheaper per unit; trade-off is an older data timestamp and a less established reseller channel for this use case."
+      ]
+    },
+    "balanced": {
+      "summary": "Black Box Corporation V041-SW-0001 sits at the midpoint of the 24-port candidate cost range ($1,606.72) and carries no rule violations — fully in stock, within lead-time threshold, above margin floor, and data fresh at 41 days old.",
+      "bullets": [
+        "SKU V041-SW-0001 (Black Box Corporation), unit cost $1,606.72 — midpoint of qualifying 24-port candidate range.",
+        "Lead time 2 days — well within rule-001 threshold (21 days); fastest ship time in this tier.",
+        "Margin 21.0% — passes rule-004 floor (15.0%) with solid headroom.",
+        "No rules fired: data is 41 days old (within 60-day freshness window), fully available, lead time compliant.",
+        "Vs. budget tier: $566.82 more per unit; gain is a clean catalog record with no stale-data re-confirmation needed."
+      ]
+    },
+    "premium": {
+      "summary": "TD Synnex V027-SW-0001 is the highest-cost qualifying 24-port candidate at $2,285.32 and delivers the same 24-port PoE+ managed form factor with a 2-day lead time and 22.6% margin, making it the strongest option for a client who may later need expedited delivery or a higher-tier channel relationship.",
+      "bullets": [
+        "SKU V027-SW-0001 (TD Synnex), unit cost $2,285.32 — highest qualifying cost among 24-port candidates, representing premium positioning.",
+        "Lead time 2 days — tied for fastest availability in the set, compliant with rule-001 (threshold: 21 days).",
+        "Margin 22.6% — passes rule-004 floor (15.0%).",
+        "Rule-002 stale-data warning: TD Synnex effective_date is 2026-03-01, 71 days prior to today (threshold: 60 days) — pricing should be re-confirmed before customer delivery.",
+        "Vs. balanced tier: $678.60 more per unit; the incremental cost buys a major distributor relationship (TD Synnex) that may carry additional support, licensing, and services bundling."
+      ]
+    }
+  },
+  "soft_recommendation": "For a price-sensitive retail branch deployment, the balanced tier (Black Box Corporation V041-SW-0001 at $1,606.72) represents the most defensible single-unit recommendation: it carries no rule violations, ships in 2 days, and holds a 21.0% margin — all without requiring vendor data re-confirmation. If the client's budget ceiling is firm, the budget tier (Arista Networks V004-SW-0003 at $1,039.90) achieves a 35% cost reduction with a comparable feature profile, but the SE should re-validate Arista pricing before presenting (data is 76 days old). The premium tier (TD Synnex V027-SW-0001 at $2,285.32) is best reserved for clients where a named-distributor relationship or rapid escalation path adds tangible value. Blended cost across all three tiers is approximately $1,644 per unit at an average margin of 22.3%; no gap markers were triggered and no abstentions were required for this BOM.",
+  "data_freshness_warnings": [
+    "VEN-004 (Arista Networks): effective_date 2026-02-24 — 76 days old, exceeds 60-day threshold (rule-002). Budget tier SKU V004-SW-0003 affected. Re-confirm pricing and availability before customer delivery.",
+    "VEN-027 (TD Synnex): effective_date 2026-03-01 — 71 days old, exceeds 60-day threshold (rule-002). Premium tier SKU V027-SW-0001 affected. Re-confirm pricing and availability before customer delivery."
+  ],
+  "requires_human_review": true,
+  "abstention_reason": null
+}

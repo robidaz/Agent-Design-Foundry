@@ -1,0 +1,317 @@
+metadata:
+  source: greenlight_framework_config
+  version: "1.0.0"
+  last_updated: "2026-05-12"
+  authored_by: Dynamix AI Practice
+  description: >
+    Versioned AI Readiness Assessment framework. Loaded in full by the GreenLight agent
+    at engagement start; the active version is pinned to the engagement artifact.
+    The agent has no write access. Dimensions, sub-criteria, rubric anchors, weights,
+    confidence thresholds, and follow-up caps are all tunable here without code change.
+    Mid-engagement edits do not perturb a live interview — engagement keeps the version
+    it was started with.
+  governance:
+    owner: Dynamix AI Practice Lead
+    review_cadence: quarterly
+    change_control: PR-reviewed; major-version bumps require practice lead sign-off
+
+# -----------------------------------------------------------------------------
+# Engagement-wide settings
+# -----------------------------------------------------------------------------
+settings:
+  confidence_threshold: 0.70          # below this, follow-up loop triggers
+  follow_up_cap_per_dimension: 3      # max in-session follow-up questions
+  abstention_rule: >
+    Agent must abstain (mark UNKNOWN) on any dimension where the cap is reached and
+    evidence still does not support a defensible rubric anchor. No fabrication.
+  composite_strategy: weighted_sum    # composite tier = sum(score_i * weight_i)
+  composite_blocked_when_any_unknown: true  # if any dim is UNKNOWN, no composite tier issued
+
+# -----------------------------------------------------------------------------
+# Composite tier bands (post-weighted-sum, on 1.0 – 5.0 continuous scale)
+# -----------------------------------------------------------------------------
+composite_tier_bands:
+  - tier: 1
+    name: Initial
+    range: [1.0, 1.79]
+    summary: >
+      Ad-hoc; no AI strategy, no data foundation, no governance. Substantial readiness
+      work is required before any production AI workload should be attempted.
+  - tier: 2
+    name: Developing
+    range: [1.80, 2.59]
+    summary: >
+      Pockets of interest and isolated experimentation; foundational gaps persist.
+      A small, well-scoped pilot is feasible alongside a readiness improvement plan.
+  - tier: 3
+    name: Defined
+    range: [2.60, 3.39]
+    summary: >
+      Coherent strategy, identifiable use-case portfolio, workable data and tech
+      foundation. Several productionable use cases are realistic within 12 months.
+  - tier: 4
+    name: Managed
+    range: [3.40, 4.19]
+    summary: >
+      Operating AI capabilities with measurable outcomes, instrumented oversight,
+      and repeatable delivery. Focus shifts to scale, optimization, and portfolio depth.
+  - tier: 5
+    name: Optimized
+    range: [4.20, 5.00]
+    summary: >
+      AI is a core operating capability with closed-loop governance and continuous
+      improvement. Strategic differentiation, not catch-up.
+
+# -----------------------------------------------------------------------------
+# Maturity rubric (1 – 5) — anchor descriptions are per-dimension below;
+# this header defines the semantic meaning of each level globally.
+# -----------------------------------------------------------------------------
+rubric_levels:
+  - level: 1
+    name: Initial
+    semantic: Ad-hoc / absent / undefined
+  - level: 2
+    name: Developing
+    semantic: Emerging / isolated / inconsistent
+  - level: 3
+    name: Defined
+    semantic: Documented / repeatable / coherent
+  - level: 4
+    name: Managed
+    semantic: Measured / instrumented / governed
+  - level: 5
+    name: Optimized
+    semantic: Continuously improved / closed-loop / differentiating
+
+# -----------------------------------------------------------------------------
+# Dimensions
+# -----------------------------------------------------------------------------
+# Weights sum to 1.00. Sub-criteria are scored individually 1–5; dimension score
+# is the rounded mean of its sub-criteria scores. Composite is the weighted sum
+# of dimension scores across the six dimensions.
+# -----------------------------------------------------------------------------
+dimensions:
+
+  - id: strategy_use_case_portfolio
+    name: Strategy & Use Case Portfolio
+    weight: 0.20
+    rationale: >
+      Without a coherent AI strategy and a prioritized portfolio of candidate use
+      cases, downstream investments in data, tech, and skills cannot be sequenced
+      against business outcomes. This is the load-bearing dimension; weighted heaviest.
+    sub_criteria:
+      - id: executive_sponsorship
+        name: Executive Sponsorship
+        description: Visible C-level ownership of AI as a strategic initiative.
+      - id: strategic_alignment
+        name: Strategic Alignment
+        description: AI initiatives map to documented business priorities.
+      - id: use_case_portfolio
+        name: Use Case Portfolio
+        description: A maintained inventory of candidate / in-flight AI use cases.
+      - id: value_articulation
+        name: Value Articulation
+        description: Use cases tied to quantified business outcomes (revenue, cost, risk).
+      - id: prioritization_framework
+        name: Prioritization Framework
+        description: A repeatable method for sequencing use cases by value vs. feasibility.
+    rubric_anchors:
+      1: No AI strategy exists; no use cases identified; conversations are informal and disconnected from business plans.
+      2: Executive interest is present but no formal strategy; one or two ad-hoc use cases under discussion; no portfolio.
+      3: AI strategy documented; 5+ use cases inventoried with rough business cases; an informal prioritization exists.
+      4: Strategy reviewed at the leadership cadence; portfolio is actively managed against quantified value; prioritization is structured and defensible.
+      5: AI strategy is integrated into corporate strategy and refreshed continuously; portfolio is tied to OKRs; prioritization closed-loop on outcomes.
+
+  - id: data_foundation
+    name: Data Foundation
+    weight: 0.20
+    rationale: >
+      AI outcomes are upper-bounded by data quality, accessibility, and lineage.
+      A weak data foundation makes pilots brittle and production launches risky.
+    sub_criteria:
+      - id: data_inventory
+        name: Data Inventory
+        description: Authoritative catalog of data domains, owners, and locations.
+      - id: data_quality
+        name: Data Quality
+        description: Known completeness / accuracy / freshness posture per domain.
+      - id: data_accessibility
+        name: Data Accessibility
+        description: Practical ability for an engineering team to read trusted data.
+      - id: data_integration
+        name: Data Integration
+        description: Maturity of integration between core systems (ERP, CRM, ops).
+      - id: metadata_and_lineage
+        name: Metadata & Lineage
+        description: Documented schema, ownership, and origin of critical data assets.
+    rubric_anchors:
+      1: No data inventory; quality unknown; access is tribal; integrations are point-to-point and undocumented.
+      2: Partial inventories exist per system; quality is anecdotally known; access requires informal asks; integrations are brittle.
+      3: Inventory exists for top systems; quality monitored for critical domains; access governed by request flow; integrations documented.
+      4: Enterprise catalog with owners and SLAs; quality dashboards per domain; standardized access patterns; integrations governed centrally.
+      5: Continuously catalogued and lineage-tracked; quality SLOs enforced; self-service governed access; integration as platform capability.
+
+  - id: technology_infrastructure
+    name: Technology & Infrastructure
+    weight: 0.15
+    rationale: >
+      Infrastructure (compute, storage, deployment, MLOps) determines whether AI
+      work can move from notebook to production safely and repeatably. Weighted
+      lower than strategy and data because gaps here are typically faster to close.
+    sub_criteria:
+      - id: cloud_posture
+        name: Cloud Posture
+        description: Cloud / hybrid maturity for AI-relevant workloads.
+      - id: integration_architecture
+        name: Integration Architecture
+        description: API / event capability of core systems for AI consumption.
+      - id: scalability_posture
+        name: Scalability Posture
+        description: Ability to scale compute / storage / inference workloads predictably.
+      - id: security_baseline
+        name: Security Baseline
+        description: Identity, encryption, secrets, and audit posture meets enterprise norms.
+      - id: mlops_tooling
+        name: MLOps / AI Platform Tooling
+        description: Versioning, deployment, monitoring, and rollback for AI workloads.
+    rubric_anchors:
+      1: Primarily on-prem; core systems are siloed; security baseline is weak; no MLOps tooling.
+      2: Hybrid posture with ad-hoc cloud usage; some APIs exist on core systems; security is standard but uninspected for AI; no MLOps.
+      3: Defined cloud strategy; key systems expose APIs; security baseline meets enterprise norms; experimental MLOps tooling in use.
+      4: Cloud-native or well-governed hybrid; event-driven integration available; security reviewed for AI workloads; MLOps platform operating.
+      5: Platform-as-product; integration is composable; security continuously validated for AI; MLOps with full lifecycle controls.
+
+  - id: people_skills
+    name: People & Skills
+    weight: 0.15
+    rationale: >
+      AI outcomes require a sustainable mix of AI literacy at leadership level,
+      technical depth in-house, and change capacity in the business. Talent gaps
+      can be partially closed with partners but not avoided entirely.
+    sub_criteria:
+      - id: ai_literacy_leadership
+        name: AI Literacy (Leadership)
+        description: Leadership team's working understanding of AI capability and limits.
+      - id: technical_talent
+        name: Technical Talent
+        description: In-house engineering / data / ML capability for AI delivery.
+      - id: change_management_capacity
+        name: Change Management Capacity
+        description: Organization's track record absorbing process / tooling change.
+      - id: training_programs
+        name: Training Programs
+        description: Formal upskilling for business and technical staff on AI tooling.
+      - id: partnership_strategy
+        name: Partnership Strategy
+        description: Use of external partners (services, vendors) to close skills gaps.
+    rubric_anchors:
+      1: Leadership unfamiliar with AI; no technical talent in-house; no training; no partner strategy.
+      2: Leadership curious but uneven; one or two technically literate staff; ad-hoc training; partner usage opportunistic.
+      3: Leadership baseline-literate; small but capable internal team; structured training for key roles; defined partner roster.
+      4: Leadership conversant in AI strategy; multi-role internal team; training is a managed program; partners are strategically selected.
+      5: Leadership shapes AI strategy; deep cross-functional capability; training is continuous and outcome-linked; partner ecosystem is curated and managed.
+
+  - id: process_operations
+    name: Process & Operations
+    weight: 0.15
+    rationale: >
+      AI works on top of operational processes. Poorly documented or unmeasured
+      processes resist automation; well-instrumented ones create both training data
+      and feedback loops.
+    sub_criteria:
+      - id: process_documentation
+        name: Process Documentation
+        description: Documented processes for core business operations.
+      - id: automation_baseline
+        name: Automation Baseline
+        description: Existing automation footprint (RPA, workflow tools, scripting).
+      - id: kpi_instrumentation
+        name: KPI Instrumentation
+        description: Operational KPIs measured and visible to operators.
+      - id: feedback_loops
+        name: Feedback Loops
+        description: Mechanisms for capturing operator feedback into process improvement.
+      - id: continuous_improvement
+        name: Continuous Improvement
+        description: Cadence for reviewing and refining operational processes.
+    rubric_anchors:
+      1: Processes undocumented; no automation; KPIs unclear; no feedback loop.
+      2: Processes partially documented; isolated automation; lagging KPIs; informal feedback.
+      3: Processes documented for core flows; automation in selected workflows; KPIs visible; feedback solicited.
+      4: Processes governed and reviewed; automation portfolio managed; KPIs in dashboards; structured feedback loops.
+      5: Processes continuously optimized; automation embedded by default; real-time KPIs drive operations; feedback closes loop into change cycles.
+
+  - id: governance_risk
+    name: Governance & Risk Readiness
+    weight: 0.15
+    rationale: >
+      AI introduces new risks (bias, hallucination, IP, regulatory) that legacy
+      risk frameworks rarely cover. Without explicit AI governance, production
+      deployments expose the business to outsized downside.
+    sub_criteria:
+      - id: ai_policy_framework
+        name: AI Policy Framework
+        description: Documented internal policy governing AI use, data, and outputs.
+      - id: risk_assessment_capability
+        name: Risk Assessment Capability
+        description: Process for evaluating AI-specific risk per use case.
+      - id: compliance_posture
+        name: Compliance Posture
+        description: Awareness of regulatory regimes relevant to AI use (data, sector).
+      - id: model_oversight
+        name: Model Oversight
+        description: Monitoring, audit, and override of deployed AI outputs.
+      - id: vendor_governance
+        name: Vendor Governance
+        description: Controls over third-party AI vendors and their data handling.
+    rubric_anchors:
+      1: No AI policy; no AI-specific risk assessment; compliance posture unknown; no model oversight; vendor controls absent.
+      2: Informal guidance only; risk handled case-by-case; compliance awareness is partial; oversight is reactive; vendor controls inherited from generic procurement.
+      3: Documented AI policy; per-use-case risk assessment template; compliance reviewed before launch; oversight defined for production use; vendor controls AI-aware.
+      4: Policy actively governed; risk dashboards per AI workload; compliance continuously monitored; oversight instrumented and auditable; vendor governance reviewed at cadence.
+      5: Policy integrated with enterprise risk; risk is continuously assessed; compliance is proactive; oversight is real-time and closed-loop; vendor ecosystem is governed and audited.
+
+# -----------------------------------------------------------------------------
+# Roadmap horizon definitions
+# -----------------------------------------------------------------------------
+roadmap_horizons:
+  - id: "12_month"
+    name: Foundational
+    description: Close critical gaps and stand up one or two productionable use cases.
+  - id: "24_month"
+    name: Scaling
+    description: Expand the portfolio, harden MLOps, and instrument governance.
+  - id: "36_month"
+    name: Differentiating
+    description: Move from operating AI to differentiating with it; closed-loop improvement.
+
+# -----------------------------------------------------------------------------
+# Working-demo recommendation hooks
+# -----------------------------------------------------------------------------
+# Deterministic questions in the intake schema are tagged with a demo_signal.
+# The agent aggregates demo_signal hits across the session and recommends one
+# pre-templated Dynamix AI demo for the consultant to verify and present alongside
+# the readiness report. Selection logic lives outside this config (Python).
+# This block enumerates the demo templates available for selection.
+# -----------------------------------------------------------------------------
+demo_templates:
+  - id: demo_doc_summarizer
+    name: Customer Email & Document Triage
+    target_signals: [inbound_volume_pain, manual_doc_processing]
+    description: Triage and summarize inbound customer email + attachments to operator queue.
+  - id: demo_inventory_forecast
+    name: Inventory Demand Forecasting Pilot
+    target_signals: [inventory_pain, sku_volume_high]
+    description: Forecast demand on a single high-volume SKU family using historical sales data.
+  - id: demo_sales_assistant
+    name: Sales Rep Quote Assistant
+    target_signals: [quote_turnaround_pain, sales_enablement_pain]
+    description: Generate quote drafts from customer requirements using prior won-quote history.
+  - id: demo_field_service
+    name: Field Service Knowledge Assistant
+    target_signals: [field_tech_pain, tribal_knowledge_pain]
+    description: On-device assistant retrieves equipment manuals and prior tickets for field techs.
+  - id: demo_pricing_optimization
+    name: Margin & Pricing Watchdog
+    target_signals: [margin_pain, pricing_governance_pain]
+    description: Flag quote / order line items that fall outside margin guardrails.

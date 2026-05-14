@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Bill of Materials — {{ bom.request_id }}</title>
+<style>
+  @page {
+    size: Letter;
+    margin: 18mm 16mm 20mm 16mm;
+    @bottom-right {
+      content: "Page " counter(page) " of " counter(pages);
+      font-size: 9pt;
+      color: #666;
+    }
+    @bottom-left {
+      content: "QuotePilot BOM — {{ bom.request_id }}";
+      font-size: 9pt;
+      color: #666;
+    }
+  }
+
+  body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 10pt;
+    line-height: 1.4;
+    color: #1f2328;
+  }
+
+  h1 { font-size: 18pt; margin: 0 0 4pt 0; }
+  h2 { font-size: 13pt; margin: 14pt 0 6pt 0; border-bottom: 1px solid #d0d7de; padding-bottom: 3pt; }
+  h3 { font-size: 11pt; margin: 10pt 0 4pt 0; }
+
+  .meta {
+    color: #57606a;
+    font-size: 9pt;
+    margin-bottom: 12pt;
+  }
+  .meta span { margin-right: 14pt; }
+
+  /* ───── Notice classes (formatting) ───── */
+  .notice {
+    padding: 8pt 10pt;
+    border-radius: 4pt;
+    margin: 8pt 0;
+    page-break-inside: avoid;
+  }
+  .notice .label {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 8pt;
+    letter-spacing: 0.5pt;
+    display: block;
+    margin-bottom: 2pt;
+  }
+
+  .error {
+    background: #ffebe9;
+    border-left: 3pt solid #cf222e;
+    color: #82071e;
+  }
+
+  .warning {
+    background: #fff8c5;
+    border-left: 3pt solid #d4a72c;
+    color: #633c01;
+  }
+
+  /* Inline annotations */
+  .gap-marker {
+    background: #fff8c5;
+    color: #633c01;
+    padding: 1pt 4pt;
+    border-radius: 3pt;
+    font-size: 8.5pt;
+    font-weight: 600;
+  }
+  .unavailable {
+    color: #cf222e;
+    font-weight: 600;
+  }
+  .available {
+    color: #1a7f37;
+  }
+
+  /* Tier blocks */
+  .tier {
+    page-break-inside: avoid;
+    margin-bottom: 10pt;
+  }
+  .tier-header {
+    padding: 4pt 8pt;
+    color: white;
+    font-weight: 600;
+    border-radius: 3pt 3pt 0 0;
+    font-size: 11pt;
+  }
+  .tier-budget   .tier-header { background: #1a7f37; }
+  .tier-balanced .tier-header { background: #0969da; }
+  .tier-premium  .tier-header { background: #8250df; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0;
+  }
+  th, td {
+    border: 1px solid #d0d7de;
+    padding: 5pt 7pt;
+    text-align: left;
+    vertical-align: top;
+    font-size: 9.5pt;
+  }
+  th {
+    background: #f6f8fa;
+    font-weight: 600;
+    font-size: 9pt;
+  }
+  td.num { text-align: right; font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body>
+
+<h1>Bill of Materials</h1>
+<div class="meta">
+  <span><strong>Request ID:</strong> {{ bom.request_id }}</span>
+  <span><strong>Generated:</strong> {{ generated_at }}</span>
+</div>
+
+<hr style="border: none; border-top: 1.5pt solid #d0d7de; margin: 14pt 0;">
+
+{# ───── Abstention (highest severity) ───── #}
+{% if bom.abstention_reason %}
+<div class="notice error">
+  <span class="label">Abstention — No BOM Drafted</span>
+  {{ bom.abstention_reason }}
+</div>
+{% endif %}
+
+
+{# ───── BOM line items, grouped by tier ───── #}
+{% if bom.tiers %}
+<h2>Tiered Recommendations</h2>
+
+{% for tier_name in ["budget", "balanced", "premium"] %}
+  {% set tier_items = bom.tiers | selectattr("tier", "equalto", tier_name) | list %}
+  {% if tier_items %}
+  <div class="tier tier-{{ tier_name }}">
+    <div class="tier-header">{{ tier_name | upper }} TIER</div>
+    <table>
+      <thead>
+        <tr>
+          <th>SKU</th>
+          <th>Vendor</th>
+          <th>Category</th>
+          <th>Availability</th>
+          <th>Lead Time</th>
+          <th>Unit Cost</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in tier_items %}
+        <tr>
+          <td><strong>{{ item.sku }}</strong></td>
+          <td>{{ item.vendor_name }}</td>
+          <td>{{ item.category }}</td>
+          <td>
+            {% if item.availability %}
+              <span class="available">In Stock</span>
+            {% else %}
+              <span class="unavailable">Unavailable</span>
+            {% endif %}
+          </td>
+          <td class="num">
+            {% if item.lead_time_days is not none %}
+              {{ item.lead_time_days }} days
+            {% else %}
+              <span class="gap-marker">MISSING</span>
+            {% endif %}
+          </td>
+          <td class="num">
+            {% if item.unit_cost is not none %}
+              ${{ "%.2f"|format(item.unit_cost) }}
+            {% else %}
+              <span class="gap-marker">MISSING</span>
+            {% endif %}
+          </td>
+        </tr>
+        {% if item.gap_markers %}
+        <tr>
+          <td colspan="8">
+            <div class="notice warning" style="margin: 2pt 0;">
+              <span class="label">Gap Markers</span>
+              {{ item.gap_markers | join(", ") }}
+            </div>
+          </td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% endif %}
+{% endfor %}
+{% endif %}
+
+</body>
+</html>

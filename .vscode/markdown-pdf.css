@@ -1,0 +1,36 @@
+body {
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+pre,
+code {
+  font-size: 0.85em;
+}
+
+table {
+  font-size: 0.9em;
+}
+
+/* Mermaid container — prevent the pre-render blank page */
+.mermaid {
+  display: flex;
+  justify-content: center;
+  max-width: 100%;
+  overflow: hidden;
+  page-break-inside: avoid;
+  break-inside: avoid;
+  min-height: 0 !important;
+  height: auto !important;
+}
+
+/* SVG diagrams — cap size and let aspect ratio scale naturally */
+svg,
+.mermaid svg {
+  display: block;
+  max-width: 100% !important;
+  max-height: 1000px !important;
+  width: auto !important;
+  height: auto !important;
+  zoom: 1.1;
+}

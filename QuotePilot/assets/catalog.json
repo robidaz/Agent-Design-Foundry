@@ -1,0 +1,1671 @@
+{
+  "source_metadata": {
+    "source": "vendor-catalog",
+    "last_updated": "2026-05-01"
+  },
+  "vendors": [
+    {
+      "vendor_id": "VEN-001",
+      "vendor_name": "Cisco Systems",
+      "effective_date": "2026-04-01",
+      "products": [
+        {
+          "sku": "V001-SW-0001",
+          "category": "networking-switch",
+          "description": "48-port PoE+ managed switch, 740W, stackable",
+          "availability": false,
+          "lead_time_days": 7,
+          "unit_cost": 1828.55,
+          "margin_pct": 15.7
+        },
+        {
+          "sku": "V001-SW-0002",
+          "category": "networking-switch",
+          "description": "48-port PoE+ managed switch, 740W, stackable",
+          "availability": true,
+          "lead_time_days": 28,
+          "unit_cost": 1165.14,
+          "margin_pct": 19.1
+        },
+        {
+          "sku": "V001-SW-0003",
+          "category": "networking-switch",
+          "description": "48-port PoE+ managed switch, 740W, stackable",
+          "availability": false,
+          "lead_time_days": 5,
+          "unit_cost": 2922.49,
+          "margin_pct": 14.3
+        },
+        {
+          "sku": "V001-SW-0004",
+          "category": "networking-switch",
+          "description": "24-port PoE+ managed switch, 370W, fixed uplinks",
+          "availability": true,
+          "lead_time_days": 28,
+          "unit_cost": 1339.04,
+          "margin_pct": 18.5
+        }
+      ]
+    },
+    {
+      "vendor_id": "VEN-002",
+      "vendor_name": "Juniper Networks",
+      "effective_date": "2026-02-18",
+      "products": [
+        {
+          "sku": "V002-SW-0001",
+          "category": "networking-switch",
+          "description": "24-port PoE+ managed switch, 370W, fixed uplinks",
+          "availability": true,
+          "lead_time_days": 10,
+          "unit_cost": 1055.74,
+          "margin_pct": 16.2
+        },
+        {
+          "sku": "V002-SW-0002",
+          "category": "networking-switch",
+          "description": "48-port 10GbE aggregation switch, 4x40G uplinks",
+          "availability": false,
+          "lead_time_days": 14,
+          "unit_cost": 4967.16,
+          "margin_pct": 26.8
+        }
+      ]
+    },
+    {
+      "vendor_id": "VEN-003",
+      "vendor_name": "Aruba Networks (HPE)",
+      "effective_date": "2026-04-24",
+      "products": [
+        {
+          "sku": "V003-SW-0001",
+          "category": "networking-switch",
+          "description": "48-port PoE+ managed switch, 740W, stackable",
+          "availability": true,
+          "lead_time_days": 28,
+          "unit_cost": 1324.27,
+          "margin_pct": 25.1
+        },
+        {
+          "sku": "V003-AP-0002",
+          "category": "wireless-access-point",
+          "description": "Wi-Fi 6E tri-band indoor AP, 6GHz, 4x4 MU-MIMO",
+          "availability": true,
+          "lead_time_days": 10,
+          "unit_cost": 861.88,
+          "margin_pct": 24.7
+        },
+        {
+          "sku": "V003-SW-0003",
+          "category": "networking-switch",
+          "description": "48-port PoE+ managed switch, 740W, stackable",
+          "availability": true,
+          "lead_time_days": 7,
+          "unit_cost": 4937.93,
+          "margin_pct": 24.3
+        }
+      ]
+    },
+    {
+      "vendor_id": "VEN-004",
+      "vendor_name": "Arista Networks",
+      "effective_date": "2026-02-24",
+      "products": [
+        {
+          "sku": "V004-SW-0001",
+          "category": "networking-switch",
+          "description": "48-port 10GbE aggregation switch, 4x40G uplinks",
+          "availability": true,
+          "lead_time_days": 10,
+          "unit_cost": 5626.54,
+          "margin_pct": 22.8
+        },
+        {
+          "sku": "V004-SW-0002",
+          "category": "networking-switch",
+          "description": "48-port 10GbE aggregation switch, 4x40G uplinks",
+          "availability": true,
+          "lead_time_days": 3,
+          "unit_cost": 10091.31,
+          "margin_pct": 21.4
+        },
+        {
+          "sku": "V004-SW-0003",
+          "category": "networking-switch",
+          "description": "24-port PoE+ managed switch, 370W, fixed uplinks",
+          "availability": true,
+          "lead_time_days": 14,
+          "unit_cost": 1039.9,
+          "margin_pct": 23.3
+        }
+      ]
+    },
+    {
+      "vendor_id": "VEN-005",
+      "vendor_name": "Netgear ProAV",
+      "effective_date": "2026-03-27",
+      "products": [
+        {
+          "sku": "V005-SW-0001",
+          "category": "networking-switch",
+          "description": "48-port 10GbE aggregation switch, 4x40G uplinks",
+          "availability": true,
+          "lead_time_days": 2,
+          "unit_cost": 6290.48,
+          "margin_pct": 20.3
+        },
+        {
+          "sku": "V005-SW-0002",
+          "category": "networking-switch",
+          "description": "48-port 10GbE aggregation switch, 4x40G uplinks",
+          "availability": true,
+          "lead_time_days": 3,
+          "unit_cost": 6109.83,
+          "margin_pct": 27.5
+        }
+      ]
+    },
+    {
+      "vendor_id": "VEN-006",
+      "vendor_name": "Extreme Networks",
+      "effective_date": "2025-11-02",
+      "products": [
+        {
+          "sku": "V006-SW-0001",
+          "category": "networking-switch",
+          "description": "8-port PoE+ unmanaged switch, desktop, budget tier",
+          "availability": true,
+          "lead_time_days": 21,
+          "unit_cost": 192.86,
+          "margin_pct": 11.7
+        },
+        {
+          "sku": "V006-SW-0002",
+          "category": "networking-switch",
+          "description": "48-port 10GbE aggregation switch, 4x40G uplinks",
+          "availability": true,
+          "lead_time_days": 14,
+          "unit_cost": 12978.23,
+          "margin_pct": 23.2
+        }
+      ]
+    },
+    {
+      "vendor_id": "VEN-007",
+      "vendor_name": "Palo Alto Networks",
+      "effective_date": "2026-03-24",
+      "products": [
+        {
+          "sku": "V007-SEC-0001",
+          "category": "network-security",
+          "description": "IDS/IPS inline sensor, 10Gbps inspection throughput",
+          "availability": false,
+          "lead_time_days": 2,
+          "unit_cost": 9027.72,
+          "margin_pct": 21.1
+        },
+        {
+          "sku": "V007-SEC-0002",
+          "category": "network-security",
+          "description": "NGFW, enterprise edge, 6-15Gbps throughput, SD-WAN",
+          "availability": true,
+          "lead_time_days": 14,
+          "unit_cost": 11156.91,
+          "margin_pct": 25.1
+        },
+        {
+          "sku": "V007-SEC-0003",
+          "category": "network-security",
+          "description": "IDS/IPS inline sensor, 10Gbps inspection throughput",
+          "availability": true,
+          "lead_time_days": 28,
+          "unit_cost": 9025.46,
+          "margin_pct": 20.1
+        },
+        {
+          "sku": "V007-SEC-0004",
+          "category": "network-security",
+          "description": "NGFW, branch tier, 1-5Gbps App-ID throughput",
+          "availability": true,
+          "lead_time_days": 28,
+          "unit_cost": 3152.98,
+          "margin_pct": 25.7
+        }
+      ]
+    },
+    {
+      "vendor_id": "VEN-008",
+      "vendor_name": "Fortinet",
+      "effective_date": "2026-02-15",
+      "products": [
+        {
+          "sku": "V008-SEC-0001",
+          "category": "network-security",
+          "description": "UTM appliance, SMB, all-in-one threat prevention",
+          "availability": true,
+          "lead_time_days": 21,
+          "unit_cost": 405.19,
+          "margin_pct": 21.8
+        },
+        {
+          "sku": "V008-SEC-0002",
+          "category": "network-security",
+          "description": "UTM appliance, SMB, all-in-one threat prevention",
+          "availability": true,
+          "lead_time_days": 4,
+          "unit_cost": 1212.29,
+          "margin_pct": 16.9
+        }
+      ]
+    },
+    {
+      "vendor_id": "VEN-009",
+      "vendor_name": "Check Point Software",
+      "effective_date": "2026-04-26",
+      "products": [
+        {
+          "sku": "V009-SEC-0001",
+          "category": "network-security",
+          "description": "NGFW, enterprise edge, 6-15Gbps throughput, SD-WAN",
+          "availability": true,
+          "lead_time_days": 4,
+          "unit_cost": 10472.55,
+          "margin_pct": 28.2
+        },
+        {
+          "sku": "V009-SEC-0002",
+          "category": "network-security",
+          "description": "NGFW, branch tier, 1-5Gbps App-ID throughput",
+          "availability": true,
+          "lead_time_days": 21,
+          "unit_cost": 666.22,
+          "margin_pct": 27.3
+        },
+        {
+          "sku": "V009-SEC-0003",
+          "category": "network-security",
+          "description": "UTM appliance, SMB, all-in-one threat prevention",
+          "availability": true,
+          "lead_time_days": 5,
+          "unit_cost": 1804.82,
+          "margin_pct": 23.6
+        }
+      ]
+    },
+    {
+      "vendor_id": "VEN-010",
+      "vendor_name": "WatchGuard Technologies",
+      "effective_date": "2026-04-21",
+      "products": [
+        {
+          "sku": "V010-SEC-0001",
+          "category": "network-security",
+          "description": "IDS/IPS inline sensor, 10Gbps inspection throughput",
+          "availability": true,
+          "lead_time_days": 28,
+          "unit_cost": 8360.84,
+          "margin_pct": 20.9
+        },
+        {
+          "sku": "V010-SEC-0002",
+          "category": "network-security",
+          "description": "IDS/IPS inline sensor, 10Gbps inspection throughput",
+          "availability": true,
+          "lead_time_days": 4,
+          "unit_cost": 4855.4,
+          "margin_pct": 26.1
+        },
+        {
+          "sku": "V010-SEC-0003",
+          "category": "network-security",
+          "description": "IDS/IPS inline sensor, 10Gbps inspection throughput",
+          "availability": true,
+          "lead_time_days": 28,
+          "unit_cost": 8286.86,
+          "margin_pct": 24.8
+        },
+        {
+          "sku": "V010-SEC-0004",
+          "category": "network-security",
+          "description": "UTM appliance, SMB, all-in-one threat prevention",
+          "availability": true,
+          "lead_time_days": 10,
+          "unit_cost": 1100.96,
+          "margin_pct": 20.1
+        }
+      ]
+    },
+    {
+      "vendor_id": "VEN-011",
+      "vendor_name": "Cisco (Security Division)",
+      "effective_date": "2026-03-25",
+      "products": [
+        {
+          "sku": "V011-SEC-0001",
+          "category": "network-security",
+          "description": "NGFW, enterprise edge, 6-15Gbps throughput, SD-WAN",
+          "availability": false,
+          "lead_time_days": 2,
+          "unit_cost": 11059.7,
+          "margin_pct": 23.8
+        },
+        {
+          "sku": "V011-SEC-0002",
+          "category": "network-security",
+          "description": "NGFW, enterprise edge, 6-15Gbps throughput, SD-WAN",
+          "availability": false,
+          "lead_time_days": 2,
+          "unit_cost": 6747.3,
+          "margin_pct": 29.2
+        }
+      ]
+    },
+    {
+      "vendor_id": "VEN-012",
+      "vendor_name": "SonicWall",
+      "effective_date": "2025-06-05",
+      "products": [
+        {
+          "sku": "V012-SEC-0001",
+          "category": "network-security",
+          "description": "NGFW, enterprise edge, 6-15Gbps throughput, SD-WAN",
+          "availability": true,
+          "lead_time_days": 21,
+          "unit_cost": 6570.84,
+          "margin_pct": 23.1
+        },
+        {
+          "sku": "V012-SEC-0002",
+          "category": "network-security",
+          "description": "IDS/IPS inline sensor, 10Gbps inspection throughput",
+          "availability": true,
+          "lead_time_days": 21,
+          "unit_cost": 8652.48,
+          "margin_pct": 21.3
+        }
+      ]
+    },
+    {
+      "vendor_id": "VEN-013",
+      "vendor_name": "Cisco Meraki",
+      "effective_date": "2026-03-08",
+      "products": [
+        {
+          "sku": "V013-AP-0001",
+          "category": "wireless-access-point",
+          "description": "Wi-Fi 7 indoor AP, 9Gbps aggregate, cloud-managed",
+          "availability": true,
+          "lead_time_days": 2,
+          "unit_cost": 866.83,
+          "margin_pct": 29.7
+        },
+        {
+          "sku": "V013-AP-0002",
+          "category": "wireless-access-point",
+          "description": "Wi-Fi 6E tri-band indoor AP, 6GHz, 4x4 MU-MIMO",
+          "availability": false,
+          "lead_time_days": 10,
+          "unit_cost": 1040.47,
+          "margin_pct": 14.0
+        },
+        {
+          "sku": "V013-AP-0003",
+          "category": "wireless-access-point",
+          "description": "Wi-Fi 6 dual-band indoor AP, 2x2 MU-MIMO, ceiling mount",
+          "availability": true,
+          "lead_time_days": 21,
+          "unit_cost": 213.08,
+          "margin_pct": 14.9
+        }
+      ]
+    },
+    {
+      "vendor_id": "VEN-014",
+      "vendor_name": "Aruba Networks (HPE) \u2014 Wireless",
+      "effective_date": "2026-04-09",
+      "products": [
+        {
+          "sku": "V014-AP-0001",
+          "category": "wireless-access-point",
+          "description": "Wi-Fi 6E tri-band indoor AP, 6GHz, 4x4 MU-MIMO",
+          "availability": true,
+          "lead_time_days": 28,
+          "unit_cost": 478.33,
+          "margin_pct": 23.7
+        },
+        {
+          "sku": "V014-AP-0002",
+          "category": "wireless-access-point",
+          "description": "Wi-Fi 6E tri-band indoor AP, 6GHz, 4x4 MU-MIMO",
+          "availability": true,
+          "lead_time_days": 5,
+          "unit_cost": 533.05,
+          "margin_pct": 20.7
+        }
+      ]
+    },
+    {
+      "vendor_id": "VEN-015",
+      "vendor_name": "Ubiquiti UniFi",
+      "effective_date": "2026-03-27",
+      "products": [
+        {
+          "sku": "V015-AP-0001",
+          "category": "wireless-access-point",
+          "description": "Wi-Fi 6E tri-band indoor AP, 6GHz, 4x4 MU-MIMO",
+          "availability": true,
+          "lead_time_days": 2,
+          "unit_cost": 1188.25,
+          "margin_pct": 16.8
+        },
+        {
+          "sku": "V015-AP-0002",
+          "category": "wireless-access-point",
+          "description": "Wi-Fi 7 indoor AP, 9Gbps aggregate, cloud-managed",
+          "availability": true,
+          "lead_time_days": 28,
+          "unit_cost": 855.11,
+          "margin_pct": 20.8
+        },
+        {
+          "sku": "V015-AP-0003",
+          "category": "wireless-access-point",
+          "description": "Wi-Fi 6 dual-band indoor AP, 2x2 MU-MIMO, ceiling mount",
+          "availability": true,
+          "lead_time_days": 2,
+          "unit_cost": 410.63,
+          "margin_pct": 20.7
+        }
+      ]
+    },
+    {
+      "vendor_id": "VEN-016",
+      "vendor_name": "Ruckus Networks",
+      "effective_date": "2026-04-28",
+      "products": [
+        {
+          "sku": "V016-AP-0001",
+          "category": "wireless-access-point",
+          "description": "Wi-Fi 6E tri-band indoor AP, 6GHz, 4x4 MU-MIMO",
+          "availability": true,
+          "lead_time_days": 28,
+          "unit_cost": 1135.51,
+          "margin_pct": 21.6
+        },
+        {
+          "sku": "V016-AP-0002",
+          "category": "wireless-access-point",
+          "description": "Wi-Fi 6E tri-band indoor AP, 6GHz, 4x4 MU-MIMO",
+          "availability": true,
+          "lead_time_days": 3,
+          "unit_cost": 1081.07,
+          "margin_pct": 13.2
+        }
+      ]
+    },
+    {
+      "vendor_id": "VEN-017",
+      "vendor_name": "TP-Link Omada",
+      "effective_date": "2025-11-21",
+      "products": [
+        {
+          "sku": "V017-AP-0001",
+          "category": "wireless-access-point",
+          "description": "Wi-Fi 6 dual-band indoor AP, 2x2 MU-MIMO, ceiling mount",
+          "availability": true,
+          "lead_time_days": 5,
+          "unit_cost": 410.51,
+          "margin_pct": 12.6
+        },
+        {
+          "sku": "V017-AP-0002",
+          "category": "wireless-access-point",
+          "description": "Wi-Fi 6E tri-band indoor AP, 6GHz, 4x4 MU-MIMO",
+          "availability": true,
+          "lead_time_days": 28,
+          "unit_cost": 653.1,
+          "margin_pct": 16.7
+        },
+        {
+          "sku": "V017-AP-0003",
+          "category": "wireless-access-point",
+          "description": "Wi-Fi 6 outdoor AP, IP67, PoE-powered",
+          "availability": true,
+          "lead_time_days": 14,
+          "unit_cost": 443.97,
+          "margin_pct": 23.0
+        },
+        {
+          "sku": "V017-AP-0004",
+          "category": "wireless-access-point",
+          "description": "Wi-Fi 7 indoor AP, 9Gbps aggregate, cloud-managed",
+          "availability": true,
+          "lead_time_days": 3,
+          "unit_cost": 189.5,
+          "margin_pct": 23.2
+        }
+      ]
+    },
+    {
+      "vendor_id": "VEN-018",
+      "vendor_name": "CommScope",
+      "effective_date": "2026-03-29",
+      "products": [
+        {
+          "sku": "V018-CAB-0001",
+          "category": "structured-cabling",
+          "description": "48-port Cat6A patch panel, 2U, angled",
+          "availability": true,
+          "lead_time_days": 4,
+          "unit_cost": 676.64,
+          "margin_pct": 20.3
+        },
+        {
+          "sku": "V018-CAB-0002",
+          "category": "structured-cabling",
+          "description": "48-port Cat6A patch panel, 2U, angled",
+          "availability": true,
+          "lead_time_days": 4,
+          "unit_cost": 503.36,
+          "margin_pct": 18.3
+        }
+      ]
+    },
+    {
+      "vendor_id": "VEN-019",
+      "vendor_name": "Panduit",
+      "effective_date": "2026-04-25",
+      "products": [
+        {
+          "sku": "V019-CAB-0001",
+          "category": "structured-cabling",
+          "description": "Cat6A UTP patch cable 3ft, 25-pack",
+          "availability": true,
+          "lead_time_days": 28,
+          "unit_cost": 115.93,
+          "margin_pct": 17.6
+        },
+        {
+          "sku": "V019-CAB-0002",
+          "category": "structured-cabling",
+          "description": "48-port Cat6A patch panel, 2U, angled",
+          "availability": true,
+          "lead_time_days": 3,
+          "unit_cost": 609.85,
+          "margin_pct": 15.9
+        },
+        {
+          "sku": "V019-CAB-0003",
+          "category": "structured-cabling",
+          "description": "Cat6A U/UTP bulk cable, CMR-rated, 1000ft spool",
+          "availability": true,
+          "lead_time_days": 10,
+          "unit_cost": 511.98,
+          "margin_pct": 16.8
+        },
+        {
+          "sku": "V019-CAB-0004",
+          "category": "structured-cabling",
+          "description": "Cat6A U/UTP bulk cable, CMR-rated, 1000ft spool",
+          "availability": true,
+          "lead_time_days": 7,
+          "unit_cost": 897.94,
+          "margin_pct": 18.1
+        }
+      ]
+    },
+    {
+      "vendor_id": "VEN-020",
+      "vendor_name": "Belden",
+      "effective_date": "2026-05-01",
+      "products": [
+        {
+          "sku": "V020-CAB-0001",
+          "category": "structured-cabling",
+          "description": "Cat6A keystone jack, toolless, 25-pack",
+          "availability": true,
+          "lead_time_days": 2,
+          "unit_cost": 100.53,
+          "margin_pct": 20.4
+        },
+        {
+          "sku": "V020-CAB-0002",
+          "category": "structured-cabling",
+          "description": "Cat6A U/UTP bulk cable, CMR-rated, 1000ft spool",
+          "availability": true,
+          "lead_time_days": 21,
+          "unit_cost": 703.42,
+          "margin_pct": 15.6
+        },
+        {
+          "sku": "V020-CAB-0003",
+          "category": "structured-cabling",
+          "description": "Cat6A UTP patch cable 3ft, 25-pack",
+          "availability": false,
+          "lead_time_days": 4,
+          "unit_cost": 145.47,
+          "margin_pct": 18.8
+        },
+        {
+          "sku": "V020-CAB-0004",
+          "category": "structured-cabling",
+          "description": "48-port Cat6A patch panel, 2U, angled",
+          "availability": true,
+          "lead_time_days": 2,
+          "unit_cost": 457.89,
+          "margin_pct": 20.4
+        }
+      ]
+    },
+    {
+      "vendor_id": "VEN-021",
+      "vendor_name": "Legrand",
+      "effective_date": "2026-03-25",
+      "products": [
+        {
+          "sku": "V021-CAB-0001",
+          "category": "structured-cabling",
+          "description": "48-port Cat6A patch panel, 2U, angled",
+          "availability": true,
+          "lead_time_days": 3,
+          "unit_cost": 473.79,
+          "margin_pct": 18.4
+        },
+        {
+          "sku": "V021-CAB-0002",
+          "category": "structured-cabling",
+          "description": "Cat6A keystone jack, toolless, 25-pack",
+          "availability": true,
+          "lead_time_days": 4,
+          "unit_cost": 238.86,
+          "margin_pct": 16.7
+        },
+        {
+          "sku": "V021-CAB-0003",
+          "category": "structured-cabling",
+          "description": "48-port Cat6A patch panel, 2U, angled",
+          "availability": true,
+          "lead_time_days": 4,
+          "unit_cost": 658.5,
+          "margin_pct": 15.1
+        }
+      ]
+    },
+    {
+      "vendor_id": "VEN-022",
+      "vendor_name": "CablePro Supply",
+      "effective_date": "2025-08-22",
+      "products": [
+        {
+          "sku": "V022-CAB-0001",
+          "category": "structured-cabling",
+          "description": "48-port Cat6A patch panel, 2U, angled",
+          "availability": true,
+          "lead_time_days": 3,
+          "unit_cost": 483.89,
+          "margin_pct": 15.2
+        },
+        {
+          "sku": "V022-CAB-0002",
+          "category": "structured-cabling",
+          "description": "Cat6A keystone jack, toolless, 25-pack",
+          "availability": true,
+          "lead_time_days": 21,
+          "unit_cost": 152.45,
+          "margin_pct": 20.7
+        },
+        {
+          "sku": "V022-CAB-0003",
+          "category": "structured-cabling",
+          "description": "48-port Cat6A patch panel, 2U, angled",
+          "availability": true,
+          "lead_time_days": 5,
+          "unit_cost": 489.46,
+          "margin_pct": 16.7
+        }
+      ]
+    },
+    {
+      "vendor_id": "VEN-023",
+      "vendor_name": "D-Link Enterprise",
+      "effective_date": "2026-04-22",
+      "products": [
+        {
+          "sku": "V023-SW-0001",
+          "category": "networking-switch",
+          "description": "8-port PoE+ unmanaged switch, desktop, budget tier",
+          "availability": true,
+          "lead_time_days": "21 days",
+          "unit_cost": 249.34,
+          "margin_pct": 11.1
+        },
+        {
+          "sku": "V023-SW-0002",
+          "category": "networking-switch",
+          "description": "48-port 10GbE aggregation switch, 4x40G uplinks",
+          "availability": true,
+          "lead_time_days": 7,
+          "unit_cost": 4382.57,
+          "margin_pct": 24.8
+        },
+        {
+          "sku": "V023-SW-0003",
+          "category": "networking-switch",
+          "description": "48-port 10GbE aggregation switch, 4x40G uplinks",
+          "availability": true,
+          "lead_time_days": 10,
+          "unit_cost": 8363.94,
+          "margin_pct": 27.9
+        }
+      ]
+    },
+    {
+      "vendor_id": "VEN-024",
+      "vendor_name": "Vertiv",
+      "effective_date": "2026-03-28",
+      "products": [
+        {
+          "sku": "V024-CAB-0001",
+          "category": "structured-cabling",
+          "description": "48-port Cat6A patch panel, 2U, angled",
+          "availability": true,
+          "lead_time_days": 14,
+          "unit_cost": null
+        },
+        {
+          "sku": "V024-CAB-0002",
+          "category": "structured-cabling",
+          "description": "48-port Cat6A patch panel, 2U, angled",
+          "availability": true,
+          "lead_time_days": 3,
+          "unit_cost": 682.11,
+          "margin_pct": 20.5
+        },
+        {
+          "sku": "V024-CAB-0003",
+          "category": "structured-cabling",
+          "description": "Cat6A U/UTP bulk cable, CMR-rated, 1000ft spool",
+          "availability": true,
+          "lead_time_days": 3,
+          "unit_cost": 795.86,
+          "margin_pct": 14.8
+        }
+      ]
+    },
+    {
+      "vendor_id": "VEN-025",
+      "vendor_name": "Arrow Electronics",
+      "effective_date": "2026-04-15",
+      "products": [
+        {
+          "sku": "V025-SW-0001",
+          "category": "networking-switch",
+          "description": "8-port PoE+ unmanaged switch, desktop, budget tier",
+          "availability": true,
+          "lead_time_days": 7,
+          "unit_cost": 316.32,
+          "margin_pct": 12.0
+        },
+        {
+          "sku": "V025-SEC-0002",
+          "category": "network-security",
+          "description": "IDS/IPS inline sensor, 10Gbps inspection throughput",
+          "availability": true,
+          "lead_time_days": 4,
+          "unit_cost": 7308.6,
+          "margin_pct": 22.1
+        },
+        {
+          "sku": "V025-AP-0003",
+          "category": "wireless-access-point",
+          "description": "Wi-Fi 6E tri-band indoor AP, 6GHz, 4x4 MU-MIMO",
+          "availability": true,
+          "lead_time_days": 5,
+          "unit_cost": 743.91,
+          "margin_pct": 22.4
+        },
+        {
+          "sku": "V025-CAB-0004",
+          "category": "structured-cabling",
+          "description": "Cat6A U/UTP bulk cable, CMR-rated, 1000ft spool",
+          "availability": true,
+          "lead_time_days": 21,
+          "unit_cost": 771.59,
+          "margin_pct": 16.1
+        }
+      ]
+    },
+    {
+      "vendor_id": "VEN-026",
+      "vendor_name": "Avnet",
+      "effective_date": "2026-03-16",
+      "products": [
+        {
+          "sku": "V026-SW-0001",
+          "category": "networking-switch",
+          "description": "48-port PoE+ managed switch, 740W, stackable",
+          "availability": true,
+          "lead_time_days": 10,
+          "unit_cost": 1192.23,
+          "margin_pct": 25.4
+        },
+        {
+          "sku": "V026-SEC-0002",
+          "category": "network-security",
+          "description": "NGFW, enterprise edge, 6-15Gbps throughput, SD-WAN",
+          "availability": true,
+          "lead_time_days": 5,
+          "unit_cost": 13678.75,
+          "margin_pct": 23.2
+        },
+        {
+          "sku": "V026-AP-0003",
+          "category": "wireless-access-point",
+          "description": "Wi-Fi 6E tri-band indoor AP, 6GHz, 4x4 MU-MIMO",
+          "availability": true,
+          "lead_time_days": 21,
+          "unit_cost": 889.02,
+          "margin_pct": 25.8
+        },
+        {
+          "sku": "V026-CAB-0004",
+          "category": "structured-cabling",
+          "description": "Cat6A keystone jack, toolless, 25-pack",
+          "availability": true,
+          "lead_time_days": 5,
+          "unit_cost": 207.75,
+          "margin_pct": 17.7
+        }
+      ]
+    },
+    {
+      "vendor_id": "VEN-027",
+      "vendor_name": "TD Synnex",
+      "effective_date": "2026-03-01",
+      "products": [
+        {
+          "sku": "V027-SW-0001",
+          "category": "networking-switch",
+          "description": "24-port PoE+ managed switch, 370W, fixed uplinks",
+          "availability": true,
+          "lead_time_days": 2,
+          "unit_cost": 2285.32,
+          "margin_pct": 22.6
+        },
+        {
+          "sku": "V027-SEC-0002",
+          "category": "network-security",
+          "description": "NGFW, branch tier, 1-5Gbps App-ID throughput",
+          "availability": true,
+          "lead_time_days": 5,
+          "unit_cost": 1198.01,
+          "margin_pct": 27.6
+        }
+      ]
+    },
+    {
+      "vendor_id": "VEN-028",
+      "vendor_name": "Ingram Micro",
+      "effective_date": "2026-03-07",
+      "products": [
+        {
+          "sku": "V028-SW-0001",
+          "category": "networking-switch",
+          "description": "48-port PoE+ managed switch, 740W, stackable",
+          "availability": true,
+          "lead_time_days": 3,
+          "unit_cost": 2717.14,
+          "margin_pct": 23.6
+        },
+        {
+          "sku": "V028-SEC-0002",
+          "category": "network-security",
+          "description": "UTM appliance, SMB, all-in-one threat prevention",
+          "availability": true,
+          "lead_time_days": 21,
+          "unit_cost": 1380.24,
+          "margin_pct": 21.8
+        },
+        {
+          "sku": "V028-AP-0003",
+          "category": "wireless-access-point",
+          "description": "Wi-Fi 7 indoor AP, 9Gbps aggregate, cloud-managed",
+          "availability": true,
+          "lead_time_days": 28,
+          "unit_cost": 634.83,
+          "margin_pct": 14.9
+        }
+      ]
+    },
+    {
+      "vendor_id": "VEN-029",
+      "vendor_name": "CDW",
+      "effective_date": "2026-03-18",
+      "products": [
+        {
+          "sku": "V029-SW-0001",
+          "category": "networking-switch",
+          "description": "48-port 10GbE aggregation switch, 4x40G uplinks",
+          "availability": true,
+          "lead_time_days": 7,
+          "unit_cost": 11658.14,
+          "margin_pct": 24.2
+        },
+        {
+          "sku": "V029-SEC-0002",
+          "category": "network-security",
+          "description": "NGFW, enterprise edge, 6-15Gbps throughput, SD-WAN",
+          "availability": true,
+          "lead_time_days": 3,
+          "unit_cost": 12562.54,
+          "margin_pct": 23.9
+        },
+        {
+          "sku": "V029-AP-0003",
+          "category": "wireless-access-point",
+          "description": "Wi-Fi 6 outdoor AP, IP67, PoE-powered",
+          "availability": true,
+          "lead_time_days": 28,
+          "unit_cost": 388.64,
+          "margin_pct": 16.1
+        }
+      ]
+    },
+    {
+      "vendor_id": "VEN-030",
+      "vendor_name": "SHI International",
+      "effective_date": "2026-02-18",
+      "products": [
+        {
+          "sku": "V030-SW-0001",
+          "category": "networking-switch",
+          "description": "24-port PoE+ managed switch, 370W, fixed uplinks",
+          "availability": true,
+          "lead_time_days": 3,
+          "unit_cost": 1329.74,
+          "margin_pct": 17.3
+        },
+        {
+          "sku": "V030-SEC-0002",
+          "category": "network-security",
+          "description": "IDS/IPS inline sensor, 10Gbps inspection throughput",
+          "availability": true,
+          "lead_time_days": 5,
+          "unit_cost": 8830.24,
+          "margin_pct": 22.7
+        },
+        {
+          "sku": "V030-AP-0003",
+          "category": "wireless-access-point",
+          "description": "Wi-Fi 6E tri-band indoor AP, 6GHz, 4x4 MU-MIMO",
+          "availability": true,
+          "lead_time_days": 14,
+          "unit_cost": 781.58,
+          "margin_pct": 29.0
+        },
+        {
+          "sku": "V030-CAB-0004",
+          "category": "structured-cabling",
+          "description": "Cat6A U/UTP bulk cable, CMR-rated, 1000ft spool",
+          "availability": true,
+          "lead_time_days": 14,
+          "unit_cost": 696.02,
+          "margin_pct": 17.4
+        }
+      ]
+    },
+    {
+      "vendor_id": "VEN-031",
+      "vendor_name": "Lenovo Networking",
+      "effective_date": "2026-02-27",
+      "products": [
+        {
+          "sku": "V031-SW-0001",
+          "category": "networking-switch",
+          "description": "8-port PoE+ unmanaged switch, desktop, budget tier",
+          "availability": true,
+          "lead_time_days": 14,
+          "unit_cost": 295.69,
+          "margin_pct": 12.9
+        },
+        {
+          "sku": "V031-SEC-0002",
+          "category": "network-security",
+          "description": "IDS/IPS inline sensor, 10Gbps inspection throughput",
+          "availability": true,
+          "lead_time_days": 21,
+          "unit_cost": 9436.79,
+          "margin_pct": 26.9
+        }
+      ]
+    },
+    {
+      "vendor_id": "VEN-032",
+      "vendor_name": "Dell Networking",
+      "effective_date": "2026-03-26",
+      "products": [
+        {
+          "sku": "V032-SW-0001",
+          "category": "networking-switch",
+          "description": "8-port PoE+ unmanaged switch, desktop, budget tier",
+          "availability": true,
+          "lead_time_days": 2,
+          "unit_cost": 175.18,
+          "margin_pct": 13.1
+        },
+        {
+          "sku": "V032-SEC-0002",
+          "category": "network-security",
+          "description": "IDS/IPS inline sensor, 10Gbps inspection throughput",
+          "availability": true,
+          "lead_time_days": 7,
+          "unit_cost": 5653.73,
+          "margin_pct": 21.5
+        }
+      ]
+    },
+    {
+      "vendor_id": "VEN-033",
+      "vendor_name": "Zyxel Networks",
+      "effective_date": "2026-04-11",
+      "products": [
+        {
+          "sku": "V033-SW-0001",
+          "category": "networking-switch",
+          "description": "8-port PoE+ unmanaged switch, desktop, budget tier",
+          "availability": true,
+          "lead_time_days": 14,
+          "unit_cost": 225.68,
+          "margin_pct": 11.4
+        },
+        {
+          "sku": "V033-SEC-0002",
+          "category": "network-security",
+          "description": "NGFW, branch tier, 1-5Gbps App-ID throughput",
+          "availability": true,
+          "lead_time_days": 2,
+          "unit_cost": 3999.69,
+          "margin_pct": 21.5
+        },
+        {
+          "sku": "V033-AP-0003",
+          "category": "wireless-access-point",
+          "description": "Wi-Fi 6E tri-band indoor AP, 6GHz, 4x4 MU-MIMO",
+          "availability": true,
+          "lead_time_days": 2,
+          "unit_cost": 1003.39,
+          "margin_pct": 29.1
+        }
+      ]
+    },
+    {
+      "vendor_id": "VEN-034",
+      "vendor_name": "Sophos",
+      "effective_date": "2026-02-18",
+      "products": [
+        {
+          "sku": "V034-SW-0001",
+          "category": "networking-switch",
+          "description": "24-port PoE+ managed switch, 370W, fixed uplinks",
+          "availability": true,
+          "lead_time_days": 21,
+          "unit_cost": 1838.92,
+          "margin_pct": 19.6
+        },
+        {
+          "sku": "V034-SEC-0002",
+          "category": "network-security",
+          "description": "NGFW, enterprise edge, 6-15Gbps throughput, SD-WAN",
+          "availability": true,
+          "lead_time_days": 7,
+          "unit_cost": 13202.78,
+          "margin_pct": 23.3
+        }
+      ]
+    },
+    {
+      "vendor_id": "VEN-035",
+      "vendor_name": "Barracuda Networks",
+      "effective_date": "2026-03-20",
+      "products": [
+        {
+          "sku": "V035-SW-0001",
+          "category": "networking-switch",
+          "description": "48-port PoE+ managed switch, 740W, stackable",
+          "availability": true,
+          "lead_time_days": 4,
+          "unit_cost": 4851.83,
+          "margin_pct": 15.3
+        },
+        {
+          "sku": "V035-SEC-0002",
+          "category": "network-security",
+          "description": "NGFW, branch tier, 1-5Gbps App-ID throughput",
+          "availability": true,
+          "lead_time_days": 14,
+          "unit_cost": 1948.63,
+          "margin_pct": 25.2
+        },
+        {
+          "sku": "V035-AP-0003",
+          "category": "wireless-access-point",
+          "description": "Wi-Fi 6E tri-band indoor AP, 6GHz, 4x4 MU-MIMO",
+          "availability": true,
+          "lead_time_days": 5,
+          "unit_cost": 481.52,
+          "margin_pct": 25.9
+        },
+        {
+          "sku": "V035-CAB-0004",
+          "category": "structured-cabling",
+          "description": "Cat6A UTP patch cable 3ft, 25-pack",
+          "availability": true,
+          "lead_time_days": 2,
+          "unit_cost": 121.66,
+          "margin_pct": 16.0
+        }
+      ]
+    },
+    {
+      "vendor_id": "VEN-036",
+      "vendor_name": "Trellix (FireEye)",
+      "effective_date": "2026-03-01",
+      "products": [
+        {
+          "sku": "V036-SW-0001",
+          "category": "networking-switch",
+          "description": "48-port 10GbE aggregation switch, 4x40G uplinks",
+          "availability": false,
+          "lead_time_days": 14,
+          "unit_cost": 12223.31,
+          "margin_pct": 20.8
+        },
+        {
+          "sku": "V036-SEC-0002",
+          "category": "network-security",
+          "description": "UTM appliance, SMB, all-in-one threat prevention",
+          "availability": true,
+          "lead_time_days": 21,
+          "unit_cost": 1531.69,
+          "margin_pct": 19.5
+        }
+      ]
+    },
+    {
+      "vendor_id": "VEN-037",
+      "vendor_name": "Broadcom (Brocade)",
+      "effective_date": "2026-04-03",
+      "products": [
+        {
+          "sku": "V037-SW-0001",
+          "category": "networking-switch",
+          "description": "48-port 10GbE aggregation switch, 4x40G uplinks",
+          "availability": true,
+          "lead_time_days": 28,
+          "unit_cost": 11746.41,
+          "margin_pct": 23.7
+        },
+        {
+          "sku": "V037-SEC-0002",
+          "category": "network-security",
+          "description": "UTM appliance, SMB, all-in-one threat prevention",
+          "availability": true,
+          "lead_time_days": 5,
+          "unit_cost": 1729.17,
+          "margin_pct": 16.7
+        },
+        {
+          "sku": "V037-AP-0003",
+          "category": "wireless-access-point",
+          "description": "Wi-Fi 7 indoor AP, 9Gbps aggregate, cloud-managed",
+          "availability": true,
+          "lead_time_days": 21,
+          "unit_cost": 761.25,
+          "margin_pct": 24.0
+        },
+        {
+          "sku": "V037-CAB-0004",
+          "category": "structured-cabling",
+          "description": "Cat6A U/UTP bulk cable, CMR-rated, 1000ft spool",
+          "availability": false,
+          "lead_time_days": 10,
+          "unit_cost": 500.01,
+          "margin_pct": 14.3
+        }
+      ]
+    },
+    {
+      "vendor_id": "VEN-038",
+      "vendor_name": "Moxa Technologies",
+      "effective_date": "2026-03-30",
+      "products": [
+        {
+          "sku": "V038-SW-0001",
+          "category": "networking-switch",
+          "description": "48-port 10GbE aggregation switch, 4x40G uplinks",
+          "availability": true,
+          "lead_time_days": 7,
+          "unit_cost": 9557.91,
+          "margin_pct": 24.1
+        },
+        {
+          "sku": "V038-SEC-0002",
+          "category": "network-security",
+          "description": "NGFW, enterprise edge, 6-15Gbps throughput, SD-WAN",
+          "availability": false,
+          "lead_time_days": 14,
+          "unit_cost": 9862.93,
+          "margin_pct": 28.1
+        },
+        {
+          "sku": "V038-AP-0003",
+          "category": "wireless-access-point",
+          "description": "Wi-Fi 7 indoor AP, 9Gbps aggregate, cloud-managed",
+          "availability": true,
+          "lead_time_days": 21,
+          "unit_cost": 637.14,
+          "margin_pct": 12.3
+        }
+      ]
+    },
+    {
+      "vendor_id": "VEN-039",
+      "vendor_name": "Lantronix",
+      "effective_date": "2026-04-02",
+      "products": [
+        {
+          "sku": "V039-SW-0001",
+          "category": "networking-switch",
+          "description": "8-port PoE+ unmanaged switch, desktop, budget tier",
+          "availability": true,
+          "lead_time_days": 7,
+          "unit_cost": 349.19,
+          "margin_pct": 12.8
+        },
+        {
+          "sku": "V039-SEC-0002",
+          "category": "network-security",
+          "description": "UTM appliance, SMB, all-in-one threat prevention",
+          "availability": true,
+          "lead_time_days": 28,
+          "unit_cost": 929.27,
+          "margin_pct": 21.6
+        }
+      ]
+    },
+    {
+      "vendor_id": "VEN-040",
+      "vendor_name": "Transition Networks",
+      "effective_date": "2026-03-29",
+      "products": [
+        {
+          "sku": "V040-SW-0001",
+          "category": "networking-switch",
+          "description": "48-port 10GbE aggregation switch, 4x40G uplinks",
+          "availability": true,
+          "lead_time_days": 5,
+          "unit_cost": 7155.48,
+          "margin_pct": 25.9
+        },
+        {
+          "sku": "V040-SEC-0002",
+          "category": "network-security",
+          "description": "NGFW, enterprise edge, 6-15Gbps throughput, SD-WAN",
+          "availability": true,
+          "lead_time_days": 21,
+          "unit_cost": 7318.0,
+          "margin_pct": 26.7
+        },
+        {
+          "sku": "V040-AP-0003",
+          "category": "wireless-access-point",
+          "description": "Wi-Fi 6 outdoor AP, IP67, PoE-powered",
+          "availability": true,
+          "lead_time_days": 5,
+          "unit_cost": 625.87,
+          "margin_pct": 19.1
+        }
+      ]
+    },
+    {
+      "vendor_id": "VEN-041",
+      "vendor_name": "Black Box Corporation",
+      "effective_date": "2026-03-31",
+      "products": [
+        {
+          "sku": "V041-SW-0001",
+          "category": "networking-switch",
+          "description": "24-port PoE+ managed switch, 370W, fixed uplinks",
+          "availability": true,
+          "lead_time_days": 2,
+          "unit_cost": 1606.72,
+          "margin_pct": 21.0
+        },
+        {
+          "sku": "V041-SEC-0002",
+          "category": "network-security",
+          "description": "NGFW, enterprise edge, 6-15Gbps throughput, SD-WAN",
+          "availability": true,
+          "lead_time_days": 21,
+          "unit_cost": 5231.05,
+          "margin_pct": 22.1
+        }
+      ]
+    },
+    {
+      "vendor_id": "VEN-042",
+      "vendor_name": "Tripp Lite",
+      "effective_date": "2026-02-24",
+      "products": [
+        {
+          "sku": "V042-SW-0001",
+          "category": "networking-switch",
+          "description": "8-port PoE+ unmanaged switch, desktop, budget tier",
+          "availability": true,
+          "lead_time_days": 4,
+          "unit_cost": 439.65,
+          "margin_pct": 12.3
+        },
+        {
+          "sku": "V042-SEC-0002",
+          "category": "network-security",
+          "description": "IDS/IPS inline sensor, 10Gbps inspection throughput",
+          "availability": false,
+          "lead_time_days": 3,
+          "unit_cost": 5804.95,
+          "margin_pct": 20.5
+        },
+        {
+          "sku": "V042-AP-0003",
+          "category": "wireless-access-point",
+          "description": "Wi-Fi 6E tri-band indoor AP, 6GHz, 4x4 MU-MIMO",
+          "availability": true,
+          "lead_time_days": 7,
+          "unit_cost": 468.14,
+          "margin_pct": 16.5
+        }
+      ]
+    },
+    {
+      "vendor_id": "VEN-043",
+      "vendor_name": "APC by Schneider",
+      "effective_date": "2026-04-14",
+      "products": [
+        {
+          "sku": "V043-SW-0001",
+          "category": "networking-switch",
+          "description": "24-port PoE+ managed switch, 370W, fixed uplinks",
+          "availability": true,
+          "lead_time_days": 14,
+          "unit_cost": 1401.03,
+          "margin_pct": 18.4
+        },
+        {
+          "sku": "V043-SEC-0002",
+          "category": "network-security",
+          "description": "IDS/IPS inline sensor, 10Gbps inspection throughput",
+          "availability": true,
+          "lead_time_days": 2,
+          "unit_cost": 7267.42,
+          "margin_pct": 25.2
+        },
+        {
+          "sku": "V043-AP-0003",
+          "category": "wireless-access-point",
+          "description": "Wi-Fi 6 dual-band indoor AP, 2x2 MU-MIMO, ceiling mount",
+          "availability": true,
+          "lead_time_days": 7,
+          "unit_cost": 447.19,
+          "margin_pct": 14.5
+        }
+      ]
+    },
+    {
+      "vendor_id": "VEN-044",
+      "vendor_name": "Eaton",
+      "effective_date": "2026-04-02",
+      "products": [
+        {
+          "sku": "V044-SW-0001",
+          "category": "networking-switch",
+          "description": "48-port PoE+ managed switch, 740W, stackable",
+          "availability": true,
+          "lead_time_days": 14,
+          "unit_cost": 2692.12,
+          "margin_pct": 21.1
+        },
+        {
+          "sku": "V044-SEC-0002",
+          "category": "network-security",
+          "description": "UTM appliance, SMB, all-in-one threat prevention",
+          "availability": false,
+          "lead_time_days": 7,
+          "unit_cost": 1531.13,
+          "margin_pct": 21.6
+        },
+        {
+          "sku": "V044-AP-0003",
+          "category": "wireless-access-point",
+          "description": "Wi-Fi 7 indoor AP, 9Gbps aggregate, cloud-managed",
+          "availability": false,
+          "lead_time_days": 5,
+          "unit_cost": 1122.39,
+          "margin_pct": 26.2
+        },
+        {
+          "sku": "V044-CAB-0004",
+          "category": "structured-cabling",
+          "description": "48-port Cat6A patch panel, 2U, angled",
+          "availability": true,
+          "lead_time_days": 28,
+          "unit_cost": 428.68,
+          "margin_pct": 15.9
+        }
+      ]
+    },
+    {
+      "vendor_id": "VEN-045",
+      "vendor_name": "Crestron Electronics",
+      "effective_date": "2026-04-02",
+      "products": [
+        {
+          "sku": "V045-SW-0001",
+          "category": "networking-switch",
+          "description": "48-port PoE+ managed switch, 740W, stackable",
+          "availability": false,
+          "lead_time_days": 7,
+          "unit_cost": 3299.18,
+          "margin_pct": 23.9
+        },
+        {
+          "sku": "V045-SEC-0002",
+          "category": "network-security",
+          "description": "UTM appliance, SMB, all-in-one threat prevention",
+          "availability": true,
+          "lead_time_days": 21,
+          "unit_cost": 1501.88,
+          "margin_pct": 21.6
+        }
+      ]
+    },
+    {
+      "vendor_id": "VEN-046",
+      "vendor_name": "Axis Communications",
+      "effective_date": "2026-02-21",
+      "products": [
+        {
+          "sku": "V046-SW-0001",
+          "category": "networking-switch",
+          "description": "8-port PoE+ unmanaged switch, desktop, budget tier",
+          "availability": true,
+          "lead_time_days": 2,
+          "unit_cost": 416.83,
+          "margin_pct": 14.7
+        },
+        {
+          "sku": "V046-SEC-0002",
+          "category": "network-security",
+          "description": "UTM appliance, SMB, all-in-one threat prevention",
+          "availability": false,
+          "lead_time_days": 5,
+          "unit_cost": 1939.06,
+          "margin_pct": 22.7
+        },
+        {
+          "sku": "V046-AP-0003",
+          "category": "wireless-access-point",
+          "description": "Wi-Fi 6E tri-band indoor AP, 6GHz, 4x4 MU-MIMO",
+          "availability": true,
+          "lead_time_days": 7,
+          "unit_cost": 861.0,
+          "margin_pct": 25.7
+        },
+        {
+          "sku": "V046-CAB-0004",
+          "category": "structured-cabling",
+          "description": "48-port Cat6A patch panel, 2U, angled",
+          "availability": true,
+          "lead_time_days": 21,
+          "unit_cost": 670.63,
+          "margin_pct": 16.1
+        }
+      ]
+    },
+    {
+      "vendor_id": "VEN-047",
+      "vendor_name": "Hanwha Vision",
+      "effective_date": "2026-04-04",
+      "products": [
+        {
+          "sku": "V047-SW-0001",
+          "category": "networking-switch",
+          "description": "8-port PoE+ unmanaged switch, desktop, budget tier",
+          "availability": true,
+          "lead_time_days": 21,
+          "unit_cost": 254.39,
+          "margin_pct": 12.7
+        },
+        {
+          "sku": "V047-SEC-0002",
+          "category": "network-security",
+          "description": "NGFW, branch tier, 1-5Gbps App-ID throughput",
+          "availability": true,
+          "lead_time_days": 10,
+          "unit_cost": 1999.59,
+          "margin_pct": 23.0
+        },
+        {
+          "sku": "V047-AP-0003",
+          "category": "wireless-access-point",
+          "description": "Wi-Fi 7 indoor AP, 9Gbps aggregate, cloud-managed",
+          "availability": true,
+          "lead_time_days": 28,
+          "unit_cost": 217.43,
+          "margin_pct": 13.6
+        }
+      ]
+    },
+    {
+      "vendor_id": "VEN-048",
+      "vendor_name": "Viavi Solutions",
+      "effective_date": "2026-04-10",
+      "products": [
+        {
+          "sku": "V048-SW-0001",
+          "category": "networking-switch",
+          "description": "48-port PoE+ managed switch, 740W, stackable",
+          "availability": true,
+          "lead_time_days": 14,
+          "unit_cost": 4432.62,
+          "margin_pct": 23.9
+        },
+        {
+          "sku": "V048-SEC-0002",
+          "category": "network-security",
+          "description": "NGFW, branch tier, 1-5Gbps App-ID throughput",
+          "availability": true,
+          "lead_time_days": 28,
+          "unit_cost": 2170.72,
+          "margin_pct": 18.5
+        },
+        {
+          "sku": "V048-AP-0003",
+          "category": "wireless-access-point",
+          "description": "Wi-Fi 6 outdoor AP, IP67, PoE-powered",
+          "availability": true,
+          "lead_time_days": 21,
+          "unit_cost": 987.95,
+          "margin_pct": 24.6
+        }
+      ]
+    },
+    {
+      "vendor_id": "VEN-049",
+      "vendor_name": "IDEAL Networks",
+      "effective_date": "2026-04-22",
+      "products": [
+        {
+          "sku": "V049-SW-0001",
+          "category": "networking-switch",
+          "description": "24-port PoE+ managed switch, 370W, fixed uplinks",
+          "availability": true,
+          "lead_time_days": 21,
+          "unit_cost": 2261.69,
+          "margin_pct": 18.8
+        },
+        {
+          "sku": "V049-SEC-0002",
+          "category": "network-security",
+          "description": "NGFW, branch tier, 1-5Gbps App-ID throughput",
+          "availability": true,
+          "lead_time_days": 5,
+          "unit_cost": 3013.26,
+          "margin_pct": 21.1
+        },
+        {
+          "sku": "V049-AP-0003",
+          "category": "wireless-access-point",
+          "description": "Wi-Fi 6E tri-band indoor AP, 6GHz, 4x4 MU-MIMO",
+          "availability": true,
+          "lead_time_days": 3,
+          "unit_cost": 579.76,
+          "margin_pct": 27.1
+        }
+      ]
+    },
+    {
+      "vendor_id": "VEN-050",
+      "vendor_name": "Fluke Networks",
+      "effective_date": "2026-04-28",
+      "products": [
+        {
+          "sku": "V050-SW-0001",
+          "category": "networking-switch",
+          "description": "48-port PoE+ managed switch, 740W, stackable",
+          "availability": true,
+          "lead_time_days": 4,
+          "unit_cost": 2893.18,
+          "margin_pct": 22.6
+        },
+        {
+          "sku": "V050-SEC-0002",
+          "category": "network-security",
+          "description": "UTM appliance, SMB, all-in-one threat prevention",
+          "availability": true,
+          "lead_time_days": 21,
+          "unit_cost": 1968.39,
+          "margin_pct": 17.9
+        },
+        {
+          "sku": "V050-AP-0003",
+          "category": "wireless-access-point",
+          "description": "Wi-Fi 6 dual-band indoor AP, 2x2 MU-MIMO, ceiling mount",
+          "availability": true,
+          "lead_time_days": 28,
+          "unit_cost": 485.83,
+          "margin_pct": 14.2
+        }
+      ]
+    }
+  ]
+}

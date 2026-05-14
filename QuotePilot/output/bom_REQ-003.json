@@ -1,0 +1,240 @@
+{
+  "request_id": "REQ-2026-0511-002",
+  "user_request": "We're quoting a mid-size corporate office expansion for a client adding 150 desks to their existing campus. They need 24-port managed PoE switches for the new floor, a next-generation firewall to handle increased perimeter traffic, and Cat6A structured cabling to support the buildout. Budget is flexible but the client prefers not to overspend on switching. Please generate a full 3-tier BOM.",
+  "tiers": [
+    {
+      "tier": "budget",
+      "sku": "V002-SW-0001",
+      "vendor_id": "VEN-002",
+      "vendor_name": "Juniper Networks",
+      "category": "networking-switch",
+      "availability": true,
+      "lead_time_days": 10,
+      "unit_cost": 1055.74,
+      "margin_pct": 16.2,
+      "catalog_effective_date": "2026-02-18",
+      "evidence": [
+        "catalog: VEN-002/V002-SW-0001 effective_date 2026-02-18",
+        "ruleset: rule-002 (stale: 82d since effective_date, threshold 60d — included per policy; SE review required)",
+        "ruleset: rule-001 (lead_time 10d — within 21d threshold, no breach)",
+        "ruleset: rule-003 (availability: true — no gate triggered)",
+        "ruleset: rule-004 (margin 16.2% — above 15.0% floor, no flag)"
+      ],
+      "gap_markers": []
+    },
+    {
+      "tier": "balanced",
+      "sku": "V043-SW-0001",
+      "vendor_id": "VEN-043",
+      "vendor_name": "APC by Schneider",
+      "category": "networking-switch",
+      "availability": true,
+      "lead_time_days": 14,
+      "unit_cost": 1401.03,
+      "margin_pct": 18.4,
+      "catalog_effective_date": "2026-04-14",
+      "evidence": [
+        "catalog: VEN-043/V043-SW-0001 effective_date 2026-04-14",
+        "ruleset: rule-001 (lead_time 14d — within 21d threshold, no breach)",
+        "ruleset: rule-002 (effective_date 27d ago — within 60d freshness window, no warning)",
+        "ruleset: rule-003 (availability: true — no gate triggered)",
+        "ruleset: rule-004 (margin 18.4% — above 15.0% floor, no flag)"
+      ],
+      "gap_markers": []
+    },
+    {
+      "tier": "premium",
+      "sku": "V041-SW-0001",
+      "vendor_id": "VEN-041",
+      "vendor_name": "Black Box Corporation",
+      "category": "networking-switch",
+      "availability": true,
+      "lead_time_days": 2,
+      "unit_cost": 1606.72,
+      "margin_pct": 21.0,
+      "catalog_effective_date": "2026-03-31",
+      "evidence": [
+        "catalog: VEN-041/V041-SW-0001 effective_date 2026-03-31",
+        "ruleset: rule-001 (lead_time 2d — well within 21d threshold, no breach)",
+        "ruleset: rule-002 (effective_date 41d ago — within 60d freshness window, no warning)",
+        "ruleset: rule-003 (availability: true — no gate triggered)",
+        "ruleset: rule-004 (margin 21.0% — above 15.0% floor, no flag)"
+      ],
+      "gap_markers": []
+    },
+    {
+      "tier": "budget",
+      "sku": "V009-SEC-0002",
+      "vendor_id": "VEN-009",
+      "vendor_name": "Check Point Software",
+      "category": "network-security",
+      "availability": true,
+      "lead_time_days": 21,
+      "unit_cost": 666.22,
+      "margin_pct": 27.3,
+      "catalog_effective_date": "2026-04-26",
+      "evidence": [
+        "catalog: VEN-009/V009-SEC-0002 effective_date 2026-04-26",
+        "ruleset: rule-001 (lead_time 21d — at threshold boundary, no breach)",
+        "ruleset: rule-002 (effective_date 15d ago — within 60d freshness window, no warning)",
+        "ruleset: rule-003 (availability: true — no gate triggered)",
+        "ruleset: rule-004 (margin 27.3% — above 15.0% floor, no flag)"
+      ],
+      "gap_markers": []
+    },
+    {
+      "tier": "balanced",
+      "sku": "V041-SEC-0002",
+      "vendor_id": "VEN-041",
+      "vendor_name": "Black Box Corporation",
+      "category": "network-security",
+      "availability": true,
+      "lead_time_days": 21,
+      "unit_cost": 5231.05,
+      "margin_pct": 22.1,
+      "catalog_effective_date": "2026-03-31",
+      "evidence": [
+        "catalog: VEN-041/V041-SEC-0002 effective_date 2026-03-31",
+        "ruleset: rule-001 (lead_time 21d — at threshold boundary, no breach)",
+        "ruleset: rule-002 (effective_date 41d ago — within 60d freshness window, no warning)",
+        "ruleset: rule-003 (availability: true — no gate triggered)",
+        "ruleset: rule-004 (margin 22.1% — above 15.0% floor, no flag)"
+      ],
+      "gap_markers": []
+    },
+    {
+      "tier": "premium",
+      "sku": "V009-SEC-0001",
+      "vendor_id": "VEN-009",
+      "vendor_name": "Check Point Software",
+      "category": "network-security",
+      "availability": true,
+      "lead_time_days": 4,
+      "unit_cost": 10472.55,
+      "margin_pct": 28.2,
+      "catalog_effective_date": "2026-04-26",
+      "evidence": [
+        "catalog: VEN-009/V009-SEC-0001 effective_date 2026-04-26",
+        "ruleset: rule-001 (lead_time 4d — well within 21d threshold, no breach)",
+        "ruleset: rule-002 (effective_date 15d ago — within 60d freshness window, no warning)",
+        "ruleset: rule-003 (availability: true — no gate triggered)",
+        "ruleset: rule-004 (margin 28.2% — above 15.0% floor, no flag)"
+      ],
+      "gap_markers": []
+    },
+    {
+      "tier": "budget",
+      "sku": "V020-CAB-0004",
+      "vendor_id": "VEN-020",
+      "vendor_name": "Belden",
+      "category": "structured-cabling",
+      "availability": true,
+      "lead_time_days": 2,
+      "unit_cost": 457.89,
+      "margin_pct": 20.4,
+      "catalog_effective_date": "2026-05-01",
+      "evidence": [
+        "catalog: VEN-020/V020-CAB-0004 effective_date 2026-05-01",
+        "ruleset: rule-001 (lead_time 2d — well within 21d threshold, no breach)",
+        "ruleset: rule-002 (effective_date 10d ago — within 60d freshness window, no warning)",
+        "ruleset: rule-003 (availability: true — no gate triggered)",
+        "ruleset: rule-004 (margin 20.4% — above 15.0% floor, no flag)"
+      ],
+      "gap_markers": []
+    },
+    {
+      "tier": "balanced",
+      "sku": "V021-CAB-0001",
+      "vendor_id": "VEN-021",
+      "vendor_name": "Legrand",
+      "category": "structured-cabling",
+      "availability": true,
+      "lead_time_days": 3,
+      "unit_cost": 473.79,
+      "margin_pct": 18.4,
+      "catalog_effective_date": "2026-03-25",
+      "evidence": [
+        "catalog: VEN-021/V021-CAB-0001 effective_date 2026-03-25",
+        "ruleset: rule-001 (lead_time 3d — well within 21d threshold, no breach)",
+        "ruleset: rule-002 (effective_date 47d ago — within 60d freshness window, no warning)",
+        "ruleset: rule-003 (availability: true — no gate triggered)",
+        "ruleset: rule-004 (margin 18.4% — above 15.0% floor, no flag)"
+      ],
+      "gap_markers": []
+    },
+    {
+      "tier": "premium",
+      "sku": "V024-CAB-0002",
+      "vendor_id": "VEN-024",
+      "vendor_name": "Vertiv",
+      "category": "structured-cabling",
+      "availability": true,
+      "lead_time_days": 3,
+      "unit_cost": 682.11,
+      "margin_pct": 20.5,
+      "catalog_effective_date": "2026-03-28",
+      "evidence": [
+        "catalog: VEN-024/V024-CAB-0002 effective_date 2026-03-28",
+        "ruleset: rule-001 (lead_time 3d — well within 21d threshold, no breach)",
+        "ruleset: rule-002 (effective_date 44d ago — within 60d freshness window, no warning)",
+        "ruleset: rule-003 (availability: true — no gate triggered)",
+        "ruleset: rule-004 (margin 20.5% — above 15.0% floor, no flag)"
+      ],
+      "gap_markers": []
+    }
+  ],
+  "justification": {
+    "budget": {
+      "summary": "Budget tiers minimize unit cost while meeting all rule thresholds. The switching budget pick carries a stale-data warning from Juniper Networks that the SE must acknowledge before finalizing.",
+      "bullets": [
+        "networking-switch: VEN-002/V002-SW-0001 (Juniper Networks) at $1,055.74 — lowest-cost qualifying 24-port PoE+ managed switch in the filtered catalog",
+        "Lead-time compliance (rule-001): 10d — within the 21d threshold; no substitution required",
+        "Margin compliance (rule-004): 16.2% — above the 15.0% floor; no flag triggered",
+        "rule-002 flag: Juniper Networks effective_date 2026-02-18 is 82d old, exceeding the 60d freshness threshold — requires SE acknowledgment before customer delivery",
+        "network-security: VEN-009/V009-SEC-0002 (Check Point Software) at $666.22 — branch-tier NGFW (1-5Gbps), lowest-cost NGFW candidate with no rules fired and 27.3% margin",
+        "structured-cabling: VEN-020/V020-CAB-0004 (Belden) at $457.89 — lowest-cost clean 48-port Cat6A patch panel, 2d lead time, 20.4% margin"
+      ]
+    },
+    "balanced": {
+      "summary": "Balanced tiers select mid-cost, rule-clean SKUs that align with the SE's guidance that the client prefers not to overspend on switching. All three balanced line items carry no rule flags.",
+      "bullets": [
+        "networking-switch: VEN-043/V043-SW-0001 (APC by Schneider) at $1,401.03 — clean 24-port PoE+ managed switch, 14d lead time, aligned with cost-conscious switching direction",
+        "Lead-time compliance (rule-001): 14d — within the 21d threshold; no substitution required",
+        "Margin compliance (rule-004): 18.4% — above the 15.0% floor; no flag triggered",
+        "No rule-002, rule-003, or rule-004 flags on any balanced line item across all three categories",
+        "network-security: VEN-041/V041-SEC-0002 (Black Box Corporation) at $5,231.05 — enterprise-edge NGFW (6-15Gbps) stepping up from branch-tier budget; appropriate for 150-desk perimeter expansion",
+        "structured-cabling: VEN-021/V021-CAB-0001 (Legrand) at $473.79 — established structured-cabling brand, 3d lead time; trade-off vs. budget is a modest $15.90 premium for Legrand's enterprise pedigree"
+      ]
+    },
+    "premium": {
+      "summary": "Premium tiers maximize performance and delivery speed. The switching premium remains cost-disciplined at $1,606.72 — only 14.7% above the balanced pick — reflecting the SE's guidance to avoid over-investment in switching.",
+      "bullets": [
+        "networking-switch: VEN-041/V041-SW-0001 (Black Box Corporation) at $1,606.72 — fastest lead time of all clean 24-port PoE+ candidates at 2d, 21.0% margin",
+        "Lead-time compliance (rule-001): 2d — well within the 21d threshold; no substitution required",
+        "Margin compliance (rule-004): 21.0% — above the 15.0% floor; no flag triggered",
+        "No rule flags on any premium line item; all three premium SKUs are fully clean",
+        "network-security: VEN-009/V009-SEC-0001 (Check Point Software) at $10,472.55 — enterprise-edge NGFW (6-15Gbps) with highest margin of clean enterprise candidates at 28.2% and 4d lead time",
+        "structured-cabling: VEN-024/V024-CAB-0002 (Vertiv) at $682.11 — highest-cost clean patch panel with best margin (20.5%) and 3d lead time; trade-off vs. balanced is a $208.32 step-up for Vertiv's data-center-grade pedigree"
+      ]
+    }
+  },
+  "soft_recommendation": "For the 150-desk campus expansion, the recommended configuration is: balanced switching (V043-SW-0001, $1,401.03/unit) to honor the client's preference not to overspend, premium NGFW (V009-SEC-0001, $10,472.55) to ensure the enterprise-edge throughput (6-15Gbps) needed for the expanded perimeter, and balanced structured cabling (V021-CAB-0001, $473.79/panel) as a clean, name-brand infrastructure anchor. This cross-tier configuration delivers a blended margin of approximately 22.4% across the three anchor line items. The only advisory to resolve before delivery is the stale-data warning on the budget switching alternative (Juniper Networks, VEN-002, 82d since last price confirmation) — the balanced and premium switch picks carry no such flags and are ready to present.",
+  "data_freshness_warnings": [
+    "VEN-002 (Juniper Networks): effective_date 2026-02-18 is 82d old, exceeding the 60d threshold (rule-002). Budget switch V002-SW-0001 is included per policy; SE must acknowledge before customer delivery.",
+    "VEN-004 (Arista Networks): effective_date 2026-02-24 is 76d old (rule-002). SKU V004-SW-0003 not selected for any tier but appears in catalog pool.",
+    "VEN-006 (Extreme Networks): effective_date 2025-11-02 is 190d old (rule-002). No SKUs from this vendor selected; catalog pool entry noted.",
+    "VEN-008 (Fortinet): effective_date 2026-02-15 is 85d old (rule-002). No SKUs selected.",
+    "VEN-012 (SonicWall): effective_date 2025-06-05 is 340d old (rule-002). No SKUs selected; extremely stale — catalog team should be alerted.",
+    "VEN-022 (CablePro Supply): effective_date 2025-08-22 is 262d old (rule-002). No SKUs selected; very stale.",
+    "VEN-027 (TD Synnex): effective_date 2026-03-01 is 71d old (rule-002). No SKUs selected for chosen tiers.",
+    "VEN-028 (Ingram Micro): effective_date 2026-03-07 is 65d old (rule-002). No SKUs selected.",
+    "VEN-030 (SHI International): effective_date 2026-02-18 is 82d old (rule-002). No SKUs selected.",
+    "VEN-031 (Lenovo Networking): effective_date 2026-02-27 is 73d old (rule-002). No SKUs selected.",
+    "VEN-034 (Sophos): effective_date 2026-02-18 is 82d old (rule-002). No SKUs selected.",
+    "VEN-036 (Trellix/FireEye): effective_date 2026-03-01 is 71d old (rule-002). No SKUs selected.",
+    "VEN-042 (Tripp Lite): effective_date 2026-02-24 is 76d old (rule-002). No SKUs selected.",
+    "VEN-046 (Axis Communications): effective_date 2026-02-21 is 79d old (rule-002). No SKUs selected for active tiers."
+  ],
+  "requires_human_review": true,
+  "abstention_reason": null
+}

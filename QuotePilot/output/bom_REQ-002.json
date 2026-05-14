@@ -1,0 +1,102 @@
+{
+  "request_id": "REQ-004",
+  "user_request": "Quote an NGFW solution for a regional branch office with around 75 concurrent users. The client's IT team specifically asked whether SonicWall has any options in the mid-range tier — they've used SonicWall before and want to see it as one of the options if possible. Include two other vendors as alternatives across the remaining tiers. Lead time is not a concern for this engagement.",
+  "tiers": [
+    {
+      "tier": "budget",
+      "sku": "V009-SEC-0002",
+      "vendor_id": "VEN-009",
+      "vendor_name": "Check Point Software",
+      "category": "network-security",
+      "availability": true,
+      "lead_time_days": 21,
+      "unit_cost": 666.22,
+      "margin_pct": 27.3,
+      "catalog_effective_date": "2026-04-26",
+      "evidence": [
+        "catalog: VEN-009/V009-SEC-0002 (effective_date: 2026-04-26)",
+        "ruleset: rule-001 — lead_time 21d is at the 21d threshold; no breach (noted per normal procedure; lead time not a concern for this engagement)",
+        "ruleset: rule-004 — margin_pct 27.3% exceeds 15% floor; compliant",
+        "no rule-002, rule-003, or rule-005 conditions fired"
+      ],
+      "gap_markers": []
+    },
+    {
+      "tier": "balanced",
+      "sku": "V012-SEC-0001",
+      "vendor_id": "VEN-012",
+      "vendor_name": "SonicWall",
+      "category": "network-security",
+      "availability": true,
+      "lead_time_days": 21,
+      "unit_cost": 6570.84,
+      "margin_pct": 23.1,
+      "catalog_effective_date": "2025-06-05",
+      "evidence": [
+        "catalog: VEN-012/V012-SEC-0001 (effective_date: 2025-06-05)",
+        "ruleset: rule-002 — vendor data is 341 days old, exceeds 60-day freshness threshold; stale-data warning surfaced; SE must acknowledge before customer-facing use",
+        "ruleset: rule-001 — lead_time 21d is at the 21d threshold; no breach (lead time not a concern for this engagement)",
+        "ruleset: rule-004 — margin_pct 23.1% exceeds 15% floor; compliant",
+        "rule-003 and rule-005 did not fire; SKU is available"
+      ],
+      "gap_markers": []
+    },
+    {
+      "tier": "premium",
+      "sku": "V007-SEC-0002",
+      "vendor_id": "VEN-007",
+      "vendor_name": "Palo Alto Networks",
+      "category": "network-security",
+      "availability": true,
+      "lead_time_days": 14,
+      "unit_cost": 11156.91,
+      "margin_pct": 25.1,
+      "catalog_effective_date": "2026-03-24",
+      "evidence": [
+        "catalog: VEN-007/V007-SEC-0002 (effective_date: 2026-03-24)",
+        "ruleset: rule-001 — lead_time 14d is within the 21d threshold; no breach",
+        "ruleset: rule-004 — margin_pct 25.1% exceeds 15% floor; compliant",
+        "no rule-002, rule-003, or rule-005 conditions fired"
+      ],
+      "gap_markers": []
+    }
+  ],
+  "justification": {
+    "budget": {
+      "summary": "Check Point V009-SEC-0002 is the lowest-cost fully clean candidate for the branch-NGFW class, with no rules fired and the strongest margin of the three tiers. It provides 1-5Gbps App-ID throughput appropriate for a 75-user branch and represents a recognized enterprise security vendor distinct from the SonicWall and Palo Alto selections.",
+      "bullets": [
+        "SKU V009-SEC-0002 / VEN-009 Check Point Software; unit cost $666.22",
+        "Lead time 21d — at the rule-001 threshold, not exceeded; no substitution required; lead time noted per normal procedure and is not a concern for this engagement (rule-001)",
+        "Margin 27.3% — highest of all three tiers, well above the 15% floor (rule-004)",
+        "No rule-002 (freshness), rule-003 (availability), or rule-005 (pricing data) conditions fired; catalog data current as of 2026-04-26",
+        "Trade-off vs. balanced: $5,904 lower unit cost; branch-tier 1-5Gbps throughput versus SonicWall's enterprise-edge 6-15Gbps profile — appropriate for 75 users but with less headroom for growth"
+      ]
+    },
+    "balanced": {
+      "summary": "SonicWall V012-SEC-0001 is placed in the balanced tier per explicit SE and client preference; it is the only SonicWall NGFW SKU in the catalog and carries an enterprise-edge 6-15Gbps throughput profile well-suited to a 75-user regional branch. The critical caveat is a severe data staleness warning (341 days): pricing and availability should be reconfirmed with SonicWall before this option is presented to the client.",
+      "bullets": [
+        "SKU V012-SEC-0001 / VEN-012 SonicWall; unit cost $6,570.84",
+        "Lead time 21d — at the rule-001 threshold, not exceeded; lead time noted per normal procedure and is not a concern for this engagement (rule-001)",
+        "Margin 23.1% — above the 15% floor; compliant (rule-004)",
+        "STALE DATA WARNING: VEN-012 effective_date is 2025-06-05, 341 days ago — far exceeds the 60-day threshold (rule-002); requires_human_review set to true; SE must confirm current pricing and availability with SonicWall before customer delivery",
+        "No rule-003 (availability) or rule-005 (pricing data) conditions fired; SKU shows as available in current catalog record, but staleness means this cannot be relied upon without verification"
+      ]
+    },
+    "premium": {
+      "summary": "Palo Alto Networks V007-SEC-0002 is the top-performing NGFW in the filtered candidates: enterprise-edge class with 6-15Gbps throughput and SD-WAN capability, no rules fired, and the fastest lead time of the three tiers at 14 days. It provides the strongest performance headroom and represents the industry-recognized premium NGFW vendor, distinct from both Check Point (budget) and SonicWall (balanced).",
+      "bullets": [
+        "SKU V007-SEC-0002 / VEN-007 Palo Alto Networks; unit cost $11,156.91",
+        "Lead time 14d — within the 21d rule-001 threshold; no breach; fastest lead time of the three tiers (rule-001)",
+        "Margin 25.1% — above the 15% floor; compliant (rule-004)",
+        "No rule-002 (freshness), rule-003 (availability), or rule-005 (pricing data) conditions fired; catalog data current as of 2026-03-24",
+        "Trade-off vs. balanced: $4,586 higher unit cost; adds SD-WAN and enterprise-edge throughput over SonicWall's similarly classed appliance — justified if the client anticipates network growth or WAN optimization needs"
+      ]
+    }
+  },
+  "soft_recommendation": "For a 75-user regional branch, the balanced SonicWall option (V012-SEC-0001, $6,570.84) directly addresses the client's stated vendor familiarity and provides enterprise-edge NGFW throughput appropriate for this site size; however, the 341-day data staleness on SonicWall's catalog record is a material concern that must be resolved before quoting. If SonicWall pricing cannot be confirmed in time, the Check Point budget tier (V009-SEC-0002, $666.22) offers a clean, low-risk alternative at the branch-NGFW class. The Palo Alto premium tier (V007-SEC-0002, $11,156.91) is recommended if the client wants a growth-ready platform with SD-WAN and the highest inspection throughput, and it carries no data quality issues. Blended average unit cost across all three tiers is approximately $6,131; blended average margin is approximately 25.2%.",
+  "data_freshness_warnings": [
+    "VEN-012 SonicWall: effective_date 2025-06-05 is 341 days old as of query date (2026-05-12), exceeding the 60-day freshness threshold by 281 days (rule-002). Pricing and availability for V012-SEC-0001 must be reconfirmed with the vendor before customer delivery. SE acknowledgment required."
+  ],
+  "requires_human_review": true,
+  "abstention_reason": null
+}

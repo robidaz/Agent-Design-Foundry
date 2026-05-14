@@ -1,0 +1,116 @@
+metadata:
+  source: rulesets
+  version: "1.0"
+  last_updated: "2026-05-11"
+  authored_by: SE
+  description: >
+    Evaluation rules applied by the QuotePilot agent before including any SKU in a BOM draft.
+    The agent reads this document at the start of every session before querying the catalog.
+    Rules may be updated by the SE; the agent may propose amendments only with explicit per-session write authorization.
+
+rules:
+
+  - id: rule-001
+    name: Lead Time Threshold
+    description: >
+      SKUs with a lead time exceeding 21 days introduce delivery risk for standard project timelines.
+      The agent should prefer in-stock alternatives before falling back to long-lead items.
+    applies_to:
+      field: lead_time_days
+      scope: product
+    condition:
+      operator: greater_than
+      value: 21
+      unit: days
+    severity: warn
+    agent_action: >
+      Search for an alternative SKU in the same category and tier with lead_time_days <= 21.
+      If a qualifying alternative exists, prefer it and note the substitution in the BOM justification.
+      If no alternative exists, include the original SKU and surface the lead-time breach to the SE
+      with the exact lead_time_days value and the nearest available alternative (if any).
+
+  - id: rule-002
+    name: Vendor Data Freshness
+    description: >
+      A vendor's effective_date indicates when their pricing and availability data was last confirmed.
+      Data older than 60 days may no longer reflect current market conditions and should be treated
+      as potentially stale before being included in a customer-facing BOM draft.
+    applies_to:
+      field: effective_date
+      scope: vendor
+    condition:
+      operator: older_than
+      value: 60
+      unit: days
+      reference: query_date
+    severity: warn
+    agent_action: >
+      Before including any SKU from this vendor in the BOM, surface a stale-data warning to the SE.
+      Include the vendor_id, vendor_name, effective_date, and the number of days since last update.
+      Do not block inclusion — the SE may choose to proceed — but the warning must appear in BOM output
+      regardless of the SE's decision.
+
+  - id: rule-003
+    name: SKU Availability Gate
+    description: >
+      SKUs flagged as unavailable (availability: false) cannot be committed to a customer BOM without
+      SE review. The agent should exhaust in-stock alternatives within the same category before
+      surfacing an unavailable SKU as a candidate.
+    applies_to:
+      field: availability
+      scope: product
+    condition:
+      operator: equals
+      value: false
+    severity: warn
+    agent_action: >
+      Deprioritize any SKU where availability is false. First attempt to satisfy the requirement using
+      an available SKU in the same category and tier. If no available alternative exists, include the
+      unavailable SKU as the sole candidate and flag it explicitly — label it "UNAVAILABLE — no
+      in-stock alternative found" in the BOM justification. SE must acknowledge before quote is finalized.
+
+  - id: rule-004
+    name: Margin Floor
+    description: >
+      SKUs with a margin_pct below 15.0% fall beneath the minimum acceptable margin floor for standard
+      deals. Including them without SE sign-off undermines profitability guardrails established by
+      sales operations.
+    applies_to:
+      field: margin_pct
+      scope: product
+    condition:
+      operator: less_than
+      value: 15.0
+      unit: percent
+    severity: flag
+    agent_action: >
+      Do not automatically include any SKU with margin_pct < 15.0 in the BOM draft.
+      Surface the SKU to the SE with the exact margin_pct value and a note that it is below the 15%
+      floor. If the SE explicitly approves the inclusion within the session, proceed and annotate the
+      BOM line item with "SE-approved below-margin exception." Otherwise, prefer the next qualifying
+      SKU in the same category that meets the margin floor.
+
+  - id: rule-005
+    name: Incomplete Pricing Data
+    description: >
+      SKUs where unit_cost is null or margin_pct is absent cannot be evaluated against cost or margin
+      criteria. Including them in a BOM would produce an incomplete pricing record that the SE cannot
+      validate or present to a customer.
+    applies_to:
+      field: unit_cost, margin_pct
+      scope: product
+    condition:
+      operator: any_of
+      checks:
+        - field: unit_cost
+          operator: equals
+          value: null
+        - field: margin_pct
+          operator: missing
+    severity: block
+    agent_action: >
+      Skip this SKU entirely. Do not include it in any BOM tier under any circumstance.
+      Log the SKU ID, vendor_id, and the specific missing or null fields in the session output
+      as a bad-data entry. If the skipped SKU was the only candidate for a required BOM slot,
+      surface the gap to the SE and request guidance — do not leave the BOM slot empty without
+      notifying the SE.

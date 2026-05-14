@@ -1,0 +1,413 @@
+evaluation:
+  metadata:
+    client_input: "design_exercise_artifacts/task_2_rfp_rfi_response_agent/task_2_design_intake.md"
+    template_version: "0.2"
+    completed_at: "2026-05-12T00:00:00Z"
+    evaluator_notes: "Tier 3 pipeline agent; 12 UNKNOWN fields primarily around numeric targets, deployment constraints, and security mitigations"
+
+  phase_1_problem:
+    use_case_statement:
+      situation:
+        value: "Dynamix receives a structured RFP/RFI question list from a customer"
+        confidence: FOUND
+        source: "Dynamix responds to a high volume of customer RFPs and RFIs"
+      motivation:
+        value: "Automatically retrieve, score, and draft cited answers from prior responses, technical documentation, partner enablement material, and internal SME knowledge"
+        confidence: FOUND
+        source: "Sales engineers and product specialists spend substantial time pulling answers from prior responses, technical documentation, partner enablement material, and internal SME knowledge"
+      outcome:
+        value: "Sales engineers can finalize accurate, cited RFP responses faster; low-confidence and conflicting items are routed to SMEs with full retrieval evidence"
+        confidence: FOUND
+        source: "Produce a per-question response artifact the SME can review and edit"
+      users:
+        value: "Sales engineers and product specialists (SMEs); moderate-to-high domain fluency; not expected to interact with the LLM directly"
+        confidence: FOUND
+        source: "the SME (sales engineer or product specialist) is the sole party that finalizes responses"
+      current_workflow:
+        value: "Manual search of prior RFPs and documentation; engineers compose answers by hand; review before submission"
+        confidence: INFERRED
+        source: "rationale: 'Sales engineers and product specialists spend substantial time pulling answers' implies a manual search-and-compose process"
+    is_ai_right_tool:
+      gate_well_defined:
+        value: "Yes — input is a structured markdown/JSON question list; output is a per-question artifact with defined fields"
+        confidence: FOUND
+      gate_language:
+        value: "Yes — requires natural language generation for drafts and language understanding for coverage scoring"
+        confidence: INFERRED
+      gate_human_judgment:
+        value: "Yes for conflicting/low-confidence cases; agent escalates rather than decides"
+        confidence: FOUND
+      ai_fit_recommendation:
+        value: "proceed"
+        confidence: FOUND
+    success_criteria:
+      quality:
+        target: null
+        confidence: UNKNOWN
+      adoption:
+        target: null
+        confidence: UNKNOWN
+      escalation:
+        target: null
+        confidence: UNKNOWN
+
+  phase_2_infrastructure:
+    enterprise_search:
+      exists:
+        value: "no"
+        confidence: FOUND
+        source: "no DMS integration (KB lives as repo files)"
+      name:
+        value: null
+        confidence: NA
+      api:
+        value: null
+        confidence: NA
+      contract:
+        value: null
+        confidence: NA
+    tooling:
+      identity:
+        exists: null
+        complexity: null
+        confidence: UNKNOWN
+      data:
+        exists: "local pgvector store (new, provisioned as part of PoC)"
+        complexity: "Low — single local instance"
+        confidence: FOUND
+        source: "loading into a local pgvector store"
+      comms:
+        exists: "none — output is file-based markdown/PDF artifact"
+        complexity: "None"
+        confidence: INFERRED
+        source: "rationale: rendered via Jinja to markdown/PDF; no comms platform mentioned"
+      lob:
+        exists: "none in scope — SharePoint/Confluence explicitly excluded"
+        complexity: "None"
+        confidence: FOUND
+        source: "Real DMS / SharePoint / Confluence integration listed under Scope Exclusions"
+
+  phase_3_architecture:
+    selected_tier:
+      value: 3
+      confidence: INFERRED
+      source: "rationale: multi-step pipeline with conditional routing, composite scoring, and two write-side artifacts exceeds Tier 2 RAG"
+    rationale:
+      value: "System requires: (1) hybrid retrieval, (2) composite confidence scoring with three routing paths, (3) conflict detection producing structured escalation artifact, (4) per-question observability — together constituting a multi-step pipeline with decision nodes beyond single retrieve-then-generate"
+      confidence: FOUND
+      source: "Per-question confidence is a composite... three bands drive routing; Route LOW/NO-SOURCE/CONFLICT items to an SME escalation queue"
+
+  phase_4_canvas:
+    knowledge_skipped: false
+    use_case_and_triggers:
+      goal:
+        value: "Given a structured RFP/RFI question list, retrieve grounded evidence from a curated KB, draft cited answers where evidence is strong, and route weak/conflicting items to an SME with full retrieval context"
+        confidence: FOUND
+        source: "Ingest a structured RFP/RFI question list and produce a draft response per question"
+      triggers:
+        value: "Submission of a pre-structured markdown or JSON RFP/RFI question list"
+        confidence: FOUND
+        source: "RFP input arrives as a pre-structured markdown or JSON question list"
+      channels:
+        value: "File-based / CLI — no interactive chat interface; output delivered as markdown/PDF artifact"
+        confidence: INFERRED
+        source: "rationale: rendered via Jinja to markdown/PDF; no chat UI or API endpoint described"
+    knowledge_and_data:
+      sources:
+        - source: "Prior RFP responses (3 documents)"
+          format: "Markdown"
+          update_frequency: "Static for PoC — one-shot ingestion"
+          owner: null
+          confidence: FOUND
+        - source: "Spec sheets (2 documents)"
+          format: "Markdown"
+          update_frequency: "Static for PoC"
+          owner: null
+          confidence: FOUND
+        - source: "Partner-enablement docs (2 documents)"
+          format: "Markdown"
+          update_frequency: "Static for PoC"
+          owner: null
+          confidence: FOUND
+        - source: "Internal SME FAQ (1 document)"
+          format: "Markdown"
+          update_frequency: "Static for PoC"
+          owner: null
+          confidence: FOUND
+      ingestion_approach:
+        value: "diy"
+        confidence: FOUND
+        source: "KB ingestion is a one-shot manual operation via a documented Python script loading into a local pgvector store"
+      chunking_strategy:
+        value: "Heading-aware for structured docs; paragraph-level for unstructured; target ~300–500 tokens per chunk"
+        confidence: FOUND
+        source: "chunking is heading-aware for structured docs and paragraph-level for unstructured, targeting ~300–500 token chunks"
+      curation:
+        owner:
+          value: null
+          confidence: UNKNOWN
+          source: "KB documents are pre-approved and curated but no owner role is named"
+        updates:
+          value: "Out of scope for PoC — KB is static; no closed-loop learning"
+          confidence: FOUND
+          source: "Closed-loop learning from SME edits (KB does not update based on draft review at PoC scope)"
+      metadata_schema:
+        source:
+          required: "yes"
+          confidence: FOUND
+          source: "Cite source document + chunk for every drafted answer"
+        date:
+          required: null
+          confidence: UNKNOWN
+        approval:
+          required: "yes (implied)"
+          confidence: INFERRED
+          source: "rationale: KB documents are pre-approved and curated — approval state is a precondition for inclusion"
+        scope:
+          required: null
+          confidence: UNKNOWN
+    tools_and_integrations:
+      tools:
+        - tool: "pgvector hybrid retrieval (vector + BM25)"
+          action_type: "read"
+          reversible: true
+          requires_approval: false
+          confidence: FOUND
+        - tool: "Embedding model (query-time)"
+          action_type: "read"
+          reversible: true
+          requires_approval: false
+          confidence: FOUND
+        - tool: "Jinja renderer"
+          action_type: "write (output file only)"
+          reversible: true
+          requires_approval: false
+          confidence: FOUND
+        - tool: "SME escalation queue writer"
+          action_type: "write (append)"
+          reversible: true
+          requires_approval: false
+          confidence: FOUND
+    flows_and_orchestration:
+      pattern:
+        value: "pipeline"
+        confidence: INFERRED
+        source: "rationale: fixed per-question sequence with conditional branching at routing step; no dynamic subagent spawning described"
+      rationale:
+        value: "Deterministic per-question workflow with three routing paths rather than open-ended planning loop"
+        confidence: FOUND
+        source: "three bands drive routing: HIGH (draft committed), MEDIUM (draft + SME-review flag), LOW/NO-SOURCE/CONFLICT (no draft; escalated to SME)"
+    instructions_and_behavior:
+      role:
+        value: "Factual drafting assistant that cites sources, surfaces conflicts without adjudicating, and defaults to abstention over speculation"
+        confidence: FOUND
+        source: "the agent does not pick a winner; abstention is the default when retrieval support is insufficient"
+      format:
+        value: "Per-question artifact: status (drafted/escalated/conflict) + draft text (if applicable) + citations (source doc + chunk) + confidence band; rendered to markdown/PDF via Jinja"
+        confidence: FOUND
+        source: "per-question response artifact (status + draft + citations + confidence band) rendered via Jinja to markdown/PDF"
+      citation:
+        value: "Every drafted answer cites source doc + chunk; multi-source cites all contributing chunks; conflicting sources both cited, no winner selected"
+        confidence: FOUND
+        source: "Every drafted answer cites source document + chunk; when sources conflict, both versions are surfaced and cited"
+      abstention:
+        value: "LOW/NO-SOURCE/CONFLICT → no fabricated draft; retrieval evidence surfaced first to avoid anchoring bias; prefer 'I don't know' over hallucination"
+        confidence: FOUND
+        source: "Abstention is the default when retrieval support is insufficient — LOW/NO-SOURCE/CONFLICT items present retrieval evidence first (no fabricated draft) to avoid anchoring bias"
+      scope:
+        value: "Out of scope: full PDF/Word parsing, multi-language, DMS/SharePoint/Confluence, KB authoring/curation/approval, auto-submission, closed-loop learning, cross-RFP analytics"
+        confidence: FOUND
+        source: "Scope Exclusions section"
+    architecture_components:
+      components:
+        - name: "KB ingestion script (Python)"
+          new_or_existing: "new"
+          notes: "One-shot manual operation; generates embeddings index from 8 source markdown files into pgvector"
+          confidence: FOUND
+        - name: "pgvector store"
+          new_or_existing: "new"
+          notes: "Local instance; stores chunk embeddings + BM25-compatible index"
+          confidence: FOUND
+        - name: "Embedding model"
+          new_or_existing: "new (configured)"
+          notes: "Single model used at ingestion and query time; documented and configurable"
+          confidence: FOUND
+        - name: "Hybrid retrieval layer"
+          new_or_existing: "new"
+          notes: "Semantic vector search + BM25-style keyword at k=5 with relevance score filter"
+          confidence: FOUND
+        - name: "Confidence scoring module"
+          new_or_existing: "new"
+          notes: "Composite of chunk similarity + Claude-judged coverage + source agreement; outputs HIGH/MEDIUM/LOW/NO-SOURCE/CONFLICT bands"
+          confidence: FOUND
+        - name: "Routing / orchestration logic"
+          new_or_existing: "new"
+          notes: "Branches on confidence band: HIGH → commit draft; MEDIUM → draft + SME flag; LOW/NO-SOURCE/CONFLICT → escalation queue"
+          confidence: FOUND
+        - name: "Jinja renderer"
+          new_or_existing: "new"
+          notes: "Renders per-question artifact to markdown/PDF"
+          confidence: FOUND
+        - name: "SME escalation queue"
+          new_or_existing: "new"
+          notes: "Structured list of escalated items with retrieval evidence attached"
+          confidence: FOUND
+        - name: "Claude (LLM API)"
+          new_or_existing: "existing"
+          notes: "Used for draft generation and Claude-judged coverage scoring"
+          confidence: INFERRED
+
+  phase_5_evaluation:
+    quality_metrics:
+      supported_answer_rate:
+        target: null
+        confidence: UNKNOWN
+      abstention_rate:
+        target: null
+        confidence: UNKNOWN
+      task_completion_rate:
+        target: null
+        confidence: UNKNOWN
+    abstention_behavior:
+      no_sources:
+        behavior: "NO-SOURCE band: no fabricated draft; present best-effort retrieval context to SME in escalation queue"
+        confidence: FOUND
+        source: "route to the SME with the original question plus best-effort retrieval context — no fabricated draft"
+      low_confidence:
+        behavior: "LOW band: escalate to SME with full retrieval evidence; no draft committed"
+        confidence: FOUND
+        source: "LOW/NO-SOURCE/CONFLICT (no draft; escalated to SME with retrieval evidence)"
+      conflict:
+        behavior: "CONFLICT band: surface both conflicting versions with citations; do not pick a winner; escalate to SME"
+        confidence: FOUND
+        source: "surface the conflict rather than picking a winner"
+      out_of_scope:
+        behavior: null
+        confidence: UNKNOWN
+        source: "Not addressed in intake — no behavior specified for topically out-of-scope questions"
+
+  phase_6_governance:
+    human_gates:
+      - action: "Committing a HIGH-confidence draft into the response document"
+        risk_level: "high"
+        gate: "SME final review before customer submission; no auto-submit"
+        confidence: FOUND
+      - action: "MEDIUM-confidence draft items"
+        risk_level: "medium"
+        gate: "SME-review flag attached; SME must approve or edit before finalization"
+        confidence: FOUND
+      - action: "CONFLICT item resolution"
+        risk_level: "high"
+        gate: "SME reviews both cited versions and picks winner; agent does not decide"
+        confidence: FOUND
+      - action: "Finalizing complete response document"
+        risk_level: "high"
+        gate: "SME is sole party that finalizes responses"
+        confidence: FOUND
+    security:
+      prompt_injection:
+        strategy: null
+        confidence: UNKNOWN
+        source: "Flagged as a required failure-mode analysis topic but no mitigation strategy stated"
+      least_privilege:
+        strategy: "Agent has no write access to KB; all KB operations read-only; write actions limited to output artifact and escalation queue"
+        confidence: FOUND
+        source: "agent has no write access and is not responsible for provenance validation or KB updates"
+      redaction:
+        strategy: null
+        confidence: UNKNOWN
+    constraints:
+      data_residency:
+        present: null
+        impact: null
+        confidence: UNKNOWN
+      air_gap:
+        present: null
+        impact: null
+        confidence: UNKNOWN
+        source: "Local pgvector store used in PoC but unclear if this is a constraint or PoC simplification"
+      regulated_data:
+        present: null
+        impact: null
+        confidence: UNKNOWN
+    deployment:
+      model:
+        value: null
+        confidence: UNKNOWN
+        source: "PoC uses local pgvector but production deployment model not stated"
+      rationale:
+        value: null
+        confidence: UNKNOWN
+
+  phase_7_rollout:
+    artifacts:
+      system_prompt:
+        versioned: null
+        requires_eval: null
+        confidence: UNKNOWN
+      retrieval_config:
+        versioned: "implied yes"
+        requires_eval: null
+        confidence: INFERRED
+        source: "rationale: ingestion script described as documented and configurable, implying version-awareness"
+      model_version:
+        versioned: null
+        requires_eval: null
+        confidence: UNKNOWN
+      tool_definitions:
+        versioned: null
+        requires_eval: null
+        confidence: UNKNOWN
+    rollback_trigger:
+      value: null
+      confidence: UNKNOWN
+
+  open_items:
+    - item: "Numeric success targets (supported answer rate, task completion rate, escalation rate)"
+      phase_blocked: "1.3, 5.1"
+      why_it_matters: "Without targets, PoC has no exit conditions and evaluation pass/fail cannot be defined"
+      suggested_resolution: "Ask client: what % of questions answered without SME escalation constitutes a successful PoC? What supported-answer rate is acceptable?"
+    - item: "Identity / auth system"
+      phase_blocked: "2.2"
+      why_it_matters: "If the SME console or escalation queue requires authenticated access, an auth layer must be designed before build"
+      suggested_resolution: "Ask internal IT or client: is the PoC single-user or do multiple engineers need access with identity controls?"
+    - item: "Curation owner for KB documents"
+      phase_blocked: "4.2"
+      why_it_matters: "Metadata governance and update policy require a named owner; without one, stale documents may persist undetected"
+      suggested_resolution: "Ask client: who owns the KB files and is responsible for updating spec sheets or correcting prior RFP responses?"
+    - item: "Metadata schema — date/version field"
+      phase_blocked: "4.2"
+      why_it_matters: "Retrieval cannot filter on document recency without a date/version tag; superseded responses could outrank current ones"
+      suggested_resolution: "Ask client: are source documents versioned? Should retrieval prefer newer documents when similarity scores are equal?"
+    - item: "Metadata schema — scope/jurisdiction field"
+      phase_blocked: "4.2"
+      why_it_matters: "If documents are scoped to specific products or regions, unscoped retrieval may return wrong answers for a given customer"
+      suggested_resolution: "Ask client: do source documents apply universally or are some scoped to specific geographies, products, or customer tiers?"
+    - item: "Prompt-injection mitigation strategy"
+      phase_blocked: "6.2"
+      why_it_matters: "RFP questions are user-supplied and could contain adversarial instructions; flagged as a risk in the intake but no mitigation specified"
+      suggested_resolution: "Define in design: input sanitization approach, system-prompt isolation strategy, and whether KB content is treated as untrusted"
+    - item: "Sensitive-field redaction in pipeline"
+      phase_blocked: "6.2"
+      why_it_matters: "If RFP content or KB includes pricing, NDA-covered specs, or PII and the LLM API is external, unredacted content leaves the trust boundary"
+      suggested_resolution: "Ask client: does any KB or RFP content include pricing, NDA-covered specifications, or customer PII that must not be sent to an external API?"
+    - item: "Data residency requirement"
+      phase_blocked: "6.3"
+      why_it_matters: "Contractual or regulatory requirements may constrain LLM API and vector store hosting choices"
+      suggested_resolution: "Ask client or legal: are there requirements governing where RFP content and KB data may be processed?"
+    - item: "Air-gap / on-prem requirement"
+      phase_blocked: "6.3"
+      why_it_matters: "Unclear whether local-only architecture is a permanent constraint or a PoC convenience; changes production deployment model"
+      suggested_resolution: "Ask client: is the local-only architecture a permanent requirement, or is managed cloud acceptable for production?"
+    - item: "Regulated data classification"
+      phase_blocked: "6.3"
+      why_it_matters: "If RFP content includes financial projections, healthcare data, or PII, GDPR/HIPAA/SOC2 controls may apply"
+      suggested_resolution: "Ask client: what data classification applies to RFP content and KB source documents?"
+    - item: "Rollback trigger / regression threshold"
+      phase_blocked: "7"
+      why_it_matters: "Without a defined trigger, there is no automatic signal to revert a prompt or model change that degrades answer quality"
+      suggested_resolution: "Define: rollback if supported answer rate drops below X% on the synthetic test suite in CI"
+    - item: "Out-of-scope question behavior"
+      phase_blocked: "5.2"
+      why_it_matters: "Intake defines NO-SOURCE behavior but does not distinguish 'no matching chunk' from 'question is topically outside KB scope'"
+      suggested_resolution: "Ask client: should the agent signal when a question is entirely outside the KB's subject area vs. simply having no matching document?"

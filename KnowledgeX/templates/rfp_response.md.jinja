@@ -1,0 +1,70 @@
+{# Full RFP Response document — markdown. Consumes RFPResponseArtifact. #}
+# RFP / RFI Response — {{ artifact.engagement_id }}
+
+**Generated:** {{ artifact.generated_at.strftime("%Y-%m-%d %H:%M UTC") }}
+{% if artifact.requires_human_review -%}
+**Status:** Draft — requires SME review before customer delivery.
+{%- endif %}
+
+## Summary
+
+{% set counts = artifact.band_counts() -%}
+| Band | Count |
+| ---- | ----- |
+| HIGH | {{ counts.HIGH }} |
+| MEDIUM (SME review) | {{ counts.MEDIUM }} |
+| LOW (escalated) | {{ counts.LOW }} |
+| NO-SOURCE (escalated) | {{ counts.NO_SOURCE }} |
+| CONFLICT (escalated) | {{ counts.CONFLICT }} |
+| **Total questions** | **{{ artifact.questions | length }}** |
+
+{% if artifact.escalation_queue -%}
+**Escalation queue:** {{ artifact.escalation_queue | length }} item(s) routed to SME (see end of document and `escalation_{{ artifact.engagement_id }}.md`).
+{% endif %}
+---
+
+## Per-Question Responses
+
+{% for q in artifact.questions %}
+### {{ q.question_id }} — {{ q.confidence_band }}{% if q.confidence_band == "MEDIUM" %} · REVIEW{% endif %}
+
+**Question:** {{ q.question_text }}
+
+{%- if q.draft_text %}
+
+**Draft answer:**
+
+{{ q.draft_text }}
+{%- elif q.conflict_versions %}
+
+**Conflicting versions (SME must resolve):**
+
+{% for v in q.conflict_versions %}
+- {{ v }}
+{% endfor %}
+{%- else %}
+
+**No draft — escalated.**
+{%- if q.escalation_reason %}
+
+*Reason:* {{ q.escalation_reason }}
+{%- endif %}
+{%- endif %}
+
+{%- if q.citations %}
+
+**Citations:**
+{% for c in q.citations %}
+- `{{ c.source_doc }}#{{ c.chunk_id }}` (similarity {{ "%.2f"|format(c.similarity_score) }})
+{%- endfor %}
+{%- endif %}
+
+---
+{% endfor %}
+
+## Reviewer Checklist
+
+- [ ] Every HIGH draft has at least one citation and the citation maps to a real KB chunk.
+- [ ] Every MEDIUM draft's uncertainty note is reviewed and confirmed.
+- [ ] Every LOW / NO-SOURCE / CONFLICT item is addressed in the escalation queue.
+- [ ] No customer-confidential information was added to the draft from outside the KB.

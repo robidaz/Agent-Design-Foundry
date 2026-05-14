@@ -1,0 +1,279 @@
+{
+  "metadata": {
+    "source": "greenlight_synthetic_session",
+    "version": "1.0.0",
+    "last_updated": "2026-05-12",
+    "engagement_id": "ENG-DEMO-001",
+    "framework_version_pinned": "1.0.0",
+    "intake_schema_version": "1.0.0",
+    "purpose": "Hand-authored synthetic discovery session for the sample readiness report. Exercises the full 1–5 scoring range, includes one UNKNOWN dimension after follow-up cap is reached, includes one conflicting-response scenario, and includes a deterministic working-demo recommendation signal. Simulates what a real client (a fictional regional industrial distributor) would enter through the production Angular + Syncfusion intake UI.",
+    "scenario_summary": "Midwest regional industrial distributor, ~850 employees, $320M revenue, 8 branches. Family-owned, third generation. SAP S/4HANA ERP. Some cloud migration in motion. No formal AI strategy yet; ops team is feeling quoting-cycle pain. Governance dimension intentionally exits with insufficient evidence → UNKNOWN."
+  },
+
+  "engagement_metadata": {
+    "company_name": "Heartland Industrial Supply Co.",
+    "employee_count_band": "500–1,000",
+    "revenue_band": "$200M–$500M",
+    "industry": "Industrial Distribution / Wholesale",
+    "respondent_role": "VP of Operations",
+    "session_started_at": "2026-05-12T14:02:00Z",
+    "session_completed_at": "2026-05-12T14:38:00Z",
+    "client_self_initiated": true,
+    "client_ip_region": "US-IA"
+  },
+
+  "structured_responses": [
+
+    {
+      "question_id": "S1-001",
+      "section_id": "strategy_use_case_portfolio",
+      "answer": "Informal conversations only"
+    },
+    {
+      "question_id": "S1-002",
+      "section_id": "strategy_use_case_portfolio",
+      "answer": "C-suite"
+    },
+    {
+      "question_id": "S1-003",
+      "section_id": "strategy_use_case_portfolio",
+      "answer": ["Sales / quoting assistance", "Inventory / demand forecasting", "Document / email triage"]
+    },
+    {
+      "question_id": "S1-004",
+      "section_id": "strategy_use_case_portfolio",
+      "answer": "Honestly, we don't have a real prioritization process. Our COO has been pushing on the quoting workflow because reps are spending a full day per quote on the bigger industrial accounts. Our CFO is more interested in inventory because we wrote off about $4M in slow-moving stock last year. There's no shared list."
+    },
+    {
+      "question_id": "S1-005",
+      "section_id": "strategy_use_case_portfolio",
+      "answer": "Informally"
+    },
+
+    {
+      "question_id": "D1-001",
+      "section_id": "data_foundation",
+      "answer": "Catalog for top systems"
+    },
+    {
+      "question_id": "D1-002",
+      "section_id": "data_foundation",
+      "answer": "Monitored for critical domains"
+    },
+    {
+      "question_id": "D1-003",
+      "section_id": "data_foundation",
+      "answer": "Mostly through our BI team — they own the Power BI environment and pull from SAP. If a business person needs data, they file a ticket and the BI team builds the report. Engineering doesn't really touch operational data directly."
+    },
+    {
+      "question_id": "D1-004",
+      "section_id": "data_foundation",
+      "answer": "Documented integrations between core systems"
+    },
+    {
+      "question_id": "D1-005",
+      "section_id": "data_foundation",
+      "answer": "We carry about 145,000 active SKUs across 8 branches. We do roughly 22,000 customer orders per month and quote about 4,500 industrial-account quotes per month — the big quotes are the slow ones."
+    },
+
+    {
+      "question_id": "T1-001",
+      "section_id": "technology_infrastructure",
+      "answer": "Hybrid with ad-hoc cloud usage"
+    },
+    {
+      "question_id": "T1-002",
+      "section_id": "technology_infrastructure",
+      "answer": "Documented APIs on key systems"
+    },
+    {
+      "question_id": "T1-003",
+      "section_id": "technology_infrastructure",
+      "answer": "Standard but uninspected for AI"
+    },
+    {
+      "question_id": "T1-004",
+      "section_id": "technology_infrastructure",
+      "answer": "No"
+    },
+
+    {
+      "question_id": "P1-001",
+      "section_id": "people_skills",
+      "answer": "Curious but uneven"
+    },
+    {
+      "question_id": "P1-002",
+      "section_id": "people_skills",
+      "answer": "1–2 technically literate staff"
+    },
+    {
+      "question_id": "P1-003",
+      "section_id": "people_skills",
+      "answer": "The SAP S/4HANA migration two years ago was a slog but we got through it. There's change fatigue in the field branches — they pushed back hard on the new warehouse management screens. Office staff in our HQ adapt faster than the field."
+    },
+    {
+      "question_id": "P1-004",
+      "section_id": "people_skills",
+      "answer": "No"
+    },
+    {
+      "question_id": "P1-005",
+      "section_id": "people_skills",
+      "answer": "Opportunistically"
+    },
+
+    {
+      "question_id": "O1-001",
+      "section_id": "process_operations",
+      "answer": "Documented for core flows"
+    },
+    {
+      "question_id": "O1-002",
+      "section_id": "process_operations",
+      "answer": "We have some UiPath bots a third-party set up two years ago — they handle a few AP and order-entry tasks. We're not sure all of them are still running correctly. Otherwise, lots of Excel and a few SharePoint workflows.",
+      "deterministic_signal": "manual_doc_processing"
+    },
+    {
+      "question_id": "O1-003",
+      "section_id": "process_operations",
+      "answer": "KPIs visible to operators"
+    },
+    {
+      "question_id": "O1-004",
+      "section_id": "process_operations",
+      "answer": "Branch managers escalate to operations leadership on the weekly call. There's no formal ticket system for process improvement suggestions."
+    },
+    {
+      "question_id": "O1-005",
+      "section_id": "process_operations",
+      "answer": ["Quoting / pricing", "Inbound email triage", "Reporting / spreadsheets"],
+      "deterministic_signal": "operational_pain_areas"
+    },
+
+    {
+      "question_id": "G1-001",
+      "section_id": "governance_risk",
+      "answer": "Informal guidance only"
+    },
+    {
+      "question_id": "G1-002",
+      "section_id": "governance_risk",
+      "answer": "We don't have a formal process for this. IT has talked about it but nothing's documented."
+    },
+    {
+      "question_id": "G1-003",
+      "section_id": "governance_risk",
+      "answer": "Partial awareness"
+    },
+    {
+      "question_id": "G1-004",
+      "section_id": "governance_risk",
+      "answer": "Not that I'm aware of — but I'm not the right person to confirm. IT and legal would know better."
+    },
+    {
+      "question_id": "G1-005",
+      "section_id": "governance_risk",
+      "answer": "Inherited from generic procurement"
+    }
+  ],
+
+  "follow_up_turns": [
+    {
+      "dimension_id": "strategy_use_case_portfolio",
+      "turn": 1,
+      "agent_question": "You mentioned the COO is pushing on quoting and the CFO on inventory write-offs. Has any executive named a single first AI initiative they're willing to back with budget in the next 12 months — or is it still open?",
+      "client_response": "Open. The CEO has said he wants 'one thing done well' in the next year but he hasn't picked which one. The board hasn't approved AI-specific budget yet — we'd be funding from existing IT capex."
+    },
+    {
+      "dimension_id": "strategy_use_case_portfolio",
+      "turn": 2,
+      "agent_question": "Earlier you said your team had identified quoting, forecasting, and email triage as use cases. Have any of those three been scoped enough that you could estimate value (revenue, cost, hours saved) — even roughly?",
+      "client_response": "Quoting we've sized informally — about $1.2M/year in rep time if we cut quote prep by half. Forecasting we haven't sized. Email triage was an idea, never scoped."
+    },
+
+    {
+      "dimension_id": "data_foundation",
+      "turn": 1,
+      "agent_question": "Your BI team owns access through Power BI. If a project needed a feed of, say, the last 24 months of quote history including line items and won/lost outcomes, how long would it realistically take to get that?",
+      "client_response": "Two to three weeks. The BI team is solid but they're swamped — they'd have to slot it. The data is all in SAP and our quoting add-on so it exists."
+    },
+
+    {
+      "dimension_id": "people_skills",
+      "turn": 1,
+      "agent_question": "You mentioned 1–2 technically literate staff in-house. Could you say a bit more about who they are and what they currently work on?",
+      "client_response": "Our director of business systems is genuinely sharp — he did the SAP integration architecture. He'd be one. The other is a senior BI analyst who's been teaching herself Python on the side. Both are slammed already; neither has formal ML background."
+    },
+    {
+      "dimension_id": "people_skills",
+      "turn": 2,
+      "agent_question": "When you said field branches pushed back on the new warehouse screens — was that resolved, and if so, what worked?",
+      "client_response": "It mostly resolved after we did three branch road-shows with a champion in each region. Slower than we hoped but it stuck. Top-down doesn't work for us at the branch level."
+    },
+
+    {
+      "dimension_id": "governance_risk",
+      "turn": 1,
+      "agent_question": "You noted that IT has discussed AI policy but nothing is documented. Is there a target date for that work, or a person owning it?",
+      "client_response": "I genuinely don't know. I'd have to ask our CIO."
+    },
+    {
+      "dimension_id": "governance_risk",
+      "turn": 2,
+      "agent_question": "Has your organization completed any third-party vendor reviews that specifically asked questions about AI use, training data, or model handling?",
+      "client_response": "I'd have to check with legal. I don't have visibility into the vendor review process at that level of detail."
+    },
+    {
+      "dimension_id": "governance_risk",
+      "turn": 3,
+      "agent_question": "Is there anyone — IT, legal, compliance — who has signed off on or even reviewed any AI tool currently in use anywhere in the business (including things like email assistants, summarization features in existing software)?",
+      "client_response": "I'm not sure. I know individual employees use ChatGPT but I don't know if that's been reviewed. I really can't speak to this — it's outside my visibility."
+    }
+  ],
+
+  "agent_observations": {
+    "conflict_flags": [
+      {
+        "type": "ambiguity",
+        "description": "Respondent confidence is high on operational dimensions but explicitly defers on governance/IT/legal items. Multiple G1 follow-ups returned 'I don't know' — VP Ops is the wrong respondent for the governance dimension. Consultant should consider a secondary respondent (CIO or General Counsel) before finalizing.",
+        "affected_dimensions": ["governance_risk"]
+      }
+    ],
+    "abstention_decisions": [
+      {
+        "dimension_id": "governance_risk",
+        "reason": "Follow-up cap (3 turns) reached without conclusive evidence on documented AI policy, third-party AI vendor review, or AI-tool oversight. Respondent explicitly stated 'outside my visibility.' Abstention per framework_config.settings.abstention_rule.",
+        "confidence_level": "unknown",
+        "consultant_action_required": true
+      }
+    ],
+    "deterministic_demo_signals": [
+      {
+        "signal": "use_case_intent",
+        "source_question": "S1-003",
+        "values": ["Sales / quoting assistance", "Inventory / demand forecasting", "Document / email triage"]
+      },
+      {
+        "signal": "sku_volume_high",
+        "source_question": "D1-005",
+        "values": "145,000 active SKUs; 22,000 orders/month; 4,500 industrial quotes/month"
+      },
+      {
+        "signal": "manual_doc_processing",
+        "source_question": "O1-002",
+        "values": "Aging UiPath bots, Excel, SharePoint"
+      },
+      {
+        "signal": "operational_pain_areas",
+        "source_question": "O1-005",
+        "values": ["Quoting / pricing", "Inbound email triage", "Reporting / spreadsheets"]
+      }
+    ],
+    "recommended_demo_template": {
+      "demo_id": "demo_sales_assistant",
+      "rationale": "Aggregated signals point strongly to quote-cycle pain: (1) use_case_intent includes 'Sales / quoting assistance', (2) operational_pain_areas top entry is 'Quoting / pricing', (3) respondent self-quantified the value at ~$1.2M/year, (4) data feed (24 months of quote history + line items + outcomes) is sourceable in 2–3 weeks per follow-up. The Sales Rep Quote Assistant template is the closest match. Consultant verification required before presenting alongside the readiness report.",
+      "requires_consultant_verification": true
+    }
+  }
+}

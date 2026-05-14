@@ -1,0 +1,427 @@
+evaluation:
+  metadata:
+    client_input: "design_exercise_artifacts/task_1_quote_bom_agent/task_1_design_intake.md"
+    template_version: "0.2"
+    completed_at: "2026-05-10T00:00:00Z"
+    evaluator_notes: "Tier 3 agent recommended; 14 UNKNOWN fields concentrated in infrastructure, governance, and quantitative metrics"
+
+  phase_1_problem:
+    use_case_statement:
+      situation:
+        value: "Sales engineer receives customer technical requirements and must build a BOM manually across 200+ vendor catalogs"
+        confidence: INFERRED
+        source: "rationale: intake lines 3-5 describe the trigger as receiving customer requirements and pulling SKUs across catalogs"
+      motivation:
+        value: "Automatically convert customer technical requirements into a validated multi-vendor BOM with availability, lead time, and margin evaluation"
+        confidence: FOUND
+        source: "Agent that converts a customer technical requirement into a multi-vendor BOM (line 26)"
+      outcome:
+        value: "Reduce quote turnaround time and deliver a three-tier price/performance BOM with justification to compete more effectively"
+        confidence: FOUND
+        source: "Quote turnaround time is one of the levers we use to compete (lines 5-6); BoM with 3 tiers (line 43)"
+      users:
+        value: "Sales engineers with basic product knowledge; responsible for curated customer requirements list"
+        confidence: FOUND
+        source: "Sales engineer is responsible for producing a curated list of customer requirements (line 12); Sales engineer has basic knowledge of the product suite (line 13)"
+      current_workflow:
+        value: "Sales engineers manually pull SKUs across vendor catalogs, validate availability and lead times, calculate margin, and assemble alternatives without automated tooling"
+        confidence: FOUND
+        source: "Sales engineers spend significant time manually building Bills of Materials…pulling SKUs across catalogs, validating availability and lead times, calculating margin (lines 3-5)"
+    is_ai_right_tool:
+      gate_well_defined:
+        value: "yes"
+        confidence: FOUND
+        source: "Input is curated customer requirements; output is structured multi-vendor BOM with three tiers and justification (lines 26, 43-45)"
+      gate_language:
+        value: "yes"
+        confidence: FOUND
+        source: "Agent references rulesets & guidelines source as translation basis (lines 29-31); generates justification text (line 45)"
+      gate_human_judgment:
+        value: "partial — rule-driven evaluation with bounded human judgment for soft recommendations and ruleset interpretation"
+        confidence: INFERRED
+        source: "rationale: lines 33-34 specify rule-based evaluation criteria; line 35 requires accuracy-over-results judgment; lines 19-21 place ruleset curation with human SE"
+      ai_fit_recommendation:
+        value: "proceed"
+        confidence: INFERRED
+        source: "rationale: all three gates pass; task is well-defined with language generation requirements and bounded human-judgment scope"
+    success_criteria:
+      quality:
+        target: null
+        confidence: UNKNOWN
+        source: "No numeric target stated in intake"
+      adoption:
+        target: null
+        confidence: UNKNOWN
+        source: "No numeric target stated in intake"
+      escalation:
+        target: null
+        confidence: UNKNOWN
+        source: "No numeric target stated in intake"
+
+  phase_2_infrastructure:
+    enterprise_search:
+      exists:
+        value: "no"
+        confidence: INFERRED
+        source: "rationale: intake specifies bespoke JSON/YAML catalog and user-maintained rulesets doc; no enterprise search platform mentioned"
+      name:
+        value: null
+        confidence: NA
+      api:
+        value: null
+        confidence: NA
+      contract:
+        value: null
+        confidence: NA
+    tooling:
+      identity:
+        exists: null
+        complexity: null
+        confidence: UNKNOWN
+        source: "Not mentioned in intake"
+      data:
+        exists: "JSON/YAML flat-file catalog; user-maintained rulesets & guidelines document"
+        complexity: "Low (direct file read)"
+        confidence: INFERRED
+        source: "rationale: PoC data source is JSON or YAML (line 10); rulesets document provided by SE (line 29)"
+      comms:
+        exists: null
+        complexity: null
+        confidence: UNKNOWN
+        source: "Not mentioned in intake"
+      lob:
+        exists: null
+        complexity: null
+        confidence: UNKNOWN
+        source: "No CRM, ERP, or quoting platform mentioned in intake"
+
+  phase_3_architecture:
+    selected_tier:
+      value: 3
+      confidence: INFERRED
+      source: "rationale: multi-step task (read rulesets, query catalog, apply constraints, generate BOM) and conditional write-back to rulesets (line 31) exceed Tier 2"
+    rationale:
+      value: "Agent must sequentially read rulesets, parse requirements, query catalog across multiple dimensions, apply vendor-consistency constraints, produce three-tier output with justification, and optionally write back to rulesets. Steps 1-4 exceed Tier 2; step 5 confirms Tier 3."
+      confidence: INFERRED
+      source: "rationale: lines 29-31, 33-35, 43-45 collectively describe multi-step reasoning and conditional write access"
+
+  phase_4_canvas:
+    knowledge_skipped: false
+    use_case_and_triggers:
+      goal:
+        value: "When a sales engineer submits a curated customer requirements list, the agent must produce a validated multi-vendor BOM in three price/performance tiers so the SE can turn around a competitive quote faster"
+        confidence: INFERRED
+        source: "rationale: synthesis of lines 3-6, 26, 43-45"
+      triggers:
+        value: "Explicit on-demand submission of customer requirements by the sales engineer"
+        confidence: INFERRED
+        source: "rationale: Sales engineer produces curated requirements list (line 12); no event-driven or scheduled trigger mentioned"
+      channels:
+        value: null
+        confidence: UNKNOWN
+        source: "No UI, API surface, chat platform, or CLI specified in intake"
+    knowledge_and_data:
+      sources:
+        - source: "Vendor/distributor product catalog (50 vendors, multiple SKUs, 3-4 product categories)"
+          format: "JSON or YAML"
+          update_frequency: "Source-level last-updated field; per-vendor effective date; no SKU-level tracking"
+          owner: "UNKNOWN — agent explicitly excluded from updates"
+          confidence: FOUND
+          source_citation: "lines 10-11, 15-17"
+        - source: "Rulesets & guidelines document (acceptable lead times, evaluation fallback rules, product class descriptions)"
+          format: "UNKNOWN"
+          update_frequency: "Manually by SE or via prompt"
+          owner: "Sales engineer"
+          confidence: FOUND
+          source_citation: "lines 19-21, 29-31"
+        - source: "Customer requirements input (per-session)"
+          format: "UNKNOWN — structured text or form submission implied"
+          update_frequency: "Per-session ephemeral"
+          owner: "Sales engineer"
+          confidence: INFERRED
+          source_citation: "rationale: line 12 says SE produces curated requirements list; format not specified"
+      ingestion_approach:
+        value: "diy"
+        confidence: INFERRED
+        source: "rationale: bespoke Python-generated JSON/YAML catalog (line 9); no ingestion framework mentioned"
+      chunking_strategy:
+        value: null
+        confidence: UNKNOWN
+        source: "Catalog is structured JSON/YAML; traditional text chunking likely inappropriate; structured query approach implied but not specified"
+      curation:
+        owner:
+          value: "Catalog: unspecified (agent excluded). Rulesets: sales engineer."
+          confidence: FOUND
+          source: "Agent is not responsible for updating/managing data source (line 16); Sales engineer provides initial source (line 19)"
+        updates:
+          value: "Catalog has source-level last-updated and per-vendor effective date; rulesets updated manually by SE; agent surfaces data freshness to user"
+          confidence: FOUND
+          source: "lines 15-17, 21"
+      metadata_schema:
+        source:
+          required: true
+          confidence: INFERRED
+          source: "rationale: agent reads rulesets before evaluations (line 30); catalog and rulesets must be distinguishable"
+        date:
+          required: true
+          confidence: FOUND
+          source: "Data source returns key date fields indicating last updated overall source data, as well as effective date of each vendor's catalog (lines 15-16)"
+        approval:
+          required: null
+          confidence: UNKNOWN
+          source: "Not mentioned in intake"
+        scope:
+          required: null
+          confidence: UNKNOWN
+          source: "Not addressed; unclear whether product-category scoping is encoded as metadata"
+    tools_and_integrations:
+      tools:
+        - tool: "Catalog reader (JSON/YAML file read)"
+          action_type: "read"
+          reversible: true
+          requires_approval: false
+          confidence: INFERRED
+          source_citation: "rationale: agent must query catalog for availability, lead time, margin (line 33); read-only consistent with line 16"
+        - tool: "Rulesets reader"
+          action_type: "read"
+          reversible: true
+          requires_approval: false
+          confidence: FOUND
+          source_citation: "Agent reads this document before performing any evaluations (line 30)"
+        - tool: "Rulesets writer (conditional)"
+          action_type: "write"
+          reversible: false
+          requires_approval: true
+          confidence: FOUND
+          source_citation: "Agent has the ability to modify this source when given explicit access to do so by the user (line 31)"
+        - tool: "BOM output generator (structured report artifact)"
+          action_type: "write (output artifact)"
+          reversible: true
+          requires_approval: false
+          confidence: INFERRED
+          source_citation: "rationale: deliverables are a BoM artifact with tiers and justification (lines 43-45)"
+    flows_and_orchestration:
+      pattern:
+        value: "single_agent"
+        confidence: INFERRED
+        source: "rationale: all workflow steps performed by one agent; no subagent delegation or parallel pipelines indicated at PoC scope"
+      rationale:
+        value: "Sequential workflow — load rulesets, parse requirements, query catalog per category, apply vendor-consistency and constraint rules, assemble tiers, generate output — is covered by a single agent loop with tool calls at PoC scale (3-4 categories, 50 vendors)"
+        confidence: INFERRED
+        source: "rationale: intake describes single coherent task scope (lines 8-22)"
+    instructions_and_behavior:
+      role:
+        value: "BOM generation assistant for sales engineers; technical, precise, accuracy-first; no fabrication of catalog data"
+        confidence: INFERRED
+        source: "rationale: lines 33-35 require accuracy-over-results; agent serves sales engineers (line 22)"
+      format:
+        value: "Structured BOM with three price/performance tiers; each tier includes SKU, vendor, relevant data points, and justification/soft recommendation"
+        confidence: FOUND
+        source: "BoM with 3 tiers of price/performance / Relevant data points from the Vendor/SKU selected / Justification of choices and soft recommendation (lines 43-45)"
+      citation:
+        value: "Agent must surface which catalog entries and vendor effective dates support each SKU selection"
+        confidence: INFERRED
+        source: "rationale: accuracy-over-results requirement (line 35) and explicit date fields (lines 15-17) imply traceability to source entries is required"
+      abstention:
+        value: "If specific vendor/SKU request cannot be met, state so explicitly. If no data is available for a requirement, output that no data is available — do not substitute silently."
+        confidence: FOUND
+        source: "Agent must prioritize information accuracy over results returned, meaning the output may be that no data is available (line 35)"
+      scope:
+        value: "Out of scope: full pricing engine, contract pricing, customer portal UI, catalog data management"
+        confidence: FOUND
+        source: "lines 36-39, 16"
+    architecture_components:
+      components:
+        - name: "Core agent (LLM-orchestrated loop)"
+          new_or_existing: "new"
+          notes: "Reads rulesets, parses requirements, calls tools, generates BOM"
+          confidence: INFERRED
+          source_citation: "rationale: no existing agent infrastructure mentioned"
+        - name: "Vendor/distributor catalog data store (JSON/YAML)"
+          new_or_existing: "new"
+          notes: "PoC-generated by Python script; 50 vendors, multiple SKUs, 3-4 product categories"
+          confidence: FOUND
+          source_citation: "lines 9-11"
+        - name: "Rulesets & guidelines document"
+          new_or_existing: "new"
+          notes: "SE-authored; agent can read always, write only with explicit SE approval"
+          confidence: FOUND
+          source_citation: "lines 19-21, 29-31"
+        - name: "BOM output template (boilerplate)"
+          new_or_existing: "new"
+          notes: "Boilerplate template used for PoC output"
+          confidence: FOUND
+          source_citation: "A boilerplate BOM template is be used for PoC (line 11)"
+        - name: "Catalog data generation script (Python)"
+          new_or_existing: "new"
+          notes: "Generates repeatable synthetic catalog data for PoC; created by Claude per intake assumption"
+          confidence: FOUND
+          source_citation: "Catalog data is created using a python script created by Claude for repeatable data output (line 9)"
+
+  phase_5_evaluation:
+    quality_metrics:
+      supported_answer_rate:
+        target: null
+        confidence: UNKNOWN
+        source: "No numeric target stated; intake implies 100% preference but no threshold defined"
+      abstention_rate:
+        target: null
+        confidence: UNKNOWN
+        source: "Intake requires abstention when data unavailable but sets no target rate"
+      task_completion_rate:
+        target: null
+        confidence: UNKNOWN
+        source: "No numeric target stated in intake"
+    abstention_behavior:
+      no_sources:
+        behavior: "Output must state that no data is available; do not fabricate or substitute"
+        confidence: FOUND
+        source: "Agent must prioritize information accuracy over results returned, meaning the output may be that no data is available based on the users request (line 35)"
+      low_confidence:
+        behavior: null
+        confidence: UNKNOWN
+        source: "Not specified; intake implies err-on-side-of-abstention but no explicit threshold"
+      conflict:
+        behavior: null
+        confidence: UNKNOWN
+        source: "Not addressed; vendor catalog may have conflicts across distributors for same SKU"
+      out_of_scope:
+        behavior: "Decline gracefully; scope exclusions are explicit (pricing engine, contract pricing, portal UI)"
+        confidence: FOUND
+        source: "lines 36-39"
+
+  phase_6_governance:
+    human_gates:
+      - action: "Modifying the rulesets & guidelines document"
+        risk_level: "high"
+        gate: "Requires explicit user (SE) grant before write access is enabled"
+        confidence: FOUND
+        source_citation: "Agent has the ability to modify this source when given explicit access to do so by the user (line 31)"
+      - action: "BOM delivery to customer"
+        risk_level: "medium"
+        gate: "SE reviews output before customer delivery (implied; not explicitly stated)"
+        confidence: INFERRED
+        source_citation: "rationale: SE is named user; no automated delivery pipeline described; customer portal UI is out of scope (line 39)"
+    security:
+      prompt_injection:
+        strategy: null
+        confidence: UNKNOWN
+        source: "Not addressed in intake"
+      least_privilege:
+        strategy: "Catalog reader is read-only; rulesets writer requires explicit SE approval; no other write access scoped"
+        confidence: INFERRED
+        source: "rationale: line 16 excludes agent from catalog updates; line 31 gates rulesets writes behind explicit approval"
+      redaction:
+        strategy: null
+        confidence: UNKNOWN
+        source: "Intake does not identify PII or sensitive fields in catalog or customer requirements"
+    constraints:
+      data_residency:
+        present: null
+        impact: null
+        confidence: UNKNOWN
+        source: "Not addressed in intake"
+      air_gap:
+        present: null
+        impact: null
+        confidence: UNKNOWN
+        source: "Not addressed in intake"
+      regulated_data:
+        present: "no PII/PHI evident; margin data may be commercially sensitive"
+        impact: "Low regulatory risk; commercial sensitivity of margin data to be confirmed"
+        confidence: INFERRED
+        source: "rationale: catalog data is vendor/product/pricing — no PII; margin figures could be commercially sensitive but no regulatory classification stated"
+    deployment:
+      model:
+        value: null
+        confidence: UNKNOWN
+        source: "Not specified in intake"
+      rationale:
+        value: null
+        confidence: UNKNOWN
+        source: "Not specified in intake"
+
+  phase_7_rollout:
+    artifacts:
+      system_prompt:
+        versioned: null
+        requires_eval: null
+        confidence: UNKNOWN
+        source: "Not addressed in intake"
+      retrieval_config:
+        versioned: null
+        requires_eval: null
+        confidence: UNKNOWN
+        source: "Not addressed in intake"
+      model_version:
+        versioned: null
+        requires_eval: null
+        confidence: UNKNOWN
+        source: "Not addressed in intake"
+      tool_definitions:
+        versioned: null
+        requires_eval: null
+        confidence: UNKNOWN
+        source: "Not addressed in intake"
+    rollback_trigger:
+      value: null
+      confidence: UNKNOWN
+      source: "Not specified in intake"
+
+  open_items:
+    - item: "Interaction channel / UX surface for agent (CLI, chat, API, web form?)"
+      phase_blocked: "Phase 4.1 (canvas_channels)"
+      why_it_matters: "Determines how SE submits requirements and receives BOM; affects prompt design and tool interface"
+      suggested_resolution: "Ask client during next requirements session"
+    - item: "Success metric numeric targets (supported answer rate, completion rate, escalation rate)"
+      phase_blocked: "Phase 1.3 and Phase 5.1"
+      why_it_matters: "Without targets there is no pass/fail criterion for evaluation harness"
+      suggested_resolution: "Ask SE/PM to define acceptable quality bar before build; suggest starting with >90% supported answer rate"
+    - item: "Abstention threshold for low-confidence matches"
+      phase_blocked: "Phase 5.2 (abstain_low_confidence)"
+      why_it_matters: "Agent needs a confidence floor below which it should abstain rather than return speculative BOM line"
+      suggested_resolution: "Define in rulesets & guidelines document; SE to specify during ruleset authoring session"
+    - item: "Behavior when conflicting catalog data exists for same SKU across distributors"
+      phase_blocked: "Phase 5.2 (abstain_conflict)"
+      why_it_matters: "Multiple distributors may list different lead times for identical SKUs; agent must know which to prefer or flag conflict"
+      suggested_resolution: "Add conflict-resolution rule to rulesets & guidelines document; SE to specify priority order"
+    - item: "Incomplete requirement at intake line 33: 'If initial user request can not be met' — sentence is cut off"
+      phase_blocked: "Phase 4.5 (behavior_abstention)"
+      why_it_matters: "Fallback behavior for unmet specific vendor/SKU requests is undefined"
+      suggested_resolution: "Obtain full sentence from client; likely intent is agent must report constraint violation and offer alternatives"
+    - item: "Identity / auth infrastructure"
+      phase_blocked: "Phase 2.2 (tooling_identity)"
+      why_it_matters: "Gating rulesets write access requires knowing auth model — who is a valid SE, how approval is signaled"
+      suggested_resolution: "Ask client: is there an existing SSO or role system? How does the SE signal explicit write approval?"
+    - item: "Line-of-business system integrations (CRM, ERP, quoting platform)"
+      phase_blocked: "Phase 2.2 (tooling_lob)"
+      why_it_matters: "Future BOM export or quote integration may require LOB connectors; scoping now prevents rework"
+      suggested_resolution: "Ask client whether BOM output is standalone or must feed a quoting/CRM system"
+    - item: "Rulesets document format"
+      phase_blocked: "Phase 4.2 (knowledge_source)"
+      why_it_matters: "Affects ingestion and parsing approach"
+      suggested_resolution: "Ask SE what format the initial rulesets document will be authored in (plain text, YAML, JSON, structured template?)"
+    - item: "Customer requirements input format"
+      phase_blocked: "Phase 4.2 (knowledge_source)"
+      why_it_matters: "Agent must parse this input; free text vs. structured form significantly affects prompt design"
+      suggested_resolution: "Clarify with SE: will requirements be free-text prose, a structured checklist, or a templated form?"
+    - item: "Catalog metadata approval status"
+      phase_blocked: "Phase 4.2 (meta_approval)"
+      why_it_matters: "If vendor catalog data requires approval before use, agent needs a filter"
+      suggested_resolution: "Ask client: is there a data approval/QA step for catalog Python script output?"
+    - item: "Data residency and air-gap requirements"
+      phase_blocked: "Phase 6.3 (data_residency, air_gap)"
+      why_it_matters: "Determines eligible LLM providers and whether cloud APIs are permissible"
+      suggested_resolution: "Ask IT/legal: any data sovereignty or on-prem requirements for vendor pricing data?"
+    - item: "Deployment model (raw_api, managed_cloud, self_hosted)"
+      phase_blocked: "Phase 6.3 and Phase 7 (deployment_model)"
+      why_it_matters: "Affects LLM provider selection, cost model, and security posture"
+      suggested_resolution: "Resolve after data residency question is answered"
+    - item: "Rollout versioning strategy and rollback trigger"
+      phase_blocked: "Phase 7 (rollout artifacts, rollback_trigger)"
+      why_it_matters: "Without defined rollback trigger a degraded agent cannot be safely reverted"
+      suggested_resolution: "Architect to propose standard triggers (e.g., supported answer rate drops below threshold for N consecutive evaluations) for SE sign-off"
+    - item: "Chunking / retrieval strategy for structured catalog data"
+      phase_blocked: "Phase 4.2 (chunking_strategy)"
+      why_it_matters: "JSON/YAML catalogs are best queried via structured lookup rather than vector search; approach must be selected before build"
+      suggested_resolution: "Architect to evaluate catalog schema from Python script output; recommend structured query tool over vector chunking"

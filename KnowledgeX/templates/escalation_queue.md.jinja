@@ -1,0 +1,36 @@
+{# SME escalation queue — markdown only. Consumes RFPResponseArtifact.escalation_queue. #}
+# SME Escalation Queue — {{ artifact.engagement_id }}
+
+**Generated:** {{ artifact.generated_at.strftime("%Y-%m-%d %H:%M UTC") }}
+**Items to resolve:** {{ artifact.escalation_queue | length }}
+
+The questions below have no committed draft. Each item carries the retrieval evidence the agent had at the time of escalation. Please provide a definitive answer, supply an additional source, or mark the item unanswerable.
+
+---
+
+{% for q in artifact.escalation_queue %}
+## {{ q.question_id }} — {{ q.confidence_band }}
+
+**Question:** {{ q.question_text }}
+
+{% if q.confidence_band == "CONFLICT" and q.conflict_versions -%}
+**Conflicting versions retrieved (please select an authoritative version or supply a new source):**
+
+{% for v in q.conflict_versions %}
+- {{ v }}
+{% endfor %}
+{%- else -%}
+**Escalation reason:** {{ q.escalation_reason or "No draft generated." }}
+{%- endif %}
+
+{% if q.citations -%}
+**Retrieval evidence:**
+{% for c in q.citations %}
+- `{{ c.source_doc }}#{{ c.chunk_id }}` (similarity {{ "%.2f"|format(c.similarity_score) }})
+{%- endfor %}
+{%- else -%}
+**Retrieval evidence:** none above the relevance threshold.
+{%- endif %}
+
+---
+{% endfor %}

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>BOM PoC — {{ bom.request_id }}</title>
+<style>
+  @page {
+    size: Letter;
+    margin: 18mm 16mm 20mm 16mm;
+    @bottom-right {
+      content: "Page " counter(page) " of " counter(pages);
+      font-size: 9pt;
+      color: #666;
+    }
+    @bottom-left {
+      content: "QuotePilot BOM PoC — {{ bom.request_id }}";
+      font-size: 9pt;
+      color: #666;
+    }
+  }
+
+  body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 10pt;
+    line-height: 1.4;
+    color: #1f2328;
+  }
+
+  h1 { font-size: 18pt; margin: 0 0 4pt 0; }
+  h2 { font-size: 13pt; margin: 14pt 0 6pt 0; border-bottom: 1px solid #d0d7de; padding-bottom: 3pt; }
+  h3 { font-size: 11pt; margin: 10pt 0 4pt 0; }
+
+  .meta {
+    color: #57606a;
+    font-size: 9pt;
+    margin-bottom: 12pt;
+  }
+  .meta span { margin-right: 14pt; }
+
+  /* ───── Notice classes (formatting) ───── */
+  .notice {
+    padding: 8pt 10pt;
+    border-radius: 4pt;
+    margin: 8pt 0;
+    page-break-inside: avoid;
+  }
+  .notice .label {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 8pt;
+    letter-spacing: 0.5pt;
+    display: block;
+    margin-bottom: 2pt;
+  }
+
+  .error {
+    background: #ffebe9;
+    border-left: 3pt solid #cf222e;
+    color: #82071e;
+  }
+
+  .warning {
+    background: #fff8c5;
+    border-left: 3pt solid #d4a72c;
+    color: #633c01;
+  }
+
+  .info {
+    background: #ddf4ff;
+    border-left: 3pt solid #0969da;
+    color: #0a3069;
+  }
+
+  /* Inline annotations */
+  .gap-marker {
+    background: #fff8c5;
+    color: #633c01;
+    padding: 1pt 4pt;
+    border-radius: 3pt;
+    font-size: 8.5pt;
+    font-weight: 600;
+  }
+  .unavailable {
+    color: #cf222e;
+    font-weight: 600;
+  }
+  .available {
+    color: #1a7f37;
+  }
+
+  /* Tier blocks */
+  .tier {
+    page-break-inside: avoid;
+    margin-bottom: 10pt;
+  }
+  .tier-header {
+    padding: 4pt 8pt;
+    color: white;
+    font-weight: 600;
+    border-radius: 3pt 3pt 0 0;
+    font-size: 11pt;
+  }
+  .tier-budget   .tier-header { background: #1a7f37; }
+  .tier-balanced .tier-header { background: #0969da; }
+  .tier-premium  .tier-header { background: #8250df; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0;
+  }
+  th, td {
+    border: 1px solid #d0d7de;
+    padding: 5pt 7pt;
+    text-align: left;
+    vertical-align: top;
+    font-size: 9.5pt;
+  }
+  th {
+    background: #f6f8fa;
+    font-weight: 600;
+    font-size: 9pt;
+  }
+  td.num { text-align: right; font-variant-numeric: tabular-nums; }
+
+  .evidence {
+    font-size: 8.5pt;
+    color: #57606a;
+    font-style: italic;
+  }
+
+  .footer-status {
+    margin-top: 14pt;
+    padding-top: 8pt;
+    border-top: 1pt solid #d0d7de;
+    font-size: 9pt;
+  }
+  .status-needs-review { color: #cf222e; font-weight: 600; }
+  .status-ok           { color: #1a7f37; font-weight: 600; }
+
+  /* ───── Watermark ───── */
+  .watermark {
+    position: fixed;
+    top: 38%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    transform: rotate(-35deg);
+    font-size: 56pt;
+    font-weight: 900;
+    letter-spacing: 4pt;
+    color: #b0b0b0;
+    opacity: 0.28;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  /* ───── User request panel ───── */
+  .user-request-panel {
+    display: flex;
+    align-items: center;
+    gap: 8pt;
+    background: #ffffff;
+    border: 1.5pt solid #d0d7de;
+    border-radius: 20pt;
+    padding: 7pt 14pt;
+    margin: 4pt 0 0 0;
+    page-break-inside: avoid;
+  }
+  .user-request-panel .agent-tag {
+    display: inline-block;
+    background: #ddf4ff;
+    color: #0969da;
+    border-radius: 10pt;
+    padding: 1pt 7pt;
+    font-size: 8pt;
+    font-weight: 600;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .user-request-panel .prompt-text {
+    flex: 1;
+    font-size: 9.5pt;
+    color: #1f2328;
+    line-height: 1.4;
+  }
+</style>
+</head>
+<body>
+
+<div class="watermark">INTERNAL ONLY</div>
+
+<h1>Bill of Materials — Internal Draft</h1>
+<div class="meta">
+  <span><strong>Request ID:</strong> {{ bom.request_id }}</span>
+  <span><strong>Generated:</strong> {{ generated_at }}</span>
+</div>
+
+{# ───── User request panel ───── #}
+{% if bom.user_request %}
+<h2>User Request</h2>
+<div class="user-request-panel">
+  <span class="agent-tag">@quotepilot-bom</span>
+  <span class="prompt-text">{{ bom.user_request }}</span>
+</div>
+{% endif %}
+
+<hr style="border: none; border-top: 1.5pt solid #d0d7de; margin: 14pt 0;">
+
+{# ───── Abstention (highest severity) ───── #}
+{% if bom.abstention_reason %}
+<div class="notice error">
+  <span class="label">Abstention — No BOM Drafted</span>
+  {{ bom.abstention_reason }}
+</div>
+{% endif %}
+
+{# ───── Data freshness warnings (top-level) ───── #}
+{% if bom.data_freshness_warnings %}
+<div class="notice warning">
+  <span class="label">Data Freshness Warnings</span>
+  <ul style="margin: 4pt 0 0 14pt; padding: 0;">
+    {% for w in bom.data_freshness_warnings %}
+    <li>{{ w }}</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}
+
+{# ───── Soft recommendation ───── #}
+{% if bom.soft_recommendation %}
+<div class="notice info">
+  <span class="label">Recommendation</span>
+  {{ bom.soft_recommendation }}
+</div>
+{% endif %}
+
+{# ───── BOM line items, grouped by tier ───── #}
+{% if bom.tiers %}
+<h2>Tiered Recommendations</h2>
+
+{% for tier_name in ["budget", "balanced", "premium"] %}
+  {% set tier_items = bom.tiers | selectattr("tier", "equalto", tier_name) | list %}
+  {% if tier_items %}
+  <div class="tier tier-{{ tier_name }}">
+    <div class="tier-header">{{ tier_name | upper }} TIER</div>
+    <table>
+      <thead>
+        <tr>
+          <th>SKU</th>
+          <th>Vendor</th>
+          <th>Category</th>
+          <th>Availability</th>
+          <th>Lead Time</th>
+          <th>Unit Cost</th>
+          <th>Margin</th>
+          <th>Effective Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in tier_items %}
+        <tr>
+          <td><strong>{{ item.sku }}</strong></td>
+          <td>{{ item.vendor_name }}<br><span class="evidence">{{ item.vendor_id }}</span></td>
+          <td>{{ item.category }}</td>
+          <td>
+            {% if item.availability %}
+              <span class="available">In Stock</span>
+            {% else %}
+              <span class="unavailable">Unavailable</span>
+            {% endif %}
+          </td>
+          <td class="num">
+            {% if item.lead_time_days is not none %}
+              {{ item.lead_time_days }} days
+            {% else %}
+              <span class="gap-marker">MISSING</span>
+            {% endif %}
+          </td>
+          <td class="num">
+            {% if item.unit_cost is not none %}
+              ${{ "%.2f"|format(item.unit_cost) }}
+            {% else %}
+              <span class="gap-marker">MISSING</span>
+            {% endif %}
+          </td>
+          <td class="num">
+            {% if item.margin_pct is not none %}
+              {{ "%.1f"|format(item.margin_pct) }}%
+            {% else %}
+              <span class="gap-marker">MISSING</span>
+            {% endif %}
+          </td>
+          <td>{{ item.catalog_effective_date }}</td>
+        </tr>
+        {% if item.evidence %}
+        <tr>
+          <td colspan="8" class="evidence">
+            <strong>Evidence:</strong>
+            {% for e in item.evidence %}{{ e }}{% if not loop.last %} · {% endif %}{% endfor %}
+          </td>
+        </tr>
+        {% endif %}
+        {% if item.gap_markers %}
+        <tr>
+          <td colspan="8">
+            <div class="notice warning" style="margin: 2pt 0;">
+              <span class="label">Gap Markers</span>
+              {{ item.gap_markers | join(", ") }}
+            </div>
+          </td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% endif %}
+{% endfor %}
+{% endif %}
+
+{# ───── Justification ───── #}
+{% if bom.justification %}
+<h2>Justification</h2>
+{% for tier_name in ["budget", "balanced", "premium"] %}
+  {% if bom.justification[tier_name] is defined %}
+  {% set j = bom.justification[tier_name] %}
+  <h3>{{ tier_name | capitalize }} Tier</h3>
+  <p style="margin: 2pt 0 4pt 0;">{{ j.summary }}</p>
+  <ul style="margin: 0 0 8pt 14pt; padding: 0;">
+    {% for bullet in j.bullets %}<li>{{ bullet }}</li>{% endfor %}
+  </ul>
+  {% endif %}
+{% endfor %}
+{% endif %}
+
+{# ───── Review status footer ───── #}
+<div class="footer-status">
+  Status:
+  {% if bom.requires_human_review %}
+    <span class="status-needs-review">Requires SE review before customer delivery</span>
+  {% else %}
+    <span class="status-ok">Ready for SE approval</span>
+  {% endif %}
+</div>
+
+</body>
+</html>

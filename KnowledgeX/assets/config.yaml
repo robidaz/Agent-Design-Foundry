@@ -1,0 +1,31 @@
+metadata:
+  source: knowledgex_config
+  version: "0.1"
+  last_updated: "2026-05-12"
+  authored_by: design
+  description: >
+    Runtime configuration for the RFP/RFI Response Agent. Read at the start of every
+    ingestion and every agent run. Thresholds tuned against the 30-question fixture
+    in assets/questions/sample_30q.md; re-tune after expanding the KB or changing
+    embedding model.
+
+retrieval:
+  top_k: 5                       # final chunks per question after RRF + threshold
+  overfetch: 20                  # per-channel pool size before RRF
+  rrf_k: 60                      # Cormack/Clarke reciprocal-rank-fusion constant
+  min_vector_similarity: 0.55    # below this on the top chunk → NO_SOURCE
+
+scoring:
+  high_sim: 0.65                 # HIGH requires top-3 mean cosine ≥ this
+  medium_sim: 0.60               # informational floor for MEDIUM
+  agreement_low: 0.55            # cheap-cosine pairwise: below → Claude verdict
+  agreement_high: 0.85           # cheap-cosine pairwise: above → auto-agree
+
+chunking:
+  target_tokens: 400
+  overlap_tokens: 50
+
+models:
+  embedding_model: BAAI/bge-large-en-v1.5   # local; sentence-transformers on CPU
+  embedding_dim: 1024                       # matches pgvector DDL VECTOR(1024)
+  claude_model: claude-sonnet-4-6

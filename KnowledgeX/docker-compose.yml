@@ -1,0 +1,21 @@
+services:
+  pgvector:
+    image: pgvector/pgvector:pg16
+    container_name: knowledgex-pgvector
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: knowledgex
+      POSTGRES_PASSWORD: knowledgex
+      POSTGRES_DB: knowledgex
+    ports:
+      - "5432:5432"
+    volumes:
+      - knowledgex_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U knowledgex -d knowledgex"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+volumes:
+  knowledgex_pgdata:

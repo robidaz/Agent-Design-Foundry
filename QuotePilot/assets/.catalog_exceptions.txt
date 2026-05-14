@@ -1,0 +1,59 @@
+QuotePilot Catalog Exception Log
+Generated:   2026-05-11
+Source file: catalog.json
+Query date:  2026-05-11
+Freshness threshold: 90 days
+
+Total exceptions: 6
+
+────────────────────────────────────────────────────────────
+EXPIRED
+────────────────────────────────────────────────────────────
+
+[VEN-006] Extreme Networks
+  Path:     vendors[5].effective_date
+  Field:    effective_date
+  Value:    "2025-11-02"
+  Detail:   Date is 190 days old; exceeds 90-day freshness threshold (cutoff: 2026-02-10). Primary category: networking-switch.
+  Action:   Agent must surface a stale-data warning to the SE before including any SKU from this vendor in a BOM draft.
+
+[VEN-012] SonicWall
+  Path:     vendors[11].effective_date
+  Field:    effective_date
+  Value:    "2025-06-05"
+  Detail:   Date is 340 days old; exceeds 90-day freshness threshold (cutoff: 2026-02-10). Primary category: network-security.
+  Action:   Agent must surface a stale-data warning to the SE before including any SKU from this vendor in a BOM draft.
+
+[VEN-017] TP-Link Omada
+  Path:     vendors[16].effective_date
+  Field:    effective_date
+  Value:    "2025-11-21"
+  Detail:   Date is 171 days old; exceeds 90-day freshness threshold (cutoff: 2026-02-10). Primary category: wireless-access-point.
+  Action:   Agent must surface a stale-data warning to the SE before including any SKU from this vendor in a BOM draft.
+
+[VEN-022] CablePro Supply
+  Path:     vendors[21].effective_date
+  Field:    effective_date
+  Value:    "2025-08-22"
+  Detail:   Date is 262 days old; exceeds 90-day freshness threshold (cutoff: 2026-02-10). Primary category: structured-cabling.
+  Action:   Agent must surface a stale-data warning to the SE before including any SKU from this vendor in a BOM draft.
+
+────────────────────────────────────────────────────────────
+BAD DATA
+────────────────────────────────────────────────────────────
+
+[VEN-023] D-Link Enterprise
+  Path:     vendors[22].products[0].lead_time_days
+  Field:    lead_time_days
+  Value:    "21 days"
+  Expected: integer
+  Detail:   SKU V023-SW-0001: lead_time_days received as string; agent cannot apply lead-time threshold comparison.
+  Action:   Flag and skip this SKU. Do not include in BOM draft without SE-explicit override.
+
+[VEN-024] Vertiv
+  Path:     vendors[23].products[0]
+  Field:    unit_cost, margin_pct
+  Value:    unit_cost=null; margin_pct=<missing>
+  Expected: number, number
+  Detail:   SKU V024-CAB-0001: unit_cost is null and margin_pct attribute is absent. Incomplete pricing record.
+  Action:   Flag and skip this SKU. Do not include in BOM draft without SE-explicit override.

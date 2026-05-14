@@ -1,0 +1,407 @@
+evaluation:
+  metadata:
+    client_input: "design_exercise_artifacts/task_4_ai_readiness_assessment/task_4_design_intake.md"
+    template_version: "0.2"
+    completed_at: "2026-05-12T00:00:00Z"
+    evaluator_notes: "Tier 3 Agent; 10 UNKNOWN fields concentrated in eval targets, security, and rollout; infrastructure tooling for Dynamix's own stack unspecified."
+
+  phase_1_problem:
+    use_case_statement:
+      situation:
+        value: "A Dynamix consultant initiates an AI readiness assessment engagement with a mid-market client (200–2,000 employees)"
+        confidence: INFERRED
+        source: "Context line 5; engagement model described as consultant-led discovery"
+      motivation:
+        value: "Ingest structured intake responses, score them against a 6-dimension maturity rubric, conduct targeted follow-up for low-confidence dimensions, and produce a draft readiness report with roadmap"
+        confidence: FOUND
+        source: "Requirements lines 23-26"
+      outcome:
+        value: "Scale the assessment process without losing rigor — delivering consistent, consultant-reviewed readiness reports across many engagements"
+        confidence: FOUND
+        source: "needs to scale without losing rigor (Context line 5)"
+      users:
+        value: "Dynamix consultants (primary users / reviewers); assessed organization staff complete intake form but do not interact with agent directly"
+        confidence: FOUND
+        source: "consultant is referred to as 'user,' the assessed organization as 'client' (Assumptions line 14)"
+      current_workflow:
+        value: "Manual interview-and-deliverable process: consultant conducts discovery conversation and assembles recommendation document by hand"
+        confidence: FOUND
+        source: "Today this is a manual interview-and-deliverable process (Context line 5)"
+    is_ai_right_tool:
+      gate_well_defined:
+        value: "Yes — structured 25-35 question intake; output is a scored, dimensioned report in a defined template"
+        confidence: FOUND
+      gate_language:
+        value: "Yes — follow-up chat loop requires NLU; report generation requires coherent narrative prose"
+        confidence: FOUND
+      gate_human_judgment:
+        value: "Partially yes — scoring is rubric-driven but consultant retains final calibration authority"
+        confidence: FOUND
+      ai_fit_recommendation:
+        value: "human_in_loop_required"
+        confidence: FOUND
+        source: "Draft report is always reviewed by a Dynamix consultant before client delivery (Assumptions line 14)"
+    success_criteria:
+      quality:
+        target: null
+        confidence: UNKNOWN
+      adoption:
+        target: null
+        confidence: UNKNOWN
+      escalation:
+        target: null
+        confidence: UNKNOWN
+
+  phase_2_infrastructure:
+    enterprise_search:
+      exists:
+        value: "no"
+        confidence: INFERRED
+        source: "No enterprise search platform mentioned for Dynamix's internal stack"
+      name:
+        value: null
+        confidence: NA
+      api:
+        value: null
+        confidence: NA
+      contract:
+        value: null
+        confidence: NA
+    tooling:
+      identity:
+        exists: null
+        complexity: null
+        confidence: UNKNOWN
+      data:
+        exists: "Jinja template store (implied); versioned framework config store"
+        complexity: "Low-Medium"
+        confidence: INFERRED
+        source: "Framework definition is configurable without code changes (Requirements line 35)"
+      comms:
+        exists: null
+        complexity: null
+        confidence: UNKNOWN
+      lob:
+        exists: "None — CRM integration and live consultant tooling explicitly excluded"
+        complexity: "None"
+        confidence: FOUND
+        source: "No CRM integration; no live consultant deployment at PoC scope (Assumptions line 19)"
+
+  phase_3_architecture:
+    selected_tier:
+      value: 3
+      confidence: INFERRED
+      source: "Multi-step workflow: intake ingestion → rubric scoring → conditional follow-up loop → completeness gate → report generation; cannot be served by prompt-only or RAG"
+    rationale:
+      value: "Workflow requires multi-step orchestration with branching logic (conditional follow-up per dimension), state across turns, and structured artifact generation. Tier 1 and 2 are insufficient; Tier 4 fine-tuning not warranted at PoC scope."
+      confidence: INFERRED
+      source: "Assumptions lines 10-13; Requirements lines 23-34"
+
+  phase_4_canvas:
+    knowledge_skipped: false
+    use_case_and_triggers:
+      goal:
+        value: "Score a mid-market organization across 6 AI readiness dimensions, conduct targeted follow-up for low-confidence dimensions, and produce a consultant-reviewable draft report with a 12/24/36-month roadmap"
+        confidence: FOUND
+        source: "Requirements lines 23-34"
+      triggers:
+        value: "Consultant submits completed client intake form (25-35 questions) to the agent"
+        confidence: INFERRED
+        source: "Discovery agent ingests structured intake responses (Requirements line 23)"
+      channels:
+        value: "Jinja-rendered web form (intake); follow-up chat loop (text interface); Jinja-rendered markdown → PDF (output)"
+        confidence: FOUND
+        source: "Assumptions line 10; Requirements line 32"
+    knowledge_and_data:
+      sources:
+        - source: "Framework definition (dimensions, sub-criteria, scoring rubric, weights)"
+          format: "Structured config (JSON/YAML)"
+          update_frequency: "On Dynamix tuning events"
+          owner: "Dynamix"
+          confidence: FOUND
+        - source: "Structured intake responses (25-35 questions per engagement)"
+          format: "Structured form data"
+          update_frequency: "Per engagement"
+          owner: "Client / consultant"
+          confidence: FOUND
+        - source: "Follow-up chat transcript"
+          format: "Unstructured text"
+          update_frequency: "Per engagement"
+          owner: "Agent / consultant"
+          confidence: FOUND
+        - source: "Synthetic discovery responses (PoC only)"
+          format: "Hand-authored structured responses"
+          update_frequency: "Static for PoC"
+          owner: "Dynamix"
+          confidence: FOUND
+      ingestion_approach:
+        value: "diy"
+        confidence: INFERRED
+        source: "No document corpus or vector store described; agent scores against structured rubric loaded from config"
+      chunking_strategy:
+        value: null
+        confidence: NA
+      curation:
+        owner:
+          value: "Dynamix (framework config); consultant (final report calibration)"
+          confidence: FOUND
+          source: "versioned and governed by Dynamix (Assumptions line 17)"
+        updates:
+          value: "Framework versions governed by Dynamix; agent loads active version; prior engagement reports pinned to version used"
+          confidence: INFERRED
+          source: "versioned and governed by Dynamix (Assumptions line 17); historical re-use deferred"
+      metadata_schema:
+        source:
+          required: true
+          confidence: INFERRED
+          source: "Three distinct artifact types require type-based filtering for correct agent behavior"
+        date:
+          required: true
+          confidence: FOUND
+          source: "versioned and governed by Dynamix (Assumptions line 17)"
+        approval:
+          required: true
+          confidence: INFERRED
+          source: "Agent has no write access to framework definition, implying only approved/released versions should be loaded"
+        scope:
+          required: false
+          confidence: FOUND
+          source: "framework is industry-agnostic at the dimension level (Assumptions line 8)"
+    tools_and_integrations:
+      tools:
+        - tool: "Intake form reader"
+          action_type: "read"
+          reversible: true
+          requires_approval: false
+          confidence: FOUND
+        - tool: "Rubric scorer"
+          action_type: "compute"
+          reversible: true
+          requires_approval: false
+          confidence: FOUND
+        - tool: "Follow-up chat conductor"
+          action_type: "read/write (conversation state)"
+          reversible: true
+          requires_approval: false
+          confidence: FOUND
+        - tool: "Completeness gate evaluator"
+          action_type: "compute"
+          reversible: true
+          requires_approval: false
+          confidence: FOUND
+        - tool: "Report renderer"
+          action_type: "write"
+          reversible: true
+          requires_approval: false
+          confidence: FOUND
+    flows_and_orchestration:
+      pattern:
+        value: "pipeline"
+        confidence: INFERRED
+        source: "Sequential stages with defined hand-off artifacts; bounded follow-up loop embedded; fits pipeline more than orchestrator_subagents at PoC scope"
+      rationale:
+        value: "Intake ingestion → scoring → conditional follow-up (per low-confidence dimension, max 3 turns) → completeness gate → report generation. Each step is sequential with defined hand-off artifacts."
+        confidence: FOUND
+        source: "Requirements lines 23-34; Assumptions lines 10-13"
+    instructions_and_behavior:
+      role:
+        value: "AI readiness assessment facilitator operating on behalf of a Dynamix consultant; neutral, structured, rubric-bound; does not recommend vendors or partners"
+        confidence: FOUND
+        source: "Agent does not recommend specific vendors, products, or implementation partners (Assumptions line 18)"
+      format:
+        value: "Jinja-rendered markdown → PDF; per-dimension score block + composite tier + 12/24/36-month roadmap + confidence indicators + consultant-review gap list"
+        confidence: FOUND
+        source: "Requirements lines 26-32"
+      citation:
+        value: "Must surface evidence per scored dimension and per sub-criterion; confidence indicators required"
+        confidence: FOUND
+        source: "per-dimension score with supporting evidence; confidence indicators per dimension and sub-criterion (Requirements lines 27, 29)"
+      abstention:
+        value: "Must abstain on a dimension when discovery data cannot support a defensible score; flag UNKNOWN/low-confidence findings explicitly rather than fabricate"
+        confidence: FOUND
+        source: "Agent must abstain on a dimension when the discovery data cannot support a defensible score (Requirements line 34)"
+      scope:
+        value: "Out of scope: vendor/product/partner recommendations; certification programs; historical benchmarking; CRM integration; deep technical implementation playbooks; live consultant tooling"
+        confidence: FOUND
+        source: "Scope Exclusions section; Assumptions line 18"
+    architecture_components:
+      components:
+        - name: "Structured intake form (Jinja-rendered)"
+          new_or_existing: "new"
+          notes: "25-35 questions across 6 dimensions; rendered per engagement"
+          confidence: FOUND
+        - name: "Framework config store"
+          new_or_existing: "new"
+          notes: "Versioned dimension definitions, sub-criteria, rubric anchors, composite weights; editable by Dynamix without code change"
+          confidence: FOUND
+        - name: "Scoring engine"
+          new_or_existing: "new"
+          notes: "Applies rubric to intake responses; outputs per-dimension score + confidence; identifies dimensions needing follow-up"
+          confidence: FOUND
+        - name: "Follow-up chat loop"
+          new_or_existing: "new"
+          notes: "Multi-turn, per dimension, capped at 3 questions; transcript preserved for consultant"
+          confidence: FOUND
+        - name: "Completeness gate"
+          new_or_existing: "new"
+          notes: "Evaluates whether all dimensions are above confidence threshold or follow-up cap reached; flags residual gaps"
+          confidence: FOUND
+        - name: "Report renderer"
+          new_or_existing: "new"
+          notes: "Jinja template → markdown → PDF; supports consultant editing before delivery"
+          confidence: FOUND
+        - name: "Consultant review interface"
+          new_or_existing: "out_of_scope"
+          notes: "Explicitly excluded at PoC; consultant edits rendered markdown file directly"
+          confidence: FOUND
+
+  phase_5_evaluation:
+    quality_metrics:
+      supported_answer_rate:
+        target: null
+        confidence: UNKNOWN
+      abstention_rate:
+        target: null
+        confidence: UNKNOWN
+      task_completion_rate:
+        target: null
+        confidence: UNKNOWN
+    abstention_behavior:
+      no_sources:
+        behavior: "Abstain on dimension; flag as UNKNOWN for consultant review"
+        confidence: FOUND
+        source: "Agent must abstain on a dimension when the discovery data cannot support a defensible score (Requirements line 34)"
+      low_confidence:
+        behavior: "Conduct follow-up chat (up to 3 questions); if still below threshold, flag dimension as low-confidence for consultant"
+        confidence: FOUND
+        source: "agent conducts a targeted follow-up chat loop only for dimensions where confidence is low (Assumptions line 10)"
+      conflict:
+        behavior: null
+        confidence: UNKNOWN
+      out_of_scope:
+        behavior: "Agent must not answer; scope boundary excludes vendor recommendations, certification, implementation playbooks"
+        confidence: FOUND
+        source: "Scope Exclusions section; Assumptions line 18"
+
+  phase_6_governance:
+    human_gates:
+      - action: "Draft report delivery to client"
+        risk_level: "high"
+        gate: "Mandatory consultant review before any client delivery; consultant owns final calibration, narrative, ROI sanity-check, and overrides"
+        confidence: FOUND
+        source: "Assumptions line 14"
+      - action: "Dimension abstention / UNKNOWN declaration"
+        risk_level: "medium"
+        gate: "Agent flags explicitly; consultant decides whether to probe further or accept gap"
+        confidence: FOUND
+        source: "unresolved dimensions are flagged for the consultant (Assumptions line 13)"
+      - action: "ROI projection publication"
+        risk_level: "high"
+        gate: "Consultant performs ROI sanity-check; projections labeled as illustrative"
+        confidence: FOUND
+        source: "include clearly labeled illustrative ROI projections (Assumptions line 16)"
+    security:
+      prompt_injection:
+        strategy: null
+        confidence: UNKNOWN
+      least_privilege:
+        strategy: "Agent has no write access to framework definition or scoring rubric; all tools read-only or compute except report write"
+        confidence: FOUND
+        source: "Agent has no write access to the framework definition or scoring rubric (Assumptions line 17)"
+      redaction:
+        strategy: null
+        confidence: UNKNOWN
+    constraints:
+      data_residency:
+        present: null
+        impact: null
+        confidence: UNKNOWN
+      air_gap:
+        present: false
+        impact: "None — PoC uses synthetic data only; no on-prem requirement stated"
+        confidence: INFERRED
+        source: "No real client data; no live consultant deployment at PoC scope (Assumptions line 19)"
+      regulated_data:
+        present: false
+        impact: "None at PoC scope — fictional/synthetic data only"
+        confidence: FOUND
+        source: "No real client data; no CRM integration; no live consultant deployment at PoC scope (Assumptions line 19)"
+    deployment:
+      model:
+        value: "managed_cloud"
+        confidence: INFERRED
+        source: "PoC scope, no real data, no residency/air-gap constraints stated; managed cloud minimizes overhead for 2-week sprint"
+      rationale:
+        value: "Fixed-scope 2-week sprint PoC with synthetic data and no on-prem or residency constraints; managed cloud minimizes infrastructure overhead"
+        confidence: INFERRED
+        source: "fixed-scope, fixed-price engagement (proposed: 2-week sprint) (Assumptions line 15)"
+
+  phase_7_rollout:
+    artifacts:
+      system_prompt:
+        versioned: true
+        requires_eval: true
+        confidence: INFERRED
+        source: "Framework is versioned and governed by Dynamix; system prompts encoding rubric anchors should follow same versioning discipline"
+      retrieval_config:
+        versioned: null
+        requires_eval: null
+        confidence: NA
+      model_version:
+        versioned: null
+        requires_eval: null
+        confidence: UNKNOWN
+      tool_definitions:
+        versioned: true
+        requires_eval: true
+        confidence: INFERRED
+        source: "Framework definition versioning (Assumptions line 17) extends to tool definitions that load and apply it"
+    rollback_trigger:
+      value: null
+      confidence: UNKNOWN
+
+  open_items:
+    - item: "Supported answer rate target not defined"
+      phase_blocked: "Phase 5 — Evaluation"
+      why_it_matters: "Without a numeric target, the team cannot write a passing/failing eval harness for PoC sign-off"
+      suggested_resolution: "Ask Dynamix: what % of dimension scores must be verifiable against intake evidence to consider the agent production-ready?"
+    - item: "Task completion rate target not defined"
+      phase_blocked: "Phase 5 — Evaluation"
+      why_it_matters: "No acceptance criterion for the completeness gate or full end-to-end run"
+      suggested_resolution: "Define during PoC: track how often agent reaches completeness gate without intervention across synthetic test cases"
+    - item: "Escalation rate target not defined"
+      phase_blocked: "Phase 5 — Evaluation"
+      why_it_matters: "Cannot calibrate the confidence threshold or follow-up cap without a target escalation rate"
+      suggested_resolution: "Propose a default (e.g., <20% of dimensions flagged per engagement) and validate against synthetic scenarios"
+    - item: "Conflicting intake response behavior not specified"
+      phase_blocked: "Phase 5.2 — Abstention behavior"
+      why_it_matters: "If two intake responses for the same sub-criterion contradict each other, agent behavior is undefined"
+      suggested_resolution: "Specify: escalate to consultant, use conservative (lower) score, or flag as UNKNOWN"
+    - item: "Identity / auth tooling for Dynamix's stack unknown"
+      phase_blocked: "Phase 2 — Infrastructure"
+      why_it_matters: "Cannot assess SSO, access control, or multi-consultant isolation without knowing the auth stack"
+      suggested_resolution: "Check with Dynamix IT: is there an existing SSO or identity provider the PoC should integrate with?"
+    - item: "Communication platform for consultant report delivery unknown"
+      phase_blocked: "Phase 2 — Infrastructure"
+      why_it_matters: "Determines how the consultant receives and reviews the draft markdown report outside the rendered PDF"
+      suggested_resolution: "Ask Dynamix: is the markdown file delivered via email, shared drive, Slack, or lightweight web UI?"
+    - item: "Prompt-injection mitigation strategy not defined"
+      phase_blocked: "Phase 6.2 — Security"
+      why_it_matters: "Intake responses are free-text and could carry adversarial content targeting the LLM"
+      suggested_resolution: "Define: input sanitization, system prompt hardening, output validation layer"
+    - item: "Sensitive-field redaction policy not defined"
+      phase_blocked: "Phase 6.2 — Security"
+      why_it_matters: "Pattern must be defined before handling real client intake data in production, even if PoC uses synthetic data"
+      suggested_resolution: "Clarify: will intake responses ever contain employee names, org chart details, or financial specifics that must be masked in logs?"
+    - item: "Rollback trigger not defined"
+      phase_blocked: "Phase 7 — Rollout"
+      why_it_matters: "Without a rollback criterion, a degraded model or changed rubric version could silently produce wrong scores"
+      suggested_resolution: "Define: e.g., if supported answer rate drops below threshold on eval suite, revert to prior framework version and system prompt"
+    - item: "LLM vendor and model version not specified"
+      phase_blocked: "Phase 7 — Rollout"
+      why_it_matters: "Model version pinning and eval-before-deploy discipline cannot be applied without knowing the target model"
+      suggested_resolution: "Confirm with Dynamix: preferred LLM provider and whether model version must be pinned for consistency across engagements"
+    - item: "Data residency requirement not addressed"
+      phase_blocked: "Phase 6.3 — Constraints"
+      why_it_matters: "If any future engagement handles data with regional residency requirements, current managed-cloud assumption may be invalid"
+      suggested_resolution: "Ask Dynamix: is there a geographic region requirement for the cloud deployment?"
