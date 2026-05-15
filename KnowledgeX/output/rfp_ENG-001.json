@@ -1,0 +1,801 @@
+{
+  "engagement_id": "ENG-001",
+  "generated_at": "2026-05-12T21:23:37.077457Z",
+  "questions": [
+    {
+      "question_id": "Q-001",
+      "question_text": "What encryption algorithm protects data at rest in Dynamix Core Platform?",
+      "status": "drafted",
+      "confidence_band": "HIGH",
+      "draft_text": "Data at rest in Dynamix Core Platform is protected by AES-256-GCM, the default cipher applied to all data on disk, including primary database storage, snapshot archives, and audit logs [spec_sheet_dynamix_core_platform.md#spec-sheet-dynamix-core-platform-chunk-000]. The 2025.x release line additionally introduced support for customer-managed keys via HSM integration (PKCS#11 and KMIP), while earlier releases supported only platform-managed keys [spec_sheet_dynamix_core_platform.md#spec-sheet-dynamix-core-platform-chunk-000][prior_rfp_response_2025_q3.md#prior-rfp-response-2025-q3-chunk-001].",
+      "citations": [
+        {
+          "source_doc": "spec_sheet_dynamix_core_platform.md",
+          "chunk_id": "spec-sheet-dynamix-core-platform-chunk-000",
+          "similarity_score": 0.7568489458054946
+        },
+        {
+          "source_doc": "prior_rfp_response_2025_q3.md",
+          "chunk_id": "prior-rfp-response-2025-q3-chunk-001",
+          "similarity_score": 0.7203840350646931
+        }
+      ],
+      "conflict_versions": null,
+      "escalation_reason": null
+    },
+    {
+      "question_id": "Q-002",
+      "question_text": "Which identity-federation protocols does Core Platform support?",
+      "status": "drafted",
+      "confidence_band": "HIGH",
+      "draft_text": "Dynamix Core Platform supports two identity-federation protocols for enterprise integration: **SAML 2.0**, available on all 2024.x and 2025.x releases, and **OIDC (OpenID Connect)**, available on 2025.x and later [spec_sheet_dynamix_core_platform.md#spec-sheet-dynamix-core-platform-chunk-000]. Both protocols use the same group-to-role mapping mechanism — SAML via attribute statements and OIDC via standard claims — configured through the platform admin console [spec_sheet_dynamix_core_platform.md#spec-sheet-dynamix-core-platform-chunk-000][prior_rfp_response_2025_q3.md#prior-rfp-response-2025-q3-chunk-000].",
+      "citations": [
+        {
+          "source_doc": "spec_sheet_dynamix_core_platform.md",
+          "chunk_id": "spec-sheet-dynamix-core-platform-chunk-000",
+          "similarity_score": 0.7530042676327082
+        },
+        {
+          "source_doc": "prior_rfp_response_2025_q3.md",
+          "chunk_id": "prior-rfp-response-2025-q3-chunk-000",
+          "similarity_score": 0.6693764526023607
+        }
+      ],
+      "conflict_versions": null,
+      "escalation_reason": null
+    },
+    {
+      "question_id": "Q-003",
+      "question_text": "What is the default audit log retention period for Core Platform?",
+      "status": "drafted_flagged",
+      "confidence_band": "MEDIUM",
+      "draft_text": "The default audit log retention period for Dynamix Core Platform is **365 days** [spec_sheet_dynamix_core_platform.md#spec-sheet-dynamix-core-platform-chunk-000][prior_rfp_response_2025_q1.md#prior-rfp-response-2025-q1-chunk-000]. Retention is configurable from 90 days up to 2,555 days (seven years) to meet long-horizon regulatory record-keeping requirements [spec_sheet_dynamix_core_platform.md#spec-sheet-dynamix-core-platform-chunk-000][prior_rfp_response_2025_q1.md#prior-rfp-response-2025-q1-chunk-000]. Audit log entries are append-only, immutable once written, and integrity-signed using the platform key hierarchy [spec_sheet_dynamix_core_platform.md#spec-sheet-dynamix-core-platform-chunk-000].",
+      "citations": [
+        {
+          "source_doc": "spec_sheet_dynamix_core_platform.md",
+          "chunk_id": "spec-sheet-dynamix-core-platform-chunk-000",
+          "similarity_score": 0.6661421855603358
+        },
+        {
+          "source_doc": "prior_rfp_response_2025_q1.md",
+          "chunk_id": "prior-rfp-response-2025-q1-chunk-000",
+          "similarity_score": 0.6680012543200711
+        }
+      ],
+      "conflict_versions": null,
+      "escalation_reason": "Verify whether the 90-day minimum retention floor (noted in the spec sheet) applies to all deployment tiers or only specific configurations, as the prior RFP responses do not reference a minimum floor."
+    },
+    {
+      "question_id": "Q-004",
+      "question_text": "What is the typical power draw of the Edge Gateway 4400 appliance?",
+      "status": "drafted",
+      "confidence_band": "HIGH",
+      "draft_text": "The Edge Gateway 4400 series has a typical power draw of **280 W** [spec_sheet_dynamix_edge_gateway.md#spec-sheet-dynamix-edge-gateway-chunk-001]. The appliance ships in a 1U form factor and is rated for an operating temperature range of 0 °C to 40 °C [spec_sheet_dynamix_edge_gateway.md#spec-sheet-dynamix-edge-gateway-chunk-001].",
+      "citations": [
+        {
+          "source_doc": "spec_sheet_dynamix_edge_gateway.md",
+          "chunk_id": "spec-sheet-dynamix-edge-gateway-chunk-001",
+          "similarity_score": 0.7095789313316345
+        }
+      ],
+      "conflict_versions": null,
+      "escalation_reason": null
+    },
+    {
+      "question_id": "Q-005",
+      "question_text": "How many 10 GbE uplinks does the Edge Gateway 4400 ship with?",
+      "status": "drafted",
+      "confidence_band": "HIGH",
+      "draft_text": "The Edge Gateway 4400 ships with 4 × 10 GbE uplinks [spec_sheet_dynamix_edge_gateway.md#spec-sheet-dynamix-edge-gateway-chunk-000][prior_rfp_response_2024_q4.md#prior-rfp-response-2024-q4-chunk-000]. Both the 4400 and 2200 series support LACP link aggregation on these 10 GbE uplinks [spec_sheet_dynamix_edge_gateway.md#spec-sheet-dynamix-edge-gateway-chunk-000].",
+      "citations": [
+        {
+          "source_doc": "spec_sheet_dynamix_edge_gateway.md",
+          "chunk_id": "spec-sheet-dynamix-edge-gateway-chunk-000",
+          "similarity_score": 0.734641897444387
+        },
+        {
+          "source_doc": "prior_rfp_response_2024_q4.md",
+          "chunk_id": "prior-rfp-response-2024-q4-chunk-000",
+          "similarity_score": 0.739165277580591
+        }
+      ],
+      "conflict_versions": null,
+      "escalation_reason": null
+    },
+    {
+      "question_id": "Q-006",
+      "question_text": "What minimum TLS version does Core Platform require on its interfaces?",
+      "status": "drafted_flagged",
+      "confidence_band": "MEDIUM",
+      "draft_text": "Dynamix Core Platform requires a minimum of TLS 1.2 on all platform-internal and external interfaces [spec_sheet_dynamix_core_platform.md#spec-sheet-dynamix-core-platform-chunk-000]. TLS 1.3 is supported and is the negotiated default when both peers support it [spec_sheet_dynamix_core_platform.md#spec-sheet-dynamix-core-platform-chunk-000]. The REST API integration surface likewise operates over TLS 1.2 or higher [partner_enablement_integration_guide.md#partner-enablement-integration-guide-chunk-000]. When provisioned with `--security-profile=fips`, the platform enforces TLS 1.2 with FIPS-approved cipher suites for all data in transit [prior_rfp_response_2025_q1.md#prior-rfp-response-2025-q1-chunk-000].",
+      "citations": [
+        {
+          "source_doc": "spec_sheet_dynamix_core_platform.md",
+          "chunk_id": "spec-sheet-dynamix-core-platform-chunk-000",
+          "similarity_score": 0.6980922402088512
+        },
+        {
+          "source_doc": "partner_enablement_integration_guide.md",
+          "chunk_id": "partner-enablement-integration-guide-chunk-000",
+          "similarity_score": 0.6503475129190072
+        },
+        {
+          "source_doc": "prior_rfp_response_2025_q1.md",
+          "chunk_id": "prior-rfp-response-2025-q1-chunk-000",
+          "similarity_score": 0.6316069584127104
+        }
+      ],
+      "conflict_versions": null,
+      "escalation_reason": "Verify whether the customer's deployment will use standard mode (TLS 1.2 minimum, TLS 1.3 default) or FIPS mode (TLS 1.2 with FIPS-approved cipher suites), as the effective cipher constraints differ between the two profiles."
+    },
+    {
+      "question_id": "Q-007",
+      "question_text": "What sustained request-rate ceiling applies to Standard-tier API tokens?",
+      "status": "drafted_flagged",
+      "confidence_band": "MEDIUM",
+      "draft_text": "Standard-tier API tokens are subject to a sustained request-rate ceiling of **200 requests per second per token**, with a burst allowance of 500 requests per second for periods of up to 10 seconds [partner_enablement_integration_guide.md#partner-enablement-integration-guide-chunk-001]. When the limit is exceeded, the platform returns HTTP 429 with a `Retry-After` header indicating how long to wait before retrying [partner_enablement_integration_guide.md#partner-enablement-integration-guide-chunk-001].",
+      "citations": [
+        {
+          "source_doc": "partner_enablement_integration_guide.md",
+          "chunk_id": "partner-enablement-integration-guide-chunk-001",
+          "similarity_score": 0.6821184740556726
+        }
+      ],
+      "conflict_versions": null,
+      "escalation_reason": "Verify whether these rate-limit figures apply uniformly across all API endpoint families or whether any endpoints (e.g., bulk/export endpoints) carry separate, lower limits not captured in this table."
+    },
+    {
+      "question_id": "Q-008",
+      "question_text": "What is the standard lead time for Edge Gateway appliance shipment?",
+      "status": "drafted",
+      "confidence_band": "HIGH",
+      "draft_text": "Edge Gateway appliances (both the 4400 and 2200 series) ship from stock within 5 business days of purchase order acknowledgement under standard demand [spec_sheet_dynamix_edge_gateway.md#spec-sheet-dynamix-edge-gateway-chunk-001][prior_rfp_response_2024_q4.md#prior-rfp-response-2024-q4-chunk-001]. During quarterly close periods, lead times may extend to 10 business days [spec_sheet_dynamix_edge_gateway.md#spec-sheet-dynamix-edge-gateway-chunk-001]. On-site commissioning takes approximately one engineer-day per appliance, including network integration and initial telemetry validation [prior_rfp_response_2024_q4.md#prior-rfp-response-2024-q4-chunk-001].",
+      "citations": [
+        {
+          "source_doc": "spec_sheet_dynamix_edge_gateway.md",
+          "chunk_id": "spec-sheet-dynamix-edge-gateway-chunk-001",
+          "similarity_score": 0.6647475957870483
+        },
+        {
+          "source_doc": "prior_rfp_response_2024_q4.md",
+          "chunk_id": "prior-rfp-response-2024-q4-chunk-001",
+          "similarity_score": 0.805673360824585
+        }
+      ],
+      "conflict_versions": null,
+      "escalation_reason": null
+    },
+    {
+      "question_id": "Q-009",
+      "question_text": "What operating temperature range is the Edge Gateway 4400 certified for?",
+      "status": "drafted_flagged",
+      "confidence_band": "MEDIUM",
+      "draft_text": "The Dynamix Edge Gateway 4400 series is certified for an operating temperature range of **0 °C to 40 °C** [spec_sheet_dynamix_edge_gateway.md#spec-sheet-dynamix-edge-gateway-chunk-001]. Note that the 2200 series has a slightly wider upper bound (0 °C to 45 °C), so deployments in warmer environments should account for this difference [spec_sheet_dynamix_edge_gateway.md#spec-sheet-dynamix-edge-gateway-chunk-001]. Both appliances are NEBS Level 3 certified [spec_sheet_dynamix_edge_gateway.md#spec-sheet-dynamix-edge-gateway-chunk-001].",
+      "citations": [
+        {
+          "source_doc": "spec_sheet_dynamix_edge_gateway.md",
+          "chunk_id": "spec-sheet-dynamix-edge-gateway-chunk-001",
+          "similarity_score": 0.7002914726560443
+        }
+      ],
+      "conflict_versions": null,
+      "escalation_reason": "Verify whether the customer's deployment environment (e.g. shop floor or outdoor enclosure) falls within the 0 °C – 40 °C range; if ambient temperatures could exceed 40 °C, escalate to the SE team for thermal mitigation options or to confirm whether a ruggedised variant exists."
+    },
+    {
+      "question_id": "Q-010",
+      "question_text": "What support tiers does Dynamix offer for the platform?",
+      "status": "drafted_flagged",
+      "confidence_band": "MEDIUM",
+      "draft_text": "Dynamix offers three published support tiers for the platform [sme_faq_internal.md#sme-faq-internal-chunk-001]:\n\n- **Standard** — business-hours email support with a 1-business-day response target.\n- **Premium** — 24×7 email and phone support with a 4-hour response target on production-impact issues.\n- **Mission-Critical** — 24×7 support with a 30-minute response target, a named Technical Account Manager, and quarterly health reviews.\n\nAll Enterprise-tier subscriptions include Premium support by default [sme_faq_internal.md#sme-faq-internal-chunk-001].",
+      "citations": [
+        {
+          "source_doc": "sme_faq_internal.md",
+          "chunk_id": "sme-faq-internal-chunk-001",
+          "similarity_score": 0.6900973320007324
+        }
+      ],
+      "conflict_versions": null,
+      "escalation_reason": "Verify that the support tier names, response SLAs, and Enterprise-tier default have not changed since this FAQ was last reviewed — particularly the 30-minute Mission-Critical response target and TAM inclusion."
+    },
+    {
+      "question_id": "Q-011",
+      "question_text": "What is the published pricing model for the Core Platform?",
+      "status": "drafted_flagged",
+      "confidence_band": "MEDIUM",
+      "draft_text": "The Core Platform is priced on a per-active-user basis, with tier discounts applying at 1,000, 5,000, and 25,000 active users [sme_faq_internal.md#sme-faq-internal-chunk-000]. Edge Gateway appliances are priced per-unit and sold separately from the Core Platform subscription [sme_faq_internal.md#sme-faq-internal-chunk-000]. A 30-day evaluation tier is available with full functionality and a 500-active-user cap, provisioned by the solutions-engineering team on request [sme_faq_internal.md#sme-faq-internal-chunk-000]. Specific list prices are not published in this document and should be routed through commercial operations [sme_faq_internal.md#sme-faq-internal-chunk-000].",
+      "citations": [
+        {
+          "source_doc": "sme_faq_internal.md",
+          "chunk_id": "sme-faq-internal-chunk-000",
+          "similarity_score": 0.6664285659790039
+        }
+      ],
+      "conflict_versions": null,
+      "escalation_reason": "Confirm with commercial operations that the tier discount thresholds (1,000 / 5,000 / 25,000 active users) and the evaluation-tier terms are still current before including in a customer-facing response."
+    },
+    {
+      "question_id": "Q-012",
+      "question_text": "How long does a typical single-site Core Platform deployment take?",
+      "status": "drafted",
+      "confidence_band": "HIGH",
+      "draft_text": "A typical single-site Core Platform deployment takes **5 – 10 engineer-days** from infrastructure-ready to validated go-live [partner_enablement_deployment_playbook.md#partner-enablement-deployment-playbook-chunk-001]. This timeline covers the full provisioning sequence: infrastructure setup, Core Platform installation, identity federation configuration, optional HSM key configuration, post-install validation, and handoff to the customer's operations team with a runbook [partner_enablement_deployment_playbook.md#partner-enablement-deployment-playbook-chunk-001].",
+      "citations": [
+        {
+          "source_doc": "partner_enablement_deployment_playbook.md",
+          "chunk_id": "partner-enablement-deployment-playbook-chunk-001",
+          "similarity_score": 0.7604728030594876
+        }
+      ],
+      "conflict_versions": null,
+      "escalation_reason": null
+    },
+    {
+      "question_id": "Q-013",
+      "question_text": "For a tenant with approximately 4,500 active users, what HA deployment footprint should we expect?",
+      "status": "drafted_flagged",
+      "confidence_band": "MEDIUM",
+      "draft_text": "For a tenant with approximately 4,500 active users, the recommended High-Availability footprint is a 3-node-per-AZ deployment totalling 9 nodes across three availability zones [partner_enablement_deployment_playbook.md#partner-enablement-deployment-playbook-chunk-000]. This aligns with the sizing table that places the 500–5,000 active-user range in a 3–9 core node HA topology, with 2–6 edge gateways typically provisioned alongside [partner_enablement_deployment_playbook.md#partner-enablement-deployment-playbook-chunk-001]. A prior engagement with a similarly sized (~4,500 employee) healthcare payer was delivered using this HA profile [prior_rfp_response_2025_q3.md#prior-rfp-response-2025-q3-chunk-000]. A typical HA deployment runs 15–25 engineer-days from infrastructure-ready to validated go-live [partner_enablement_deployment_playbook.md#partner-enablement-deployment-playbook-chunk-001].",
+      "citations": [
+        {
+          "source_doc": "partner_enablement_deployment_playbook.md",
+          "chunk_id": "partner-enablement-deployment-playbook-chunk-000",
+          "similarity_score": 0.6640924415533291
+        },
+        {
+          "source_doc": "partner_enablement_deployment_playbook.md",
+          "chunk_id": "partner-enablement-deployment-playbook-chunk-001",
+          "similarity_score": 0.698752760887146
+        },
+        {
+          "source_doc": "prior_rfp_response_2025_q3.md",
+          "chunk_id": "prior-rfp-response-2025-q3-chunk-000",
+          "similarity_score": 0.6572949886322021
+        }
+      ],
+      "conflict_versions": null,
+      "escalation_reason": "4,500 users sits near the upper boundary of the 1,000–5,000 bracket; if the tenant anticipates growth beyond 5,000 active users in the near term, the SE should evaluate whether to size up to the 5-node-per-AZ (15-node) footprint used for the 5,000–25,000 range from the outset."
+    },
+    {
+      "question_id": "Q-014",
+      "question_text": "Does the platform support hardware security modules for customer-managed key storage?",
+      "status": "drafted_flagged",
+      "confidence_band": "MEDIUM",
+      "draft_text": "Yes, the Dynamix Core Platform supports hardware security modules (HSMs) for customer-managed key storage. The 2025.x release introduced HSM integration via both PKCS#11 and KMIP protocols, enabling customer-managed keys alongside the default AES-256-GCM encryption at rest [spec_sheet_dynamix_core_platform.md#spec-sheet-dynamix-core-platform-chunk-000]. This capability is confirmed in a prior production engagement where customer-managed keys via HSM integration were used exclusively [prior_rfp_response_2025_q3.md#prior-rfp-response-2025-q3-chunk-001]. Note that HSM integration is only available on the 2025.x release line; earlier releases supported platform-managed keys only [spec_sheet_dynamix_core_platform.md#spec-sheet-dynamix-core-platform-chunk-000].",
+      "citations": [
+        {
+          "source_doc": "spec_sheet_dynamix_core_platform.md",
+          "chunk_id": "spec-sheet-dynamix-core-platform-chunk-000",
+          "similarity_score": 0.6656134128570557
+        },
+        {
+          "source_doc": "prior_rfp_response_2025_q3.md",
+          "chunk_id": "prior-rfp-response-2025-q3-chunk-001",
+          "similarity_score": 0.6232140884867865
+        }
+      ],
+      "conflict_versions": null,
+      "escalation_reason": "Verify with the customer which HSM interface (PKCS#11 or KMIP) their existing key-management infrastructure uses, and confirm they are deploying on the 2025.x release line to ensure HSM integration is available."
+    },
+    {
+      "question_id": "Q-015",
+      "question_text": "What runtime languages are supported by the official SDKs?",
+      "status": "drafted_flagged",
+      "confidence_band": "MEDIUM",
+      "draft_text": "The official Dynamix Core Platform SDKs are published for Python, Java, and TypeScript [partner_enablement_integration_guide.md#partner-enablement-integration-guide-chunk-000]. These client libraries wrap the REST surface and additionally provide idempotency-key handling, paginated iterators, and retry policy [partner_enablement_integration_guide.md#partner-enablement-integration-guide-chunk-000].",
+      "citations": [
+        {
+          "source_doc": "partner_enablement_integration_guide.md",
+          "chunk_id": "partner-enablement-integration-guide-chunk-000",
+          "similarity_score": 0.617998622775161
+        }
+      ],
+      "conflict_versions": null,
+      "escalation_reason": "Verify with the partner enablement team whether any additional language SDKs have been added or are planned, as the integration guide notes only the three listed here and the SME FAQ references \"additional language coverage\" in the 2026.x roadmap without specifics."
+    },
+    {
+      "question_id": "Q-016",
+      "question_text": "What's the upper bound on platform-supported dataset size at the Enterprise tier?",
+      "status": "drafted_flagged",
+      "confidence_band": "MEDIUM",
+      "draft_text": "The platform-supported maximum dataset size at the Enterprise tier is 500 TB [spec_sheet_dynamix_core_platform.md#spec-sheet-dynamix-core-platform-chunk-001].",
+      "citations": [
+        {
+          "source_doc": "spec_sheet_dynamix_core_platform.md",
+          "chunk_id": "spec-sheet-dynamix-core-platform-chunk-001",
+          "similarity_score": 0.6368487314166196
+        }
+      ],
+      "conflict_versions": null,
+      "escalation_reason": "Verify that the 500 TB figure applies to the customer's specific 2025.x deployment configuration, as the Operating Limits table is sourced from the 2025.x release line spec sheet; confirm whether any architectural constraints (e.g. single-cluster vs. federated) affect this ceiling."
+    },
+    {
+      "question_id": "Q-017",
+      "question_text": "Can the Core Platform be deployed on Windows Server?",
+      "status": "drafted_flagged",
+      "confidence_band": "MEDIUM",
+      "draft_text": "Windows Server is not a supported platform for Dynamix Core Platform in the 2025.x release line [spec_sheet_dynamix_core_platform.md#spec-sheet-dynamix-core-platform-chunk-001]. Supported platforms are Linux x86_64 (RHEL 8/9, Ubuntu 22.04 LTS) and ARM64 (RHEL 9 only) [spec_sheet_dynamix_core_platform.md#spec-sheet-dynamix-core-platform-chunk-001]. Windows-side integration is available through the SDK, with guidance covered in the partner-enablement documentation [spec_sheet_dynamix_core_platform.md#spec-sheet-dynamix-core-platform-chunk-001].",
+      "citations": [
+        {
+          "source_doc": "spec_sheet_dynamix_core_platform.md",
+          "chunk_id": "spec-sheet-dynamix-core-platform-chunk-001",
+          "similarity_score": 0.5795467401091211
+        }
+      ],
+      "conflict_versions": null,
+      "escalation_reason": "Confirm with the SE whether any roadmap items or interim guidance exist for Windows Server support beyond the SDK integration path, as the spec sheet only reflects the 2025.x release line."
+    },
+    {
+      "question_id": "Q-018",
+      "question_text": "What is the longest retention period available for audit log entries?",
+      "status": "drafted_flagged",
+      "confidence_band": "MEDIUM",
+      "draft_text": "The longest available retention period for audit log entries is 2,555 days (seven years) [spec_sheet_dynamix_core_platform.md#spec-sheet-dynamix-core-platform-chunk-000][prior_rfp_response_2025_q1.md#prior-rfp-response-2025-q1-chunk-000]. The default retention is 365 days, with the configurable range spanning from 90 days up to the 2,555-day maximum [spec_sheet_dynamix_core_platform.md#spec-sheet-dynamix-core-platform-chunk-000]. Audit log entries are immutable once written and integrity-signed using the platform key hierarchy [prior_rfp_response_2025_q1.md#prior-rfp-response-2025-q1-chunk-000][spec_sheet_dynamix_core_platform.md#spec-sheet-dynamix-core-platform-chunk-000].",
+      "citations": [
+        {
+          "source_doc": "spec_sheet_dynamix_core_platform.md",
+          "chunk_id": "spec-sheet-dynamix-core-platform-chunk-000",
+          "similarity_score": 0.545868429295328
+        },
+        {
+          "source_doc": "prior_rfp_response_2025_q1.md",
+          "chunk_id": "prior-rfp-response-2025-q1-chunk-000",
+          "similarity_score": 0.5896568649802734
+        }
+      ],
+      "conflict_versions": null,
+      "escalation_reason": "Verify whether the 90-day minimum and 2,555-day maximum retention range applies uniformly across both Standard and Enterprise tiers, or if tier-specific constraints exist — the spec sheet does not explicitly differentiate by tier for audit log retention."
+    },
+    {
+      "question_id": "Q-019",
+      "question_text": "How long after a REST endpoint is deprecated does it remain available?",
+      "status": "drafted_flagged",
+      "confidence_band": "MEDIUM",
+      "draft_text": "Deprecated REST endpoints remain available for two major releases after the deprecation announcement, following the platform's API deprecation policy [sme_faq_internal.md#sme-faq-internal-chunk-001].",
+      "citations": [
+        {
+          "source_doc": "sme_faq_internal.md",
+          "chunk_id": "sme-faq-internal-chunk-001",
+          "similarity_score": 0.6233972311019897
+        }
+      ],
+      "conflict_versions": null,
+      "escalation_reason": "Verify whether \"two major releases\" translates to a specific calendar timeframe for this customer's release cadence, and confirm whether the v1 REST surface end-of-life date of 2026-12-31 is governed by this same policy or a separate commitment."
+    },
+    {
+      "question_id": "Q-020",
+      "question_text": "How many Core nodes are required for a 12,000-active-user Enterprise deployment?",
+      "status": "drafted_flagged",
+      "confidence_band": "MEDIUM",
+      "draft_text": "A 12,000-active-user Enterprise deployment falls within the 5,000–25,000 active-user range, for which the recommended topology is High-Availability with a 5-node-per-AZ configuration, totalling **15 Core nodes** [partner_enablement_deployment_playbook.md#partner-enablement-deployment-playbook-chunk-000]. This is confirmed in the sizing table, which lists 15 Core nodes for the 5,000–25,000 active-user bracket under the HA (5-per-AZ) topology [partner_enablement_deployment_playbook.md#partner-enablement-deployment-playbook-chunk-001]. This configuration is also noted as the topology certified for Enterprise tier operating limits [partner_enablement_deployment_playbook.md#partner-enablement-deployment-playbook-chunk-000].",
+      "citations": [
+        {
+          "source_doc": "partner_enablement_deployment_playbook.md",
+          "chunk_id": "partner-enablement-deployment-playbook-chunk-000",
+          "similarity_score": 0.7049551957899098
+        },
+        {
+          "source_doc": "partner_enablement_deployment_playbook.md",
+          "chunk_id": "partner-enablement-deployment-playbook-chunk-001",
+          "similarity_score": 0.7047780332101576
+        }
+      ],
+      "conflict_versions": null,
+      "escalation_reason": "Verify that the customer's 12,000 active-user count is stable and not expected to approach the 25,000 boundary in the near term; if rapid growth is anticipated, confirm whether the Multi-Region topology (15 + follower nodes) should be considered upfront."
+    },
+    {
+      "question_id": "Q-021",
+      "question_text": "What is the Recovery Time Objective for a regional outage event?",
+      "status": "conflict",
+      "confidence_band": "CONFLICT",
+      "draft_text": null,
+      "citations": [
+        {
+          "source_doc": "spec_sheet_dynamix_core_platform.md",
+          "chunk_id": "spec-sheet-dynamix-core-platform-chunk-001",
+          "similarity_score": 0.6843337604800618
+        },
+        {
+          "source_doc": "partner_enablement_deployment_playbook.md",
+          "chunk_id": "partner-enablement-deployment-playbook-chunk-000",
+          "similarity_score": 0.6021087047924155
+        },
+        {
+          "source_doc": "prior_rfp_response_2025_q1.md",
+          "chunk_id": "prior-rfp-response-2025-q1-chunk-000",
+          "similarity_score": 0.5870554097261791
+        }
+      ],
+      "conflict_versions": [
+        "The spec sheet for the 2025.x release line documents two RTOs depending on recovery profile: 4 hours for a single-region restore under the Standard profile (asynchronous replication), and 90 minutes for in-region failover under the High-Availability profile (synchronous multi-AZ replication) [spec_sheet_dynamix_core_platform.md#spec-sheet-dynamix-core-platform-chunk-001]. Neither figure is described as applying to a cross-region (regional outage) scenario specifically.",
+        "The Deployment Playbook documents a third, distinct RTO for the Multi-Region Topology: for a region-out scenario, the standard published RTO is 8 hours (with RPO of 15 minutes), using asynchronous replication from a primary HA region to a secondary follower cluster; this target is described as customer-configurable [partner_enablement_deployment_playbook.md#partner-enablement-deployment-playbook-chunk-000].",
+        "The 2025 Q1 prior RFP response (2024.x release line, standard deployment) documents the RTO for a single-region restore as 4 hours using the documented runbook, with no separate cross-region or regional-outage RTO cited [prior_rfp_response_2025_q1.md#prior-rfp-response-2025-q1-chunk-000]. This conflicts with the Deployment Playbook's 8-hour cross-region RTO figure [partner_enablement_deployment_playbook.md#partner-enablement-deployment-playbook-chunk-000], as it is unclear whether the Q1 response's 4-hour figure was intended to cover or exclude a regional outage scenario."
+      ],
+      "escalation_reason": "The question asks about RTO for a regional outage event. The spec sheet and prior Q1 RFP response document RTO as 4 hours for a single-region restore under the Standard profile, while the deployment playbook's Multi-Region Topology section documents RTO as 8 hours for a region-out scenario — these two figures (4 hours vs. 8 hours) are mutually exclusive answers to a \"regional outage\" RTO question and cannot both be correct without an SME clarifying which topology/profile applies. The HA profile RTO of 90 minutes (in-region failover only) further adds a third distinct figure, compounding the conflict across sources."
+    },
+    {
+      "question_id": "Q-022",
+      "question_text": "What real-time streaming ingest mechanism does Core Platform expose?",
+      "status": "escalated",
+      "confidence_band": "LOW",
+      "draft_text": null,
+      "citations": [
+        {
+          "source_doc": "spec_sheet_dynamix_core_platform.md",
+          "chunk_id": "spec-sheet-dynamix-core-platform-chunk-000",
+          "similarity_score": 0.6196079027419044
+        },
+        {
+          "source_doc": "partner_enablement_integration_guide.md",
+          "chunk_id": "partner-enablement-integration-guide-chunk-000",
+          "similarity_score": 0.6134766340255781
+        },
+        {
+          "source_doc": "sme_faq_internal.md",
+          "chunk_id": "sme-faq-internal-chunk-000",
+          "similarity_score": 0.5906942242797757
+        },
+        {
+          "source_doc": "prior_rfp_response_2024_q4.md",
+          "chunk_id": "prior-rfp-response-2024-q4-chunk-000",
+          "similarity_score": 0.5809727657421102
+        },
+        {
+          "source_doc": "sme_faq_internal.md",
+          "chunk_id": "sme-faq-internal-chunk-001",
+          "similarity_score": 0.5803926336999328
+        }
+      ],
+      "conflict_versions": null,
+      "escalation_reason": "The retrieved chunks describe the Core Platform's REST API, Webhooks, and SDKs as integration surfaces, but none of these are real-time streaming ingest mechanisms, and no chunk mentions any streaming protocol (e.g., Kafka, WebSockets, SSE, gRPC streaming) for ingest. The question cannot be answered without speculating beyond what is documented."
+    },
+    {
+      "question_id": "Q-023",
+      "question_text": "What is the step-by-step procedure to provision customer-managed keys in production?",
+      "status": "escalated",
+      "confidence_band": "LOW",
+      "draft_text": null,
+      "citations": [
+        {
+          "source_doc": "partner_enablement_deployment_playbook.md",
+          "chunk_id": "partner-enablement-deployment-playbook-chunk-001",
+          "similarity_score": 0.6395456409725176
+        },
+        {
+          "source_doc": "prior_rfp_response_2025_q1.md",
+          "chunk_id": "prior-rfp-response-2025-q1-chunk-000",
+          "similarity_score": 0.628724537567823
+        },
+        {
+          "source_doc": "prior_rfp_response_2025_q3.md",
+          "chunk_id": "prior-rfp-response-2025-q3-chunk-000",
+          "similarity_score": 0.6179920066599853
+        },
+        {
+          "source_doc": "spec_sheet_dynamix_core_platform.md",
+          "chunk_id": "spec-sheet-dynamix-core-platform-chunk-000",
+          "similarity_score": 0.613168739487605
+        },
+        {
+          "source_doc": "sme_faq_internal.md",
+          "chunk_id": "sme-faq-internal-chunk-000",
+          "similarity_score": 0.6042416927670434
+        }
+      ],
+      "conflict_versions": null,
+      "escalation_reason": "The retrieved chunks acknowledge that customer-managed key (CMK) support via HSM integration (PKCS#11 and KMIP) exists in the 2025.x release and mention it as a step in the general provisioning sequence (\"Apply customer-managed key configuration (HSM) if required\"), but none of the chunks provide the actual step-by-step procedure for provisioning CMKs. Drafting a procedural answer from these chunks would require speculation about the specific configuration steps."
+    },
+    {
+      "question_id": "Q-024",
+      "question_text": "What is the mean-time-to-repair for an Edge Gateway hardware failure?",
+      "status": "no_source",
+      "confidence_band": "NO_SOURCE",
+      "draft_text": null,
+      "citations": [],
+      "conflict_versions": null,
+      "escalation_reason": "None of the retrieved chunks contain any information about MTTR or repair/recovery timelines for Edge Gateway hardware failures. The chunks cover throughput specs, connectivity, deployment timelines, sizing guidance, and commercial terms — none of which address hardware failure repair metrics."
+    },
+    {
+      "question_id": "Q-025",
+      "question_text": "Is Dynamix Core Platform FedRAMP Moderate authorized?",
+      "status": "no_source",
+      "confidence_band": "NO_SOURCE",
+      "draft_text": null,
+      "citations": [],
+      "conflict_versions": null,
+      "escalation_reason": "None of the retrieved chunks mention FedRAMP at any level (Moderate, Low, or High), nor any FedRAMP authorization, in-process status, or agency ATO. The chunks cover related security controls (AES-256, FIPS 140-2, TLS, audit logging) but these are general security capabilities, not FedRAMP authorization data — exactly as in Example D. Drafting an affirmative or negative FedRAMP answer from these chunks would require speculation."
+    },
+    {
+      "question_id": "Q-026",
+      "question_text": "Does the platform comply with the HIPAA Privacy Rule for protected health information?",
+      "status": "no_source",
+      "confidence_band": "NO_SOURCE",
+      "draft_text": null,
+      "citations": [],
+      "conflict_versions": null,
+      "escalation_reason": "None of the retrieved chunks address HIPAA Privacy Rule compliance, PHI handling, or any HIPAA-related attestation. The chunks cover encryption, audit logging, identity federation, recovery profiles, and API integration — general security controls that are adjacent but do not constitute or document HIPAA compliance. Notably, the SME FAQ explicitly states it does not address regulatory authorisations or compliance attestations, and directs such questions to the compliance team."
+    },
+    {
+      "question_id": "Q-027",
+      "question_text": "What languages does the admin console UI support?",
+      "status": "no_source",
+      "confidence_band": "NO_SOURCE",
+      "draft_text": null,
+      "citations": [],
+      "conflict_versions": null,
+      "escalation_reason": "No KB chunks above the retrieval relevance threshold for this question."
+    },
+    {
+      "question_id": "Q-028",
+      "question_text": "Is the platform SOC 2 Type II certified?",
+      "status": "no_source",
+      "confidence_band": "NO_SOURCE",
+      "draft_text": null,
+      "citations": [],
+      "conflict_versions": null,
+      "escalation_reason": "None of the retrieved chunks mention SOC 2 Type II at all. The chunks cover encryption, identity federation, audit logging, recovery profiles, and support tiers — none of which address SOC 2 certification. The internal FAQ explicitly notes it does not cover compliance attestations and directs those questions to the compliance team."
+    },
+    {
+      "question_id": "Q-029",
+      "question_text": "What is the documented Recovery Point Objective for the Core Platform?",
+      "status": "conflict",
+      "confidence_band": "CONFLICT",
+      "draft_text": null,
+      "citations": [
+        {
+          "source_doc": "prior_rfp_response_2025_q1.md",
+          "chunk_id": "prior-rfp-response-2025-q1-chunk-000",
+          "similarity_score": 0.6499098748022404
+        },
+        {
+          "source_doc": "prior_rfp_response_2025_q3.md",
+          "chunk_id": "prior-rfp-response-2025-q3-chunk-000",
+          "similarity_score": 0.6326160053839691
+        },
+        {
+          "source_doc": "spec_sheet_dynamix_core_platform.md",
+          "chunk_id": "spec-sheet-dynamix-core-platform-chunk-001",
+          "similarity_score": 0.6825341771522667
+        }
+      ],
+      "conflict_versions": [
+        "Under the 2024.x standard deployment profile, with asynchronous replication and snapshots running on a 15-minute cadence, the documented RPO for Dynamix Core Platform is 15 minutes [prior_rfp_response_2025_q1.md#prior-rfp-response-2025-q1-chunk-000]. The accompanying RTO is 4 hours for a single-region restore [prior_rfp_response_2025_q1.md#prior-rfp-response-2025-q1-chunk-000].",
+        "Under the 2025.x High-Availability profile, which uses synchronous replication between availability zones [prior_rfp_response_2025_q3.md#prior-rfp-response-2025-q3-chunk-000], the documented RPO for Dynamix Core Platform is 5 minutes, with an RTO of 90 minutes for an in-region failover [prior_rfp_response_2025_q3.md#prior-rfp-response-2025-q3-chunk-000].",
+        "The 2025.x release line spec sheet documents two co-existing recovery profiles for Dynamix Core Platform: (1) the Standard profile with asynchronous replication carries an RPO of 15 minutes and RTO of 4 hours single-region, and (2) the High-Availability profile with synchronous multi-AZ replication carries an RPO of 5 minutes and RTO of 90 minutes in-region failover [spec_sheet_dynamix_core_platform.md#spec-sheet-dynamix-core-platform-chunk-001]. The spec sheet notes the recovery profile is selected at deployment time and is not switchable in place [spec_sheet_dynamix_core_platform.md#spec-sheet-dynamix-core-platform-chunk-001]."
+      ],
+      "escalation_reason": "Multiple chunks assert different RPO figures for the Core Platform: prior-rfp-response-2025-q1-chunk-000 documents an RPO of 15 minutes (2024.x standard profile), while prior-rfp-response-2025-q3-chunk-000 and spec-sheet-dynamix-core-platform-chunk-001 document an RPO of 5 minutes (2025.x High-Availability profile) and 15 minutes (2025.x Standard profile). Without knowing which release line and deployment profile the RFP question refers to, a reader cannot determine a single authoritative RPO figure, constituting a conflict that requires SME resolution."
+    },
+    {
+      "question_id": "Q-030",
+      "question_text": "What is the certified sustained ingest rate of the Edge Gateway 4400 series?",
+      "status": "conflict",
+      "confidence_band": "CONFLICT",
+      "draft_text": null,
+      "citations": [
+        {
+          "source_doc": "spec_sheet_dynamix_edge_gateway.md",
+          "chunk_id": "spec-sheet-dynamix-edge-gateway-chunk-000",
+          "similarity_score": 0.7360440807289981
+        },
+        {
+          "source_doc": "prior_rfp_response_2024_q4.md",
+          "chunk_id": "prior-rfp-response-2024-q4-chunk-000",
+          "similarity_score": 0.7428001914739508
+        }
+      ],
+      "conflict_versions": [
+        "The published spec sheet certifies the Edge Gateway 4400 series at a sustained ingest rate of 80,000 events per second, validated against a median payload size of 1.2 KB [spec_sheet_dynamix_edge_gateway.md#spec-sheet-dynamix-edge-gateway-chunk-000].",
+        "In a 2024 Q4 customer engagement (discrete manufacturing, mixed shop-floor telemetry payload profile with a median of ~2.0 KB, larger than the spec-sheet median), the Edge Gateway 4400 series sustained ingest was confirmed at 60,000 events per second per appliance via a one-week on-site validation [prior_rfp_response_2024_q4.md#prior-rfp-response-2024-q4-chunk-000]."
+      ],
+      "escalation_reason": "The spec sheet certifies the 4400 series sustained ingest rate at 80,000 events/second (at a 1.2 KB median payload), while the prior RFP response states 60,000 events/second for the same appliance (at a larger ~2.0 KB median payload). Both chunks assert a sustained ingest figure for the 4400 series, but the numbers differ and a reader cannot determine the certified rate without SME clarification on which payload profile applies."
+    }
+  ],
+  "escalation_queue": [
+    {
+      "question_id": "Q-021",
+      "question_text": "What is the Recovery Time Objective for a regional outage event?",
+      "status": "conflict",
+      "confidence_band": "CONFLICT",
+      "draft_text": null,
+      "citations": [
+        {
+          "source_doc": "spec_sheet_dynamix_core_platform.md",
+          "chunk_id": "spec-sheet-dynamix-core-platform-chunk-001",
+          "similarity_score": 0.6843337604800618
+        },
+        {
+          "source_doc": "partner_enablement_deployment_playbook.md",
+          "chunk_id": "partner-enablement-deployment-playbook-chunk-000",
+          "similarity_score": 0.6021087047924155
+        },
+        {
+          "source_doc": "prior_rfp_response_2025_q1.md",
+          "chunk_id": "prior-rfp-response-2025-q1-chunk-000",
+          "similarity_score": 0.5870554097261791
+        }
+      ],
+      "conflict_versions": [
+        "The spec sheet for the 2025.x release line documents two RTOs depending on recovery profile: 4 hours for a single-region restore under the Standard profile (asynchronous replication), and 90 minutes for in-region failover under the High-Availability profile (synchronous multi-AZ replication) [spec_sheet_dynamix_core_platform.md#spec-sheet-dynamix-core-platform-chunk-001]. Neither figure is described as applying to a cross-region (regional outage) scenario specifically.",
+        "The Deployment Playbook documents a third, distinct RTO for the Multi-Region Topology: for a region-out scenario, the standard published RTO is 8 hours (with RPO of 15 minutes), using asynchronous replication from a primary HA region to a secondary follower cluster; this target is described as customer-configurable [partner_enablement_deployment_playbook.md#partner-enablement-deployment-playbook-chunk-000].",
+        "The 2025 Q1 prior RFP response (2024.x release line, standard deployment) documents the RTO for a single-region restore as 4 hours using the documented runbook, with no separate cross-region or regional-outage RTO cited [prior_rfp_response_2025_q1.md#prior-rfp-response-2025-q1-chunk-000]. This conflicts with the Deployment Playbook's 8-hour cross-region RTO figure [partner_enablement_deployment_playbook.md#partner-enablement-deployment-playbook-chunk-000], as it is unclear whether the Q1 response's 4-hour figure was intended to cover or exclude a regional outage scenario."
+      ],
+      "escalation_reason": "The question asks about RTO for a regional outage event. The spec sheet and prior Q1 RFP response document RTO as 4 hours for a single-region restore under the Standard profile, while the deployment playbook's Multi-Region Topology section documents RTO as 8 hours for a region-out scenario — these two figures (4 hours vs. 8 hours) are mutually exclusive answers to a \"regional outage\" RTO question and cannot both be correct without an SME clarifying which topology/profile applies. The HA profile RTO of 90 minutes (in-region failover only) further adds a third distinct figure, compounding the conflict across sources."
+    },
+    {
+      "question_id": "Q-022",
+      "question_text": "What real-time streaming ingest mechanism does Core Platform expose?",
+      "status": "escalated",
+      "confidence_band": "LOW",
+      "draft_text": null,
+      "citations": [
+        {
+          "source_doc": "spec_sheet_dynamix_core_platform.md",
+          "chunk_id": "spec-sheet-dynamix-core-platform-chunk-000",
+          "similarity_score": 0.6196079027419044
+        },
+        {
+          "source_doc": "partner_enablement_integration_guide.md",
+          "chunk_id": "partner-enablement-integration-guide-chunk-000",
+          "similarity_score": 0.6134766340255781
+        },
+        {
+          "source_doc": "sme_faq_internal.md",
+          "chunk_id": "sme-faq-internal-chunk-000",
+          "similarity_score": 0.5906942242797757
+        },
+        {
+          "source_doc": "prior_rfp_response_2024_q4.md",
+          "chunk_id": "prior-rfp-response-2024-q4-chunk-000",
+          "similarity_score": 0.5809727657421102
+        },
+        {
+          "source_doc": "sme_faq_internal.md",
+          "chunk_id": "sme-faq-internal-chunk-001",
+          "similarity_score": 0.5803926336999328
+        }
+      ],
+      "conflict_versions": null,
+      "escalation_reason": "The retrieved chunks describe the Core Platform's REST API, Webhooks, and SDKs as integration surfaces, but none of these are real-time streaming ingest mechanisms, and no chunk mentions any streaming protocol (e.g., Kafka, WebSockets, SSE, gRPC streaming) for ingest. The question cannot be answered without speculating beyond what is documented."
+    },
+    {
+      "question_id": "Q-023",
+      "question_text": "What is the step-by-step procedure to provision customer-managed keys in production?",
+      "status": "escalated",
+      "confidence_band": "LOW",
+      "draft_text": null,
+      "citations": [
+        {
+          "source_doc": "partner_enablement_deployment_playbook.md",
+          "chunk_id": "partner-enablement-deployment-playbook-chunk-001",
+          "similarity_score": 0.6395456409725176
+        },
+        {
+          "source_doc": "prior_rfp_response_2025_q1.md",
+          "chunk_id": "prior-rfp-response-2025-q1-chunk-000",
+          "similarity_score": 0.628724537567823
+        },
+        {
+          "source_doc": "prior_rfp_response_2025_q3.md",
+          "chunk_id": "prior-rfp-response-2025-q3-chunk-000",
+          "similarity_score": 0.6179920066599853
+        },
+        {
+          "source_doc": "spec_sheet_dynamix_core_platform.md",
+          "chunk_id": "spec-sheet-dynamix-core-platform-chunk-000",
+          "similarity_score": 0.613168739487605
+        },
+        {
+          "source_doc": "sme_faq_internal.md",
+          "chunk_id": "sme-faq-internal-chunk-000",
+          "similarity_score": 0.6042416927670434
+        }
+      ],
+      "conflict_versions": null,
+      "escalation_reason": "The retrieved chunks acknowledge that customer-managed key (CMK) support via HSM integration (PKCS#11 and KMIP) exists in the 2025.x release and mention it as a step in the general provisioning sequence (\"Apply customer-managed key configuration (HSM) if required\"), but none of the chunks provide the actual step-by-step procedure for provisioning CMKs. Drafting a procedural answer from these chunks would require speculation about the specific configuration steps."
+    },
+    {
+      "question_id": "Q-024",
+      "question_text": "What is the mean-time-to-repair for an Edge Gateway hardware failure?",
+      "status": "no_source",
+      "confidence_band": "NO_SOURCE",
+      "draft_text": null,
+      "citations": [],
+      "conflict_versions": null,
+      "escalation_reason": "None of the retrieved chunks contain any information about MTTR or repair/recovery timelines for Edge Gateway hardware failures. The chunks cover throughput specs, connectivity, deployment timelines, sizing guidance, and commercial terms — none of which address hardware failure repair metrics."
+    },
+    {
+      "question_id": "Q-025",
+      "question_text": "Is Dynamix Core Platform FedRAMP Moderate authorized?",
+      "status": "no_source",
+      "confidence_band": "NO_SOURCE",
+      "draft_text": null,
+      "citations": [],
+      "conflict_versions": null,
+      "escalation_reason": "None of the retrieved chunks mention FedRAMP at any level (Moderate, Low, or High), nor any FedRAMP authorization, in-process status, or agency ATO. The chunks cover related security controls (AES-256, FIPS 140-2, TLS, audit logging) but these are general security capabilities, not FedRAMP authorization data — exactly as in Example D. Drafting an affirmative or negative FedRAMP answer from these chunks would require speculation."
+    },
+    {
+      "question_id": "Q-026",
+      "question_text": "Does the platform comply with the HIPAA Privacy Rule for protected health information?",
+      "status": "no_source",
+      "confidence_band": "NO_SOURCE",
+      "draft_text": null,
+      "citations": [],
+      "conflict_versions": null,
+      "escalation_reason": "None of the retrieved chunks address HIPAA Privacy Rule compliance, PHI handling, or any HIPAA-related attestation. The chunks cover encryption, audit logging, identity federation, recovery profiles, and API integration — general security controls that are adjacent but do not constitute or document HIPAA compliance. Notably, the SME FAQ explicitly states it does not address regulatory authorisations or compliance attestations, and directs such questions to the compliance team."
+    },
+    {
+      "question_id": "Q-027",
+      "question_text": "What languages does the admin console UI support?",
+      "status": "no_source",
+      "confidence_band": "NO_SOURCE",
+      "draft_text": null,
+      "citations": [],
+      "conflict_versions": null,
+      "escalation_reason": "No KB chunks above the retrieval relevance threshold for this question."
+    },
+    {
+      "question_id": "Q-028",
+      "question_text": "Is the platform SOC 2 Type II certified?",
+      "status": "no_source",
+      "confidence_band": "NO_SOURCE",
+      "draft_text": null,
+      "citations": [],
+      "conflict_versions": null,
+      "escalation_reason": "None of the retrieved chunks mention SOC 2 Type II at all. The chunks cover encryption, identity federation, audit logging, recovery profiles, and support tiers — none of which address SOC 2 certification. The internal FAQ explicitly notes it does not cover compliance attestations and directs those questions to the compliance team."
+    },
+    {
+      "question_id": "Q-029",
+      "question_text": "What is the documented Recovery Point Objective for the Core Platform?",
+      "status": "conflict",
+      "confidence_band": "CONFLICT",
+      "draft_text": null,
+      "citations": [
+        {
+          "source_doc": "prior_rfp_response_2025_q1.md",
+          "chunk_id": "prior-rfp-response-2025-q1-chunk-000",
+          "similarity_score": 0.6499098748022404
+        },
+        {
+          "source_doc": "prior_rfp_response_2025_q3.md",
+          "chunk_id": "prior-rfp-response-2025-q3-chunk-000",
+          "similarity_score": 0.6326160053839691
+        },
+        {
+          "source_doc": "spec_sheet_dynamix_core_platform.md",
+          "chunk_id": "spec-sheet-dynamix-core-platform-chunk-001",
+          "similarity_score": 0.6825341771522667
+        }
+      ],
+      "conflict_versions": [
+        "Under the 2024.x standard deployment profile, with asynchronous replication and snapshots running on a 15-minute cadence, the documented RPO for Dynamix Core Platform is 15 minutes [prior_rfp_response_2025_q1.md#prior-rfp-response-2025-q1-chunk-000]. The accompanying RTO is 4 hours for a single-region restore [prior_rfp_response_2025_q1.md#prior-rfp-response-2025-q1-chunk-000].",
+        "Under the 2025.x High-Availability profile, which uses synchronous replication between availability zones [prior_rfp_response_2025_q3.md#prior-rfp-response-2025-q3-chunk-000], the documented RPO for Dynamix Core Platform is 5 minutes, with an RTO of 90 minutes for an in-region failover [prior_rfp_response_2025_q3.md#prior-rfp-response-2025-q3-chunk-000].",
+        "The 2025.x release line spec sheet documents two co-existing recovery profiles for Dynamix Core Platform: (1) the Standard profile with asynchronous replication carries an RPO of 15 minutes and RTO of 4 hours single-region, and (2) the High-Availability profile with synchronous multi-AZ replication carries an RPO of 5 minutes and RTO of 90 minutes in-region failover [spec_sheet_dynamix_core_platform.md#spec-sheet-dynamix-core-platform-chunk-001]. The spec sheet notes the recovery profile is selected at deployment time and is not switchable in place [spec_sheet_dynamix_core_platform.md#spec-sheet-dynamix-core-platform-chunk-001]."
+      ],
+      "escalation_reason": "Multiple chunks assert different RPO figures for the Core Platform: prior-rfp-response-2025-q1-chunk-000 documents an RPO of 15 minutes (2024.x standard profile), while prior-rfp-response-2025-q3-chunk-000 and spec-sheet-dynamix-core-platform-chunk-001 document an RPO of 5 minutes (2025.x High-Availability profile) and 15 minutes (2025.x Standard profile). Without knowing which release line and deployment profile the RFP question refers to, a reader cannot determine a single authoritative RPO figure, constituting a conflict that requires SME resolution."
+    },
+    {
+      "question_id": "Q-030",
+      "question_text": "What is the certified sustained ingest rate of the Edge Gateway 4400 series?",
+      "status": "conflict",
+      "confidence_band": "CONFLICT",
+      "draft_text": null,
+      "citations": [
+        {
+          "source_doc": "spec_sheet_dynamix_edge_gateway.md",
+          "chunk_id": "spec-sheet-dynamix-edge-gateway-chunk-000",
+          "similarity_score": 0.7360440807289981
+        },
+        {
+          "source_doc": "prior_rfp_response_2024_q4.md",
+          "chunk_id": "prior-rfp-response-2024-q4-chunk-000",
+          "similarity_score": 0.7428001914739508
+        }
+      ],
+      "conflict_versions": [
+        "The published spec sheet certifies the Edge Gateway 4400 series at a sustained ingest rate of 80,000 events per second, validated against a median payload size of 1.2 KB [spec_sheet_dynamix_edge_gateway.md#spec-sheet-dynamix-edge-gateway-chunk-000].",
+        "In a 2024 Q4 customer engagement (discrete manufacturing, mixed shop-floor telemetry payload profile with a median of ~2.0 KB, larger than the spec-sheet median), the Edge Gateway 4400 series sustained ingest was confirmed at 60,000 events per second per appliance via a one-week on-site validation [prior_rfp_response_2024_q4.md#prior-rfp-response-2024-q4-chunk-000]."
+      ],
+      "escalation_reason": "The spec sheet certifies the 4400 series sustained ingest rate at 80,000 events/second (at a 1.2 KB median payload), while the prior RFP response states 60,000 events/second for the same appliance (at a larger ~2.0 KB median payload). Both chunks assert a sustained ingest figure for the 4400 series, but the numbers differ and a reader cannot determine the certified rate without SME clarification on which payload profile applies."
+    }
+  ],
+  "requires_human_review": true
+}
