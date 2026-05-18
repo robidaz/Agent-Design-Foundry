@@ -3,9 +3,9 @@
 > **[TEMPLATE GUIDE]** Replace the title with the agent name and a one-line descriptor (e.g., "Quote / BOM Generation Agent — Design Document"). Remove all `[TEMPLATE GUIDE]` blocks before submitting. Target length: 4–6 pages.
 >
 > **Input artifacts — populate this template by referencing the following per-task source files:**
-> - `task_x_design_intake.md` — client-authored business context, assumptions, requirements, scope exclusions, deliverables (e.g., [task_1_design_intake.md](../../design_exercise_artifacts/task_1_quote_bom_agent/task_1_design_intake.md))
-> - `task_x_evaluation.md` — filled evaluation report walking the evaluation strategy; phase-by-phase decisions with confidence and citations (e.g., [task_1_evaluation.md](../../design_exercise_artifacts/task_1_quote_bom_agent/task_1_evaluation.md))
-> - `task_x_evaluation.yaml` — structured-output sibling of the evaluation report; canonical machine-readable values for each phase (e.g., [task_1_evaluation.yaml](../../design_exercise_artifacts/task_1_quote_bom_agent/task_1_evaluation.yaml))
+> - `task_x_design_intake.md` — client-authored business context, assumptions, requirements, scope exclusions, deliverables (e.g., [task_1_design_intake.md](../artifacts/task_1_quote_bom_agent/task_1_design_intake.md))
+> - `task_x_evaluation.md` — filled evaluation report walking the evaluation strategy; phase-by-phase decisions with confidence and citations (e.g., [task_1_evaluation.md](../artifacts/task_1_quote_bom_agent/task_1_evaluation.md))
+> - `task_x_evaluation.yaml` — structured-output sibling of the evaluation report; canonical machine-readable values for each phase (e.g., [task_1_evaluation.yaml](../artifacts/task_1_quote_bom_agent/task_1_evaluation.yaml))
 >
 > Each section below lists a **Sources** block naming the specific fields in those artifacts that should populate it. Fields not listed in Sources (architecture diagram, prompt design, structured output schema, cost/latency estimates, etc.) require the human AI architect's design judgment — those sections remain in the template intentionally even when the intake/evaluation files cannot fully populate them. The evaluation strategy template at [evaluation_strategy.md](../.strategies/evaluation_strategy.md) defines the possible values referenced below.
 >

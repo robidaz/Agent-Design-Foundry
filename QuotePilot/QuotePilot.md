@@ -71,8 +71,6 @@
 
 ## 4. Architecture Overview
 
-> **[ARCHITECT — complete this section]** Replace the placeholder flowchart below once the interaction channel (§3, Assumption 8) is resolved.
-
 ```mermaid
 flowchart TD
     A["Customer Requirements<br/>(SE Input)"] --> B["Read Rulesets & Guidelines<br/>(catalog read — always first)"]
